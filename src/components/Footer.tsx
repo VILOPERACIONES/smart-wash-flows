@@ -32,7 +32,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3 text-sm text-secondary-foreground/80">
                 <MapPin className="w-4 h-4" />
-                Ciudad de México
+                Mérida, Yucatán
               </li>
             </ul>
           </div>
@@ -43,10 +43,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-sm text-secondary-foreground/80">
                 <Clock className="w-4 h-4" />
-                Lun - Sáb: 7:00 - 21:00
-              </li>
-              <li className="text-sm text-secondary-foreground/80 ml-7">
-                Dom: 8:00 - 18:00
+                Lun - Dom: 8:00 AM - 10:00 PM
               </li>
             </ul>
           </div>

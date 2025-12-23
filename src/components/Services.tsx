@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Timer, Zap, HandMetal, Shirt, Clock, DollarSign, CheckCircle2 } from "lucide-react";
+import { MessageCircle, Timer, Zap, Shirt, DollarSign, CheckCircle2 } from "lucide-react";
 
 const Services = () => {
   const handleWhatsAppClick = () => {
@@ -7,19 +7,19 @@ const Services = () => {
   };
 
   return (
-    <section id="servicios" className="py-20 md:py-32">
+    <section id="servicios" className="py-20 md:py-32 bg-background">
       <div className="container px-4 md:px-6">
         {/* Section header */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent text-accent-foreground text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/20 text-accent text-sm font-medium mb-4">
             Servicios
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
             Dos soluciones,
             <br />
             <span className="text-gradient">un mismo estándar</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-secondary max-w-2xl mx-auto">
             Elige cómo quieres lavar. Nosotros garantizamos la misma calidad y eficiencia.
           </p>
         </div>
@@ -27,22 +27,22 @@ const Services = () => {
         {/* Services grid */}
         <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Autoservicio Card */}
-          <div className="group relative p-8 md:p-10 rounded-3xl bg-background border border-border/50 shadow-card card-hover overflow-hidden">
+          <div className="group relative p-8 md:p-10 rounded-3xl bg-background border border-border shadow-card card-hover overflow-hidden transition-all duration-300 hover:border-primary">
             {/* Decorative gradient */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full" />
             
             <div className="relative">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-2xl gradient-hero flex items-center justify-center">
+                <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center">
                   <Zap className="w-7 h-7 text-primary-foreground" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">Autoservicio</h3>
-                  <p className="text-sm text-muted-foreground">Tú controlas tu tiempo</p>
+                  <h3 className="text-2xl font-bold text-foreground">Autoservicio</h3>
+                  <p className="text-sm text-secondary">Tú controlas tu tiempo</p>
                 </div>
               </div>
 
-              <p className="text-muted-foreground mb-8">
+              <p className="text-secondary mb-8">
                 Máquinas industriales de última generación a tu disposición. 
                 Rápido, autónomo y sin esperas innecesarias.
               </p>
@@ -50,26 +50,26 @@ const Services = () => {
               <ul className="space-y-4 mb-8">
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-sm">Equipos industriales modernos</span>
+                  <span className="text-sm text-foreground">Equipos industriales modernos</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-sm">Proceso visible y entendible</span>
+                  <span className="text-sm text-foreground">Proceso visible y entendible</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-sm">Sin filas, sin fricción</span>
+                  <span className="text-sm text-foreground">Sin filas, sin fricción</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-sm">Espacios limpios y ordenados</span>
+                  <span className="text-sm text-foreground">Espacios limpios y ordenados</span>
                 </li>
               </ul>
 
-              <div className="flex items-center justify-between pt-6 border-t border-border/50">
+              <div className="flex items-center justify-between pt-6 border-t border-border">
                 <div className="flex items-center gap-2">
                   <Timer className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium">~60 min ciclo completo</span>
+                  <span className="text-sm font-medium text-foreground">~60 min ciclo completo</span>
                 </div>
               </div>
             </div>

@@ -29,7 +29,7 @@ const PromotionsCarousel = () => {
     const dots = document.querySelectorAll('.carousel-dot');
     dots.forEach((dot, index) => {
       dot.classList.toggle('bg-primary', index === emblaApi.selectedScrollSnap());
-      dot.classList.toggle('bg-muted', index !== emblaApi.selectedScrollSnap());
+      dot.classList.toggle('bg-border', index !== emblaApi.selectedScrollSnap());
     });
   }, [emblaApi]);
 
@@ -57,7 +57,7 @@ const PromotionsCarousel = () => {
                 key={promo.id}
                 className="flex-[0_0_100%] min-w-0"
               >
-                <div className="aspect-[4/3] md:aspect-video bg-[#E5E7EB] rounded-xl shadow-lg flex items-center justify-center transition-transform duration-300">
+                <div className="aspect-[4/3] md:aspect-video bg-border rounded-xl shadow-lg flex items-center justify-center transition-transform duration-300">
                   <span className="text-muted-foreground text-xl md:text-2xl font-heading font-bold">
                     {promo.title}
                   </span>
@@ -67,7 +67,7 @@ const PromotionsCarousel = () => {
           </div>
         </div>
 
-        {/* Navigation Arrows */}
+        {/* Navigation Arrows - Electric Blue */}
         <Button
           variant="ghost"
           size="icon"
@@ -85,14 +85,14 @@ const PromotionsCarousel = () => {
           <ChevronRight className="h-6 w-6" />
         </Button>
 
-        {/* Dots Indicators */}
+        {/* Dots Indicators - Electric Blue active, gray inactive */}
         <div className="flex justify-center gap-2 mt-6">
           {promotions.map((_, index) => (
             <button
               key={index}
               onClick={() => scrollTo(index)}
               className={`carousel-dot w-3 h-3 rounded-full transition-colors duration-300 ${
-                index === 0 ? 'bg-primary' : 'bg-muted'
+                index === 0 ? 'bg-primary' : 'bg-border'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

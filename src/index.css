@@ -6,54 +6,54 @@
 
 @layer base {
   :root {
-    /* A LAVAR Brand Colors */
+    /* A LAVAR Official Brand Colors */
     --background: 0 0% 100%;
-    --foreground: 220 20% 10%;
+    --foreground: 0 0% 0%;
 
-    --card: 210 40% 98%;
-    --card-foreground: 220 20% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover-foreground: 0 0% 0%;
 
-    /* Electric Blue - Primary brand color */
-    --primary: 197 100% 44%;
+    /* Electric Blue - Primary brand color #0000FF */
+    --primary: 240 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    /* Dark Powder Blue - Secondary */
-    --secondary: 210 50% 25%;
+    /* Dark Powder Blue - Secondary #0033A0 */
+    --secondary: 218 100% 31%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 20% 96%;
-    --muted-foreground: 215 16% 47%;
+    /* Andrea Blue - Accent #4B82DF */
+    --accent: 218 69% 58%;
+    --accent-foreground: 0 0% 100%;
 
-    /* Accent - lighter electric blue */
-    --accent: 197 100% 95%;
-    --accent-foreground: 197 100% 35%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 218 100% 31%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 197 100% 44%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 240 100% 50%;
 
     --radius: 0.75rem;
 
     /* Custom brand tokens */
-    --electric-blue: 197 100% 44%;
-    --dark-blue: 210 50% 20%;
-    --powder-blue: 200 40% 94%;
+    --electric-blue: 240 100% 50%;
+    --dark-powder-blue: 218 100% 31%;
+    --andrea-blue: 218 69% 58%;
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(197 100% 44%) 0%, hsl(210 50% 25%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(0 0% 100%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(197 100% 44% / 0.15) 0%, transparent 70%);
+    --gradient-hero: linear-gradient(135deg, hsl(240 100% 50%) 0%, hsl(218 100% 31%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(218 69% 58% / 0.15) 0%, transparent 70%);
     
-    /* Shadows */
-    --shadow-card: 0 4px 20px -4px hsl(197 100% 44% / 0.1);
-    --shadow-button: 0 4px 14px -3px hsl(197 100% 44% / 0.4);
-    --shadow-hover: 0 8px 30px -4px hsl(197 100% 44% / 0.3);
+    /* Shadows using black with low opacity */
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.1);
+    --shadow-button: 0 4px 14px -3px hsl(240 100% 50% / 0.4);
+    --shadow-hover: 0 8px 30px -4px hsl(240 100% 50% / 0.3);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -62,37 +62,37 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 240 100% 50%;
   }
 
   .dark {
-    --background: 220 20% 6%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 5%;
+    --foreground: 0 0% 100%;
 
-    --card: 220 20% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 220 20% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 197 100% 50%;
-    --primary-foreground: 220 20% 6%;
+    --primary: 240 100% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 50% 35%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 218 100% 40%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --accent: 218 69% 65%;
+    --accent-foreground: 0 0% 100%;
 
-    --accent: 197 100% 15%;
-    --accent-foreground: 197 100% 70%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 218 50% 70%;
 
     --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 197 100% 50%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 240 100% 55%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -101,7 +101,7 @@
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 240 100% 55%;
   }
 }
 
@@ -149,6 +149,15 @@
 
   .glow-effect:hover::before {
     @apply opacity-100;
+  }
+
+  /* Andrea Blue background with opacity */
+  .bg-andrea-subtle {
+    background-color: hsl(218 69% 58% / 0.05);
+  }
+
+  .bg-andrea-light {
+    background-color: hsl(218 69% 58% / 0.1);
   }
 }
 

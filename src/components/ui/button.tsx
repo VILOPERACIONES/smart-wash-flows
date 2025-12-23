@@ -17,14 +17,14 @@ const buttonVariants = cva(
           "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        ghost: "hover:bg-accent/20 hover:text-accent",
+        link: "text-primary underline-offset-4 hover:underline hover:text-secondary",
         whatsapp:
           "bg-[#25D366] text-white shadow-lg hover:bg-[#20BD5A] hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]",
         hero:
           "bg-primary text-primary-foreground shadow-button hover:shadow-hover hover:scale-[1.02] active:scale-[0.98] text-base md:text-lg px-8 py-6",
         heroOutline:
-          "border-2 border-primary/20 bg-background/80 backdrop-blur-sm text-foreground hover:border-primary hover:bg-primary/5 text-base md:text-lg px-8 py-6",
+          "border-2 border-primary/30 bg-background/80 backdrop-blur-sm text-foreground hover:border-primary hover:bg-primary/5 text-base md:text-lg px-8 py-6",
       },
       size: {
         default: "h-11 px-6 py-2",
