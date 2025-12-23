@@ -7,7 +7,7 @@ const CTA = () => {
   };
 
   return (
-    <section className="py-20 md:py-32">
+    <section className="py-20 md:py-32 bg-andrea-light">
       <div className="container px-4 md:px-6">
         <div className="relative max-w-4xl mx-auto rounded-3xl gradient-hero p-10 md:p-16 overflow-hidden">
           {/* Decorative elements */}

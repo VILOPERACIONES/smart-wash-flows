@@ -15,7 +15,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -27,15 +27,21 @@ const Header = () => {
           <nav className="hidden md:flex items-center gap-8">
             <button 
               onClick={() => scrollToSection('servicios')}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm font-medium text-secondary hover:text-primary transition-colors"
             >
               Servicios
             </button>
             <button 
               onClick={() => scrollToSection('tecnologia')}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm font-medium text-secondary hover:text-primary transition-colors"
             >
               Tecnología
+            </button>
+            <button 
+              onClick={() => scrollToSection('sucursales')}
+              className="text-sm font-medium text-secondary hover:text-primary transition-colors"
+            >
+              Sucursales
             </button>
           </nav>
 
@@ -49,7 +55,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden p-2"
+            className="md:hidden p-2 text-foreground"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
@@ -63,22 +69,28 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-background border-t border-border/50 animate-fade-in">
+        <div className="md:hidden bg-background border-t border-border animate-fade-in">
           <div className="container px-4 py-6 space-y-4">
             <button 
               onClick={() => scrollToSection('servicios')}
-              className="block w-full text-left py-2 text-lg font-medium"
+              className="block w-full text-left py-2 text-lg font-medium text-foreground hover:text-primary transition-colors"
             >
               Servicios
             </button>
             <button 
               onClick={() => scrollToSection('tecnologia')}
-              className="block w-full text-left py-2 text-lg font-medium"
+              className="block w-full text-left py-2 text-lg font-medium text-foreground hover:text-primary transition-colors"
             >
               Tecnología
             </button>
+            <button 
+              onClick={() => scrollToSection('sucursales')}
+              className="block w-full text-left py-2 text-lg font-medium text-foreground hover:text-primary transition-colors"
+            >
+              Sucursales
+            </button>
             <Button 
-              variant="whatsapp" 
+              variant="default" 
               className="w-full mt-4"
               onClick={handleWhatsAppClick}
             >

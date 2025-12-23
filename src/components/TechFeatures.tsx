@@ -25,19 +25,19 @@ const features = [
 
 const TechFeatures = () => {
   return (
-    <section className="py-20 md:py-32 bg-muted/30">
+    <section id="tecnologia" className="py-20 md:py-32 bg-andrea-subtle">
       <div className="container px-4 md:px-6">
         {/* Section header */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent text-accent-foreground text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/20 text-accent text-sm font-medium mb-4">
             Tecnología
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
             Tecnología que
             <br />
             <span className="text-gradient">funciona para ti</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-secondary max-w-2xl mx-auto">
             No hablamos de tecnología compleja. Hablamos de tecnología útil que hace tu vida más simple.
           </p>
         </div>
@@ -47,17 +47,17 @@ const TechFeatures = () => {
           {features.map((feature, index) => (
             <div 
               key={feature.title}
-              className="group relative p-6 rounded-2xl bg-background border border-border/50 shadow-card card-hover"
+              className="group relative p-6 rounded-2xl bg-background border border-border shadow-card card-hover transition-all duration-300 hover:border-primary"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Icon */}
-              <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-6 h-6 text-primary" />
+              {/* Icon - Andrea Blue */}
+              <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                <feature.icon className="w-6 h-6 text-accent" />
               </div>
 
               {/* Content */}
-              <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <h3 className="text-lg font-bold mb-2 text-foreground">{feature.title}</h3>
+              <p className="text-sm text-secondary leading-relaxed">
                 {feature.description}
               </p>
 
@@ -69,18 +69,18 @@ const TechFeatures = () => {
 
         {/* Bottom stat */}
         <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-6 p-6 rounded-2xl bg-background border border-border/50 shadow-card">
+          <div className="inline-flex items-center gap-6 p-6 rounded-2xl bg-background border border-border shadow-card">
             <div className="text-center px-6 border-r border-border">
               <p className="text-3xl md:text-4xl font-bold text-gradient">+500</p>
-              <p className="text-sm text-muted-foreground mt-1">Clientes satisfechos</p>
+              <p className="text-sm text-secondary mt-1">Clientes satisfechos</p>
             </div>
             <div className="text-center px-6 border-r border-border">
               <p className="text-3xl md:text-4xl font-bold text-gradient">24h</p>
-              <p className="text-sm text-muted-foreground mt-1">Tiempo máx. entrega</p>
+              <p className="text-sm text-secondary mt-1">Tiempo máx. entrega</p>
             </div>
             <div className="text-center px-6">
               <p className="text-3xl md:text-4xl font-bold text-gradient">100%</p>
-              <p className="text-sm text-muted-foreground mt-1">Equipos industriales</p>
+              <p className="text-sm text-secondary mt-1">Equipos industriales</p>
             </div>
           </div>
         </div>

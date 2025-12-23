@@ -58,8 +58,8 @@ export default {
         },
         electric: {
           DEFAULT: "hsl(var(--electric-blue))",
-          dark: "hsl(var(--dark-blue))",
-          powder: "hsl(var(--powder-blue))",
+          dark: "hsl(var(--dark-powder-blue))",
+          andrea: "hsl(var(--andrea-blue))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

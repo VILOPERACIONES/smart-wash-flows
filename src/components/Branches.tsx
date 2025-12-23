@@ -39,7 +39,7 @@ const BranchCard = ({ branch }: { branch: Branch }) => {
 
   return (
     <div className="bg-background border border-border rounded-2xl p-8 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] flex flex-col h-full">
-      {/* Badge */}
+      {/* Badge - Electric Blue for open, Dark Powder Blue for coming soon */}
       <div className="mb-4">
         <span
           className={`inline-block px-4 py-1.5 rounded-full text-sm font-medium text-primary-foreground ${
@@ -51,7 +51,7 @@ const BranchCard = ({ branch }: { branch: Branch }) => {
       </div>
 
       {/* Image Placeholder */}
-      <div className="relative aspect-video bg-[#E5E7EB] rounded-xl mb-6 overflow-hidden">
+      <div className="relative aspect-video bg-border rounded-xl mb-6 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
           <span className="text-muted-foreground font-heading font-bold text-lg">
             Sucursal {branch.id}
@@ -70,17 +70,18 @@ const BranchCard = ({ branch }: { branch: Branch }) => {
 
         {isOpen ? (
           <>
+            {/* Andrea Blue icons */}
             <div className="flex items-start gap-3 mb-3">
-              <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <p className="text-muted-foreground text-sm">{branch.address}</p>
+              <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+              <p className="text-secondary text-sm">{branch.address}</p>
             </div>
             <div className="flex items-center gap-3 mb-6">
-              <Clock className="w-5 h-5 text-secondary flex-shrink-0" />
-              <p className="text-muted-foreground text-sm">{branch.schedule}</p>
+              <Clock className="w-5 h-5 text-accent flex-shrink-0" />
+              <p className="text-secondary text-sm">{branch.schedule}</p>
             </div>
           </>
         ) : (
-          <p className="text-muted-foreground text-sm mb-6">
+          <p className="text-secondary text-sm mb-6">
             Muy pronto en {branch.zone}
           </p>
         )}
@@ -115,7 +116,7 @@ const Branches = () => {
           <h2 className="font-heading font-bold text-[2rem] md:text-[2.5rem] text-foreground mb-3">
             Nuestras Sucursales
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-secondary text-lg">
             Encuentra la más cercana a ti
           </p>
         </div>
