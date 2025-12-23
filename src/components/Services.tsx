@@ -1,0 +1,145 @@
+import { Button } from "@/components/ui/button";
+import { MessageCircle, Timer, Zap, HandMetal, Shirt, Clock, DollarSign, CheckCircle2 } from "lucide-react";
+
+const Services = () => {
+  const handleWhatsAppClick = () => {
+    window.open("https://wa.me/525512345678?text=Hola,%20quiero%20información%20sobre%20A%20LAVAR", "_blank");
+  };
+
+  return (
+    <section id="servicios" className="py-20 md:py-32">
+      <div className="container px-4 md:px-6">
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent text-accent-foreground text-sm font-medium mb-4">
+            Servicios
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            Dos soluciones,
+            <br />
+            <span className="text-gradient">un mismo estándar</span>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Elige cómo quieres lavar. Nosotros garantizamos la misma calidad y eficiencia.
+          </p>
+        </div>
+
+        {/* Services grid */}
+        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* Autoservicio Card */}
+          <div className="group relative p-8 md:p-10 rounded-3xl bg-background border border-border/50 shadow-card card-hover overflow-hidden">
+            {/* Decorative gradient */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full" />
+            
+            <div className="relative">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-2xl gradient-hero flex items-center justify-center">
+                  <Zap className="w-7 h-7 text-primary-foreground" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold">Autoservicio</h3>
+                  <p className="text-sm text-muted-foreground">Tú controlas tu tiempo</p>
+                </div>
+              </div>
+
+              <p className="text-muted-foreground mb-8">
+                Máquinas industriales de última generación a tu disposición. 
+                Rápido, autónomo y sin esperas innecesarias.
+              </p>
+
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-sm">Equipos industriales modernos</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-sm">Proceso visible y entendible</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-sm">Sin filas, sin fricción</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-sm">Espacios limpios y ordenados</span>
+                </li>
+              </ul>
+
+              <div className="flex items-center justify-between pt-6 border-t border-border/50">
+                <div className="flex items-center gap-2">
+                  <Timer className="w-5 h-5 text-primary" />
+                  <span className="text-sm font-medium">~60 min ciclo completo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Lavado por encargo Card */}
+          <div className="group relative p-8 md:p-10 rounded-3xl gradient-hero text-primary-foreground shadow-card card-hover overflow-hidden">
+            {/* Badge */}
+            <div className="absolute top-6 right-6">
+              <span className="px-3 py-1 rounded-full bg-primary-foreground/20 text-sm font-medium backdrop-blur-sm">
+                Más popular
+              </span>
+            </div>
+
+            <div className="relative">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center">
+                  <Shirt className="w-7 h-7" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold">Lavado por encargo</h3>
+                  <p className="text-sm text-primary-foreground/80">Nosotros nos encargamos</p>
+                </div>
+              </div>
+
+              <p className="text-primary-foreground/90 mb-8">
+                La solución perfecta para gente ocupada. 
+                Delega sin culpa y recibe tu ropa impecable el mismo día.
+              </p>
+
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                  <span className="text-sm">Precio claro: $30/kg</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                  <span className="text-sm">Entrega el mismo día</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                  <span className="text-sm">Lavado + secado + doblado</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                  <span className="text-sm">Seguimiento por WhatsApp</span>
+                </li>
+              </ul>
+
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-6 border-t border-primary-foreground/20">
+                <div className="flex items-center gap-2">
+                  <DollarSign className="w-5 h-5" />
+                  <span className="text-2xl font-bold">$30</span>
+                  <span className="text-sm text-primary-foreground/80">/kg</span>
+                </div>
+                <Button 
+                  variant="default"
+                  className="sm:ml-auto bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+                  onClick={handleWhatsAppClick}
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Agendar por WhatsApp
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Services;
