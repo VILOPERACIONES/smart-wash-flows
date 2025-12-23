@@ -1,9 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import PromotionsCarousel from "@/components/PromotionsCarousel";
 import ValueProposition from "@/components/ValueProposition";
 import Services from "@/components/Services";
 import TechFeatures from "@/components/TechFeatures";
+import Branches from "@/components/Branches";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
@@ -48,11 +50,13 @@ const Index = () => {
         <Header />
         <main>
           <Hero />
+          <PromotionsCarousel />
           <ValueProposition />
           <Services />
           <div id="tecnologia">
             <TechFeatures />
           </div>
+          <Branches />
           <CTA />
         </main>
         <Footer />
