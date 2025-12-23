@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Clock, Sparkles } from "lucide-react";
+import { MessageCircle, Clock, Tag } from "lucide-react";
 
 const Hero = () => {
   const handleWhatsAppClick = () => {
@@ -7,95 +7,138 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      {/* Background gradient glow */}
-      <div className="absolute inset-0 gradient-glow opacity-60" />
-      
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-background">
       {/* Subtle grid pattern */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230000FF' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}
       />
 
-      <div className="container relative z-10 px-4 md:px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge - Andrea Blue background */}
-          <div className="animate-fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-accent-foreground mb-8">
-            <Clock className="w-4 h-4" />
-            <span className="text-sm font-medium">Entrega el mismo día</span>
-          </div>
+      <div className="container relative z-10 px-6 md:px-20 py-12 md:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* Left Column - Content */}
+          <div className="order-1">
+            {/* Badge */}
+            <div className="animate-fade-in inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-accent-foreground mb-6">
+              <Clock className="w-4 h-4" />
+              <span className="text-sm font-medium">Entrega el mismo día</span>
+            </div>
 
-          {/* Main headline - Black */}
-          <h1 className="animate-fade-up animation-delay-100 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 text-foreground">
-            Lavar tu ropa
-            <br />
-            <span className="text-gradient">nunca fue tan fácil</span>
-          </h1>
-
-          {/* Subheadline - Dark Powder Blue */}
-          <p className="animate-fade-up animation-delay-200 text-lg md:text-xl text-secondary max-w-2xl mx-auto mb-10">
-            Tecnología aplicada al lavado. Procesos claros, tiempos reales y cero complicaciones. 
-            <span className="text-foreground font-medium"> Tú decides, nosotros ejecutamos.</span>
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="animate-fade-up animation-delay-300 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button 
-              variant="hero" 
-              size="xl"
-              onClick={handleWhatsAppClick}
-              className="w-full sm:w-auto"
+            {/* Main headline */}
+            <h1 
+              className="animate-fade-in text-[2.5rem] md:text-[3.5rem] font-bold leading-[1.1] mb-6 text-foreground"
+              style={{ animationDelay: '100ms' }}
             >
-              <MessageCircle className="w-5 h-5" />
-              Escríbenos por WhatsApp
-            </Button>
-            <Button 
-              variant="heroOutline" 
-              size="xl"
-              className="w-full sm:w-auto"
-              onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Ver servicios
-            </Button>
-          </div>
+              Lavar tu ropa
+              <br />
+              <span className="text-primary">nunca fue tan fácil</span>
+            </h1>
 
-          {/* Trust indicators */}
-          <div className="animate-fade-up animation-delay-400 mt-16 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-primary" />
+            {/* Subheadline */}
+            <div 
+              className="animate-fade-in mb-10"
+              style={{ animationDelay: '200ms' }}
+            >
+              <p className="text-lg md:text-[1.125rem] leading-relaxed text-accent mb-1">
+                Tecnología aplicada al lavado. Procesos claros, tiempos reales y cero complicaciones.
+              </p>
+              <p className="text-lg md:text-[1.125rem] font-bold text-secondary">
+                Tú decides, nosotros ejecutamos.
+              </p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div 
+              className="animate-fade-in flex flex-col sm:flex-row gap-4"
+              style={{ animationDelay: '300ms' }}
+            >
+              <Button 
+                variant="hero" 
+                size="xl"
+                onClick={handleWhatsAppClick}
+                className="w-full sm:w-auto px-8 py-4 text-base font-bold"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Escríbenos por WhatsApp
+              </Button>
+              <Button 
+                variant="heroOutline" 
+                size="xl"
+                className="w-full sm:w-auto px-8 py-4 text-base font-medium"
+                onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Ver servicios
+              </Button>
+            </div>
+
+            {/* Features badges */}
+            <div 
+              className="animate-fade-in mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6"
+              style={{ animationDelay: '400ms' }}
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                  <Tag className="w-5 h-5 text-accent" />
+                </div>
+                <div className="text-left">
+                  <p className="text-sm font-bold text-foreground">$30/kg</p>
+                  <p className="text-xs text-secondary">Precio claro</p>
+                </div>
               </div>
-              <div className="text-left">
-                <p className="text-sm font-semibold text-foreground">$30/kg</p>
-                <p className="text-xs text-muted-foreground">Precio claro</p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-5 h-5 text-accent" />
+                </div>
+                <div className="text-left">
+                  <p className="text-sm font-bold text-foreground">Mismo día</p>
+                  <p className="text-xs text-secondary">Entrega rápida</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                  <MessageCircle className="w-5 h-5 text-accent" />
+                </div>
+                <div className="text-left">
+                  <p className="text-sm font-bold text-foreground">WhatsApp</p>
+                  <p className="text-xs text-secondary">Respuesta inmediata</p>
+                </div>
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-                <Clock className="w-5 h-5 text-primary" />
+          </div>
+
+          {/* Right Column - Image */}
+          <div 
+            className="order-2 animate-fade-in"
+            style={{ animationDelay: '200ms' }}
+          >
+            <div 
+              className="relative w-full aspect-[4/5] lg:aspect-[4/5] rounded-3xl lg:rounded-[24px] overflow-hidden shadow-hero group"
+              style={{ 
+                boxShadow: '0 20px 60px rgba(0, 0, 255, 0.15)',
+                minHeight: '300px'
+              }}
+            >
+              {/* Gradient placeholder */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-primary flex items-center justify-center">
+                <div className="text-center text-white/90">
+                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white/20 flex items-center justify-center">
+                    <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <p className="text-lg font-medium px-4">Imagen de sucursal moderna</p>
+                  <p className="text-sm text-white/70 mt-2">Espacio tecnológico y limpio</p>
+                </div>
               </div>
-              <div className="text-left">
-                <p className="text-sm font-semibold text-foreground">Mismo día</p>
-                <p className="text-xs text-muted-foreground">Entrega rápida</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-                <MessageCircle className="w-5 h-5 text-primary" />
-              </div>
-              <div className="text-left">
-                <p className="text-sm font-semibold text-foreground">WhatsApp</p>
-                <p className="text-xs text-muted-foreground">Respuesta inmediata</p>
-              </div>
+              
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           </div>
         </div>
       </div>
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 };
