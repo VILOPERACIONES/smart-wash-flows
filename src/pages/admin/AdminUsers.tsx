@@ -1,17 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Shield, Trash2 } from 'lucide-react';
+import { Plus, Pencil, Trash2, AlertTriangle } from 'lucide-react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { Button } from '@/components/ui/button';
-import { Switch } from '@/components/ui/switch';
 import {
   AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { toast } from 'sonner';
@@ -27,11 +22,6 @@ interface StoredUser {
 }
 
 const roleLabels = { admin: 'Administrador', editor: 'Editor', viewer: 'Visualizador' };
-const roleColors = {
-  admin: 'hsl(240 100% 50%)',
-  editor: 'hsl(218 69% 58%)',
-  viewer: 'hsl(0 0% 60%)',
-};
 
 const AdminUsers = () => {
   const navigate = useNavigate();
@@ -46,14 +36,6 @@ const AdminUsers = () => {
     localStorage.setItem('admin_users', JSON.stringify(newUsers));
   };
 
-  const getInitials = (name: string) =>
-    name
-      .split(' ')
-      .map((n) => n[0])
-      .join('')
-      .toUpperCase()
-      .slice(0, 2);
-
   const handleDelete = () => {
     if (selectedUser) {
       saveUsers(users.filter((u) => u.id !== selectedUser.id));
@@ -61,11 +43,6 @@ const AdminUsers = () => {
       setDeleteOpen(false);
       setSelectedUser(null);
     }
-  };
-
-  const toggleUserActive = (user: StoredUser) => {
-    saveUsers(users.map((u) => (u.id === user.id ? { ...u, active: !u.active } : u)));
-    toast.success(user.active ? 'Usuario desactivado' : 'Usuario activado');
   };
 
   const defaultAdmin: StoredUser = {
@@ -95,86 +72,119 @@ const AdminUsers = () => {
         </Button>
       </div>
 
-      <div className="admin-table">
-        <div className="hidden md:grid grid-cols-6 gap-4 p-4 bg-muted border-b-2 border-border font-semibold text-sm text-secondary">
+      {/* Desktop Table */}
+      <div className="admin-table hidden md:block">
+        <div 
+          className="grid gap-6 px-6 py-4 border-b-2 font-semibold text-[0.875rem]"
+          style={{ 
+            gridTemplateColumns: '20% 25% 15% 25% 10% 15%',
+            background: 'hsl(210 20% 98%)',
+            borderColor: 'hsl(220 13% 91%)',
+            color: 'hsl(218 100% 31%)'
+          }}
+        >
           <span>Usuario</span>
           <span>Email</span>
           <span>Rol</span>
           <span>Permisos</span>
           <span>Estado</span>
-          <span className="text-right">Acciones</span>
+          <span className="text-center">Acciones</span>
         </div>
         {allUsers.map((user) => (
           <div
             key={user.id}
-            className="grid md:grid-cols-6 gap-4 p-5 border-b border-border last:border-0 hover:bg-muted/50 transition-colors items-center"
+            className="grid gap-6 px-6 py-5 border-b last:border-0 items-center transition-colors duration-200 hover:bg-muted/50"
+            style={{ 
+              gridTemplateColumns: '20% 25% 15% 25% 10% 15%',
+              borderColor: 'hsl(220 14% 96%)'
+            }}
           >
-            <div className="flex items-center gap-3">
-              <div
-                className="w-11 h-11 rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm"
-                style={{
-                  background: roleColors[user.role],
-                  border: '2px solid hsl(0 0% 100%)',
-                  boxShadow: '0 2px 8px hsl(0 0% 0% / 0.1)',
-                }}
-              >
-                {getInitials(user.name)}
-              </div>
-              <span className="font-bold text-foreground">{user.name}</span>
-            </div>
-            <span className="text-secondary hidden md:block">{user.email}</span>
-            <span className="hidden md:block">
+            {/* Usuario - Solo nombre, sin avatar */}
+            <span className="font-semibold text-foreground" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              {user.name}
+            </span>
+
+            {/* Email */}
+            <span 
+              className="text-[0.9rem] truncate"
+              style={{ color: 'hsl(218 100% 31%)' }}
+            >
+              {user.email}
+            </span>
+
+            {/* Rol */}
+            <span>
               <span
-                className="px-3 py-1 rounded-full text-xs font-semibold text-primary-foreground"
-                style={{ background: roleColors[user.role] }}
+                className="px-3.5 py-1.5 rounded-full text-[0.8rem] font-semibold"
+                style={{
+                  background: user.role === 'admin' 
+                    ? 'hsl(240 100% 50% / 0.1)' 
+                    : user.role === 'editor' 
+                      ? 'hsl(218 69% 58% / 0.1)' 
+                      : 'hsl(220 13% 95%)',
+                  color: user.role === 'admin' 
+                    ? 'hsl(240 100% 50%)' 
+                    : user.role === 'editor' 
+                      ? 'hsl(218 69% 58%)' 
+                      : 'hsl(220 9% 46%)',
+                }}
               >
                 {roleLabels[user.role]}
               </span>
             </span>
-            <div className="hidden md:flex flex-wrap gap-1">
+
+            {/* Permisos */}
+            <div className="flex flex-wrap gap-2 items-start" style={{ marginRight: '32px' }}>
               {user.permissions.map((p) => (
                 <span
                   key={p}
-                  className="px-2 py-0.5 rounded-xl text-xs font-medium"
+                  className="px-3 py-1.5 rounded-2xl text-[0.8rem] font-medium whitespace-nowrap"
                   style={{
                     background: 'hsl(218 69% 58% / 0.1)',
-                    color: 'hsl(218 100% 31%)',
+                    color: 'hsl(218 69% 58%)',
                   }}
                 >
                   {p.charAt(0).toUpperCase() + p.slice(1)}
                 </span>
               ))}
             </div>
-            <span className="hidden md:block">
+
+            {/* Estado */}
+            <span>
               <span
-                className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                  user.active ? 'bg-green-100 text-green-700' : 'bg-muted text-muted-foreground'
-                }`}
+                className="px-3 py-1.5 rounded-full text-[0.8rem] font-semibold"
+                style={{
+                  background: user.active ? 'hsl(142 76% 91%)' : 'hsl(0 93% 94%)',
+                  color: user.active ? 'hsl(153 61% 36%)' : 'hsl(0 72% 51%)',
+                }}
               >
                 {user.active ? 'Activo' : 'Inactivo'}
               </span>
             </span>
-            <div className="flex items-center justify-end gap-2">
+
+            {/* Acciones */}
+            <div className="flex items-center justify-start gap-2">
               {user.id !== 'default' ? (
                 <>
                   <button
                     onClick={() => navigate(`/admin/usuarios/editar/${user.id}`)}
-                    className="w-9 h-9 rounded-lg flex items-center justify-center"
-                    style={{ background: 'hsl(240 100% 50% / 0.1)' }}
+                    className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-105"
+                    style={{ background: 'hsl(218 69% 58% / 0.1)' }}
+                    title="Editar usuario"
                   >
-                    <Shield size={18} className="text-primary" />
+                    <Pencil size={18} style={{ color: 'hsl(218 69% 58%)' }} />
                   </button>
                   <button
                     onClick={() => {
                       setSelectedUser(user);
                       setDeleteOpen(true);
                     }}
-                    className="w-9 h-9 rounded-lg flex items-center justify-center"
+                    className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-105"
                     style={{ background: 'hsl(0 84% 60% / 0.1)' }}
+                    title="Eliminar usuario"
                   >
-                    <Trash2 size={18} className="text-destructive" />
+                    <Trash2 size={18} style={{ color: 'hsl(0 72% 51%)' }} />
                   </button>
-                  <Switch checked={user.active} onCheckedChange={() => toggleUserActive(user)} />
                 </>
               ) : (
                 <span className="text-xs text-muted-foreground">Principal</span>
@@ -184,28 +194,150 @@ const AdminUsers = () => {
         ))}
       </div>
 
-      <AlertDialog open={deleteOpen} onOpenChange={setDeleteOpen}>
-        <AlertDialogContent className="admin-modal">
-          <AlertDialogHeader className="p-8">
-            <div className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center mx-auto mb-4">
-              <Trash2 className="text-destructive" size={32} />
+      {/* Mobile Cards */}
+      <div className="md:hidden space-y-4">
+        {allUsers.map((user) => (
+          <div key={user.id} className="admin-card p-5">
+            <div className="mb-3">
+              <h3 className="font-semibold text-foreground text-lg">{user.name}</h3>
+              <p className="text-sm" style={{ color: 'hsl(218 100% 31%)' }}>{user.email}</p>
             </div>
-            <AlertDialogTitle className="text-xl font-bold text-center">
-              ¿Eliminar usuario?
-            </AlertDialogTitle>
-            <AlertDialogDescription className="text-center text-secondary">
-              Esta acción no se puede deshacer.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter className="p-6 border-t border-border bg-muted">
-            <AlertDialogCancel className="h-11 px-6 font-semibold">Cancelar</AlertDialogCancel>
-            <AlertDialogAction
-              onClick={handleDelete}
-              className="h-11 px-6 font-bold bg-destructive hover:bg-destructive/90"
+            
+            <div className="flex items-center gap-2 mb-3">
+              <span
+                className="px-3 py-1 rounded-full text-xs font-semibold"
+                style={{
+                  background: user.role === 'admin' 
+                    ? 'hsl(240 100% 50% / 0.1)' 
+                    : user.role === 'editor' 
+                      ? 'hsl(218 69% 58% / 0.1)' 
+                      : 'hsl(220 13% 95%)',
+                  color: user.role === 'admin' 
+                    ? 'hsl(240 100% 50%)' 
+                    : user.role === 'editor' 
+                      ? 'hsl(218 69% 58%)' 
+                      : 'hsl(220 9% 46%)',
+                }}
+              >
+                {roleLabels[user.role]}
+              </span>
+              <span
+                className="px-3 py-1 rounded-full text-xs font-semibold"
+                style={{
+                  background: user.active ? 'hsl(142 76% 91%)' : 'hsl(0 93% 94%)',
+                  color: user.active ? 'hsl(153 61% 36%)' : 'hsl(0 72% 51%)',
+                }}
+              >
+                {user.active ? 'Activo' : 'Inactivo'}
+              </span>
+            </div>
+
+            <div className="flex flex-wrap gap-1.5 mb-4">
+              {user.permissions.map((p) => (
+                <span
+                  key={p}
+                  className="px-2.5 py-1 rounded-xl text-xs font-medium"
+                  style={{
+                    background: 'hsl(218 69% 58% / 0.1)',
+                    color: 'hsl(218 69% 58%)',
+                  }}
+                >
+                  {p.charAt(0).toUpperCase() + p.slice(1)}
+                </span>
+              ))}
+            </div>
+
+            {user.id !== 'default' && (
+              <div className="flex gap-2 pt-3 border-t border-border">
+                <button
+                  onClick={() => navigate(`/admin/usuarios/editar/${user.id}`)}
+                  className="flex-1 h-10 rounded-lg flex items-center justify-center gap-2 transition-all duration-200 font-medium text-sm"
+                  style={{ background: 'hsl(218 69% 58% / 0.1)', color: 'hsl(218 69% 58%)' }}
+                >
+                  <Pencil size={16} />
+                  Editar
+                </button>
+                <button
+                  onClick={() => {
+                    setSelectedUser(user);
+                    setDeleteOpen(true);
+                  }}
+                  className="flex-1 h-10 rounded-lg flex items-center justify-center gap-2 transition-all duration-200 font-medium text-sm"
+                  style={{ background: 'hsl(0 84% 60% / 0.1)', color: 'hsl(0 72% 51%)' }}
+                >
+                  <Trash2 size={16} />
+                  Eliminar
+                </button>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Delete Confirmation Modal */}
+      <AlertDialog open={deleteOpen} onOpenChange={setDeleteOpen}>
+        <AlertDialogContent 
+          className="max-w-[480px] p-0 overflow-hidden"
+          style={{ 
+            borderRadius: '16px',
+            boxShadow: '0 25px 80px hsl(0 0% 0% / 0.3)'
+          }}
+        >
+          <div 
+            className="fixed inset-0 -z-10"
+            style={{ 
+              background: 'hsl(0 0% 0% / 0.6)',
+              backdropFilter: 'blur(4px)'
+            }}
+          />
+          <div className="p-8 text-center">
+            <div 
+              className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+              style={{ background: 'hsl(0 84% 60% / 0.1)' }}
             >
-              Eliminar
-            </AlertDialogAction>
-          </AlertDialogFooter>
+              <AlertTriangle size={32} style={{ color: 'hsl(0 72% 51%)' }} />
+            </div>
+            <AlertDialogTitle 
+              className="text-2xl font-bold mb-3"
+              style={{ fontFamily: 'Poppins, sans-serif', color: 'hsl(0 0% 0%)' }}
+            >
+              ¿Estás seguro?
+            </AlertDialogTitle>
+            <AlertDialogDescription 
+              className="text-base mb-8"
+              style={{ color: 'hsl(218 100% 31%)' }}
+            >
+              Esta acción eliminará permanentemente a{' '}
+              <strong>{selectedUser?.name}</strong> del panel de administrador.
+            </AlertDialogDescription>
+            
+            <div className="flex gap-3 justify-center">
+              <button
+                onClick={() => setDeleteOpen(false)}
+                className="h-11 px-8 rounded-lg font-semibold transition-all duration-200 hover:bg-muted"
+                style={{ 
+                  background: 'hsl(0 0% 100%)',
+                  border: '1.5px solid hsl(220 13% 91%)',
+                  color: 'hsl(218 100% 31%)'
+                }}
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={handleDelete}
+                className="h-11 px-8 rounded-lg font-bold transition-all duration-200"
+                style={{ 
+                  background: 'hsl(0 72% 51%)',
+                  color: 'hsl(0 0% 100%)',
+                  boxShadow: '0 4px 12px hsl(0 72% 51% / 0.3)'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = 'hsl(0 72% 45%)'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'hsl(0 72% 51%)'}
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
         </AlertDialogContent>
       </AlertDialog>
     </AdminLayout>
