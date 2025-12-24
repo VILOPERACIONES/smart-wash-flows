@@ -1,17 +1,15 @@
 import { ReactNode, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   LayoutDashboard, 
   ImagePlus, 
   MapPin, 
   Users, 
-  LogOut, 
   Menu, 
   X,
   Bell,
   ChevronDown
 } from 'lucide-react';
-import { useAdminAuth } from '@/contexts/AdminAuthContext';
 import { cn } from '@/lib/utils';
 
 interface AdminLayoutProps {
@@ -27,16 +25,16 @@ const menuItems = [
   { icon: Users, label: 'Usuarios', path: '/admin/usuarios' },
 ];
 
-const AdminLayout = ({ children, title, description }: AdminLayoutProps) => {
-  const { user, logout } = useAdminAuth();
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+// Default admin user for display
+const defaultUser = {
+  name: 'Administrador',
+  email: 'admin@alavar.com',
+  role: 'admin' as const,
+};
 
-  const handleLogout = () => {
-    logout();
-    navigate('/admin/login');
-  };
+const AdminLayout = ({ children, title, description }: AdminLayoutProps) => {
+  const location = useLocation();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const getInitials = (name: string) => {
     return name
@@ -117,7 +115,7 @@ const AdminLayout = ({ children, title, description }: AdminLayoutProps) => {
         {/* Sidebar Footer */}
         <div className="p-6 border-t border-primary-foreground/10 bg-foreground/10">
           {/* User Card */}
-          <div className="bg-primary-foreground/[0.08] rounded-xl p-3 flex items-center gap-3 mb-3">
+          <div className="bg-primary-foreground/[0.08] rounded-xl p-3 flex items-center gap-3">
             <div 
               className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
               style={{
@@ -126,31 +124,18 @@ const AdminLayout = ({ children, title, description }: AdminLayoutProps) => {
               }}
             >
               <span className="text-primary-foreground font-bold text-sm">
-                {user ? getInitials(user.name) : 'AD'}
+                {getInitials(defaultUser.name)}
               </span>
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-primary-foreground font-semibold text-sm truncate">
-                {user?.name || 'Administrador'}
+                {defaultUser.name}
               </p>
               <p className="text-primary-foreground/60 text-xs truncate">
-                {user?.email || 'admin@alavar.com'}
+                {defaultUser.email}
               </p>
             </div>
           </div>
-
-          {/* Logout Button */}
-          <button
-            onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg font-medium text-sm transition-colors"
-            style={{
-              background: 'hsl(0 84% 60% / 0.15)',
-              color: 'hsl(0 84% 70%)'
-            }}
-          >
-            <LogOut size={18} />
-            Cerrar sesión
-          </button>
         </div>
       </aside>
 
@@ -192,15 +177,15 @@ const AdminLayout = ({ children, title, description }: AdminLayoutProps) => {
                 style={{ background: 'hsl(240 100% 50%)' }}
               >
                 <span className="text-primary-foreground font-bold text-sm">
-                  {user ? getInitials(user.name) : 'AD'}
+                  {getInitials(defaultUser.name)}
                 </span>
               </div>
               <div className="hidden md:block">
                 <p className="font-semibold text-[0.95rem] text-foreground">
-                  {user?.name || 'Administrador'}
+                  {defaultUser.name}
                 </p>
                 <p className="text-secondary text-xs">
-                  {user?.role === 'admin' ? 'Administrador' : user?.role === 'editor' ? 'Editor' : 'Visualizador'}
+                  Administrador
                 </p>
               </div>
               <ChevronDown size={16} className="text-muted-foreground" />

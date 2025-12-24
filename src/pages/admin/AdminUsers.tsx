@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plus, Shield, Trash2, Users as UsersIcon } from 'lucide-react';
+import { Plus, Shield, Trash2 } from 'lucide-react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -10,16 +10,22 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { toast } from 'sonner';
-import { useAdminAuth, AdminUser } from '@/contexts/AdminAuthContext';
 
-interface StoredUser extends AdminUser { password: string; }
+interface StoredUser {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  role: 'admin' | 'editor' | 'viewer';
+  permissions: string[];
+  active: boolean;
+}
 
 const roleLabels = { admin: 'Administrador', editor: 'Editor', viewer: 'Visualizador' };
 const roleDescriptions = { admin: 'Acceso total a todos los módulos', editor: 'Puede editar promociones y sucursales', viewer: 'Solo puede ver, no editar' };
 const roleColors = { admin: 'hsl(240 100% 50%)', editor: 'hsl(218 69% 58%)', viewer: 'hsl(0 0% 60%)' };
 
 const AdminUsers = () => {
-  const { user: currentUser } = useAdminAuth();
   const [users, setUsers] = useState<StoredUser[]>(() => JSON.parse(localStorage.getItem('admin_users') || '[]'));
   const [modalOpen, setModalOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
