@@ -53,7 +53,7 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-secondary-foreground/10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-secondary-foreground/60">
-              © {currentYear} A LAVAR. Todos los derechos reservados.
+              © A LAVAR 2026 - Diseñado y Desarrollado por Búho Solutions.
             </p>
             <p className="text-sm text-secondary-foreground/60">
               Mejor y más rápido.
