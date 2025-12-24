@@ -376,6 +376,14 @@ const AdminLogin = () => {
               <p>Password: <code className="font-mono">Admin123!</code></p>
             </div>
           </div>
+
+          {/* Copyright */}
+          <p 
+            className="mt-8 text-center"
+            style={{ color: '#0033a0', fontSize: '0.8rem', opacity: 0.7 }}
+          >
+            A LAVAR 2026 - Diseñado y Desarrollado por Búho Solutions.
+          </p>
         </div>
       </div>
 
