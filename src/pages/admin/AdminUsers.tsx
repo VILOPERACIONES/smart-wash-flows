@@ -77,7 +77,7 @@ const AdminUsers = () => {
         <div 
           className="grid gap-6 px-6 py-4 border-b-2 font-semibold text-[0.875rem]"
           style={{ 
-            gridTemplateColumns: '20% 25% 15% 25% 10% 15%',
+            gridTemplateColumns: '18% 23% 13% 23% 10% 13%',
             background: 'hsl(210 20% 98%)',
             borderColor: 'hsl(220 13% 91%)',
             color: 'hsl(218 100% 31%)'
@@ -95,7 +95,7 @@ const AdminUsers = () => {
             key={user.id}
             className="grid gap-6 px-6 py-5 border-b last:border-0 items-center transition-colors duration-200 hover:bg-muted/50"
             style={{ 
-              gridTemplateColumns: '20% 25% 15% 25% 10% 15%',
+              gridTemplateColumns: '18% 23% 13% 23% 10% 13%',
               borderColor: 'hsl(220 14% 96%)'
             }}
           >
