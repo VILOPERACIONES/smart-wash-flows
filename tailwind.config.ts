@@ -61,6 +61,13 @@ export default {
           dark: "hsl(var(--dark-powder-blue))",
           andrea: "hsl(var(--andrea-blue))",
         },
+        "electric-blue": "hsl(var(--electric-blue))",
+        "dark-powder-blue": "hsl(var(--dark-powder-blue))",
+        "andrea-blue": "hsl(var(--andrea-blue))",
+        "admin-gray": {
+          light: "hsl(var(--admin-gray-light))",
+          medium: "hsl(var(--admin-gray-medium))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

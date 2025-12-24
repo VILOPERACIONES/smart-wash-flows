@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Select,
   SelectContent,
@@ -52,9 +51,8 @@ const AdminBranches = () => {
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
   const [editMode, setEditMode] = useState(false);
-  const [activeTab, setActiveTab] = useState('active');
+  const [activeTab, setActiveTab] = useState<'active' | 'upcoming'>('active');
   
-  // Form state
   const [formName, setFormName] = useState('');
   const [formStatus, setFormStatus] = useState<'active' | 'upcoming'>('active');
   const [formAddress, setFormAddress] = useState('');
@@ -80,12 +78,10 @@ const AdminBranches = () => {
       toast.error('El archivo es demasiado grande (máx. 5MB)');
       return;
     }
-    
     if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
       toast.error('Formato no soportado. Usa JPG, PNG o WEBP');
       return;
     }
-
     setUploading(true);
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -98,407 +94,199 @@ const AdminBranches = () => {
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (e.type === 'dragenter' || e.type === 'dragover') {
-      setDragActive(true);
-    } else if (e.type === 'dragleave') {
-      setDragActive(false);
-    }
+    setDragActive(e.type === 'dragenter' || e.type === 'dragover');
   }, []);
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
-    
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      handleFileChange(e.dataTransfer.files[0]);
-    }
+    if (e.dataTransfer.files?.[0]) handleFileChange(e.dataTransfer.files[0]);
   }, []);
 
   const resetForm = () => {
-    setFormName('');
-    setFormStatus('active');
-    setFormAddress('');
-    setFormHours('');
-    setFormMapsUrl('');
-    setFormZone('');
-    setFormImage('');
+    setFormName(''); setFormStatus('active'); setFormAddress('');
+    setFormHours(''); setFormMapsUrl(''); setFormZone(''); setFormImage('');
   };
 
-  const openAddModal = () => {
-    setEditMode(false);
-    resetForm();
-    setSelectedBranch(null);
-    setModalOpen(true);
-  };
+  const openAddModal = () => { setEditMode(false); resetForm(); setSelectedBranch(null); setModalOpen(true); };
 
   const openEditModal = (branch: Branch) => {
     setEditMode(true);
-    setFormName(branch.name);
-    setFormStatus(branch.status);
-    setFormAddress(branch.address || '');
-    setFormHours(branch.hours || '');
-    setFormMapsUrl(branch.mapsUrl || '');
-    setFormZone(branch.zone || '');
-    setFormImage(branch.image);
-    setSelectedBranch(branch);
-    setModalOpen(true);
+    setFormName(branch.name); setFormStatus(branch.status);
+    setFormAddress(branch.address || ''); setFormHours(branch.hours || '');
+    setFormMapsUrl(branch.mapsUrl || ''); setFormZone(branch.zone || '');
+    setFormImage(branch.image); setSelectedBranch(branch); setModalOpen(true);
   };
 
   const handleSave = () => {
-    if (!formName.trim()) {
-      toast.error('El nombre es requerido');
-      return;
-    }
-    if (!formImage) {
-      toast.error('La imagen es requerida');
-      return;
-    }
-    if (formStatus === 'active') {
-      if (!formAddress.trim()) {
-        toast.error('La dirección es requerida para sucursales activas');
-        return;
-      }
-      if (!formHours.trim()) {
-        toast.error('El horario es requerido para sucursales activas');
-        return;
-      }
-      if (!formMapsUrl.trim()) {
-        toast.error('El link de Google Maps es requerido para sucursales activas');
-        return;
-      }
+    if (!formName.trim()) { toast.error('El nombre es requerido'); return; }
+    if (!formImage) { toast.error('La imagen es requerida'); return; }
+    if (formStatus === 'active' && (!formAddress.trim() || !formHours.trim() || !formMapsUrl.trim())) {
+      toast.error('Completa todos los campos requeridos para sucursales activas'); return;
     }
 
     const branchData: Branch = {
       id: editMode && selectedBranch ? selectedBranch.id : Date.now().toString(),
-      name: formName,
-      status: formStatus,
+      name: formName, status: formStatus, image: formImage,
       address: formStatus === 'active' ? formAddress : undefined,
       hours: formStatus === 'active' ? formHours : undefined,
       mapsUrl: formStatus === 'active' ? formMapsUrl : undefined,
       zone: formStatus === 'upcoming' ? formZone : undefined,
-      image: formImage,
       createdAt: editMode && selectedBranch ? selectedBranch.createdAt : new Date().toISOString(),
     };
 
     if (editMode && selectedBranch) {
-      const updated = branches.map(b => b.id === selectedBranch.id ? branchData : b);
-      saveBranches(updated);
+      saveBranches(branches.map(b => b.id === selectedBranch.id ? branchData : b));
       toast.success('Sucursal actualizada');
     } else {
       saveBranches([...branches, branchData]);
       toast.success('Sucursal creada');
     }
-    
     setModalOpen(false);
   };
 
   const handleDelete = () => {
     if (selectedBranch) {
-      const filtered = branches.filter(b => b.id !== selectedBranch.id);
-      saveBranches(filtered);
+      saveBranches(branches.filter(b => b.id !== selectedBranch.id));
       toast.success('Sucursal eliminada');
-      setDeleteOpen(false);
-      setSelectedBranch(null);
+      setDeleteOpen(false); setSelectedBranch(null);
     }
   };
 
-  const BranchCard = ({ branch }: { branch: Branch }) => (
-    <div className="bg-white rounded-xl overflow-hidden shadow-sm">
-      <div className="flex flex-col sm:flex-row">
-        <div className="w-full sm:w-24 h-32 sm:h-24 flex-shrink-0">
-          <img 
-            src={branch.image} 
-            alt={branch.name}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="flex-1 p-4">
-          <div className="flex items-start justify-between">
-            <div>
-              <h3 className="font-bold text-foreground">{branch.name}</h3>
-              {branch.status === 'active' ? (
-                <p className="text-sm text-dark-powder-blue line-clamp-2 mt-1">
-                  {branch.address}
-                </p>
-              ) : (
-                <p className="text-sm text-dark-powder-blue mt-1">
-                  {branch.zone || 'Zona por definir'}
-                </p>
-              )}
-            </div>
-            <span className={`px-2 py-1 rounded-full text-xs font-medium flex-shrink-0 ${
-              branch.status === 'active' 
-                ? 'bg-green-100 text-green-700' 
-                : 'bg-andrea-blue/20 text-dark-powder-blue'
-            }`}>
-              {branch.status === 'active' ? 'Activa' : 'Próximamente'}
-            </span>
-          </div>
-          <div className="flex items-center gap-2 mt-3 pt-3 border-t border-gray-100">
-            <button 
-              onClick={() => openEditModal(branch)}
-              className="p-2 rounded-lg hover:bg-gray-100 text-electric-blue"
-            >
-              <Edit size={18} />
-            </button>
-            <button 
-              onClick={() => {
-                setSelectedBranch(branch);
-                setDeleteOpen(true);
-              }}
-              className="p-2 rounded-lg hover:bg-gray-100 text-red-500"
-            >
-              <Trash2 size={18} />
-            </button>
-            {branch.mapsUrl && (
-              <a 
-                href={branch.mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg hover:bg-gray-100 text-andrea-blue"
-              >
-                <MapPin size={18} />
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  const displayBranches = activeTab === 'active' ? activeBranches : upcomingBranches;
 
   return (
-    <AdminLayout 
-      title="Gestión de Sucursales"
-      description="Administra la información de tus sucursales activas y próximas"
-    >
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full sm:w-auto">
-          <TabsList>
-            <TabsTrigger value="active" className="gap-2">
-              Activas
-              <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded-full text-xs">
-                {activeBranches.length}
+    <AdminLayout title="Gestión de Sucursales" description="Administra la información de tus sucursales activas y próximas">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        {/* Premium Tabs */}
+        <div className="inline-flex p-2 rounded-xl bg-card" style={{ boxShadow: '0 2px 8px hsl(0 0% 0% / 0.06)' }}>
+          {(['active', 'upcoming'] as const).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-6 py-3 rounded-lg font-semibold text-[0.95rem] transition-all duration-200 flex items-center gap-2 ${
+                activeTab === tab 
+                  ? 'bg-primary text-primary-foreground shadow-md' 
+                  : 'text-secondary hover:text-foreground'
+              }`}
+            >
+              {tab === 'active' ? 'Activas' : 'Próximamente'}
+              <span className={`px-2 py-0.5 rounded-full text-xs ${
+                activeTab === tab ? 'bg-primary-foreground/30' : 'bg-accent/20 text-secondary'
+              }`}>
+                {tab === 'active' ? activeBranches.length : upcomingBranches.length}
               </span>
-            </TabsTrigger>
-            <TabsTrigger value="upcoming" className="gap-2">
-              Próximamente
-              <span className="bg-andrea-blue/20 text-dark-powder-blue px-2 py-0.5 rounded-full text-xs">
-                {upcomingBranches.length}
-              </span>
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
-        <Button onClick={openAddModal} className="bg-electric-blue hover:bg-dark-powder-blue">
-          <Plus size={20} className="mr-2" />
-          Añadir nueva sucursal
+            </button>
+          ))}
+        </div>
+        <Button onClick={openAddModal} className="admin-btn-primary h-12 px-7 rounded-[10px] font-semibold">
+          <Plus size={20} className="mr-2" />Añadir nueva sucursal
         </Button>
       </div>
 
-      {/* Content */}
-      <div className="space-y-4">
-        {activeTab === 'active' ? (
-          activeBranches.length === 0 ? (
-            <div className="bg-white rounded-xl p-12 text-center">
-              <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
-                <MapPin className="text-gray-400" size={40} />
+      {displayBranches.length === 0 ? (
+        <div className="admin-card p-16 text-center">
+          <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5" style={{ background: 'hsl(218 69% 58% / 0.1)' }}>
+            <MapPin className="text-accent" size={40} style={{ opacity: 0.5 }} />
+          </div>
+          <h3 className="text-xl font-bold text-foreground mb-2">No hay sucursales {activeTab === 'active' ? 'activas' : 'próximas'}</h3>
+          <p className="text-secondary mb-8">Añade tu primera sucursal</p>
+          <Button onClick={openAddModal} className="admin-btn-primary h-12 px-8 rounded-[10px] font-semibold">Crear sucursal</Button>
+        </div>
+      ) : (
+        <div className="admin-table">
+          {displayBranches.map((branch) => (
+            <div key={branch.id} className="flex flex-col sm:flex-row border-b border-border last:border-0 hover:bg-muted/50 transition-colors">
+              <div className="w-full sm:w-20 h-32 sm:h-20 flex-shrink-0">
+                <img src={branch.image} alt={branch.name} className="w-full h-full object-cover" />
               </div>
-              <h3 className="text-lg font-bold text-foreground mb-2">No hay sucursales activas</h3>
-              <p className="text-dark-powder-blue mb-6">Añade tu primera sucursal</p>
-              <Button onClick={openAddModal} className="bg-electric-blue hover:bg-dark-powder-blue">
-                Crear primera sucursal
-              </Button>
-            </div>
-          ) : (
-            activeBranches.map(branch => <BranchCard key={branch.id} branch={branch} />)
-          )
-        ) : (
-          upcomingBranches.length === 0 ? (
-            <div className="bg-white rounded-xl p-12 text-center">
-              <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
-                <MapPin className="text-gray-400" size={40} />
+              <div className="flex-1 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <h3 className="font-bold text-foreground">{branch.name}</h3>
+                  <p className="text-sm text-secondary mt-1 line-clamp-1">{branch.status === 'active' ? branch.address : branch.zone || 'Zona por definir'}</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${branch.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-accent/20 text-secondary'}`}>
+                    {branch.status === 'active' ? 'Activa' : 'Próximamente'}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <button onClick={() => openEditModal(branch)} className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: 'hsl(240 100% 50% / 0.1)' }}>
+                      <Edit size={18} className="text-primary" />
+                    </button>
+                    <button onClick={() => { setSelectedBranch(branch); setDeleteOpen(true); }} className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: 'hsl(0 84% 60% / 0.1)' }}>
+                      <Trash2 size={18} className="text-destructive" />
+                    </button>
+                    {branch.mapsUrl && (
+                      <a href={branch.mapsUrl} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: 'hsl(218 69% 58% / 0.1)' }}>
+                        <MapPin size={18} className="text-accent" />
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-foreground mb-2">No hay sucursales próximas</h3>
-              <p className="text-dark-powder-blue mb-6">Añade una sucursal con estado "Próximamente"</p>
-              <Button onClick={openAddModal} className="bg-electric-blue hover:bg-dark-powder-blue">
-                Añadir sucursal
-              </Button>
             </div>
-          ) : (
-            upcomingBranches.map(branch => <BranchCard key={branch.id} branch={branch} />)
-          )
-        )}
-      </div>
+          ))}
+        </div>
+      )}
 
-      {/* Add/Edit Modal */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="max-w-[700px] max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>
-              {editMode ? 'Editar sucursal' : 'Nueva sucursal'}
-            </DialogTitle>
+        <DialogContent className="max-w-[700px] max-h-[90vh] overflow-y-auto admin-modal">
+          <DialogHeader className="p-8 pb-6 border-b border-border">
+            <DialogTitle className="text-[1.75rem] font-bold">{editMode ? 'Editar sucursal' : 'Nueva sucursal'}</DialogTitle>
           </DialogHeader>
-          
-          <div className="space-y-6 py-4">
-            {/* Name */}
+          <div className="p-8 space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="name">Nombre de la sucursal *</Label>
-              <Input
-                id="name"
-                value={formName}
-                onChange={(e) => setFormName(e.target.value)}
-                placeholder="Ej: Plaza Polígono"
-              />
+              <Label className="font-semibold">Nombre *</Label>
+              <Input value={formName} onChange={(e) => setFormName(e.target.value)} placeholder="Ej: Plaza Polígono" className="h-12 rounded-[10px] border-[1.5px]" />
             </div>
-
-            {/* Status */}
             <div className="space-y-2">
-              <Label>Estado de la sucursal *</Label>
+              <Label className="font-semibold">Estado *</Label>
               <Select value={formStatus} onValueChange={(v: 'active' | 'upcoming') => setFormStatus(v)}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
+                <SelectTrigger className="h-12 rounded-[10px]"><SelectValue /></SelectTrigger>
                 <SelectContent>
                   <SelectItem value="active">Activa</SelectItem>
                   <SelectItem value="upcoming">Próximamente</SelectItem>
                 </SelectContent>
               </Select>
             </div>
-
-            {/* Active-only fields */}
             {formStatus === 'active' && (
               <>
-                <div className="space-y-2">
-                  <Label htmlFor="address">Dirección completa *</Label>
-                  <Textarea
-                    id="address"
-                    value={formAddress}
-                    onChange={(e) => setFormAddress(e.target.value)}
-                    placeholder="Calle X #123, Col. Centro, Mérida, Yuc."
-                    rows={3}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="hours">Horario de atención *</Label>
-                  <Input
-                    id="hours"
-                    value={formHours}
-                    onChange={(e) => setFormHours(e.target.value)}
-                    placeholder="Lun - Dom: 8:00 AM - 10:00 PM"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="mapsUrl">Link de Google Maps *</Label>
-                  <Input
-                    id="mapsUrl"
-                    type="url"
-                    value={formMapsUrl}
-                    onChange={(e) => setFormMapsUrl(e.target.value)}
-                    placeholder="https://maps.google.com/?q=..."
-                  />
-                </div>
+                <div className="space-y-2"><Label className="font-semibold">Dirección *</Label><Textarea value={formAddress} onChange={(e) => setFormAddress(e.target.value)} placeholder="Calle X #123..." rows={2} className="rounded-[10px] border-[1.5px]" /></div>
+                <div className="space-y-2"><Label className="font-semibold">Horario *</Label><Input value={formHours} onChange={(e) => setFormHours(e.target.value)} placeholder="Lun - Dom: 8:00 AM - 10:00 PM" className="h-12 rounded-[10px] border-[1.5px]" /></div>
+                <div className="space-y-2"><Label className="font-semibold">Link Google Maps *</Label><Input value={formMapsUrl} onChange={(e) => setFormMapsUrl(e.target.value)} placeholder="https://maps.google.com/..." className="h-12 rounded-[10px] border-[1.5px]" /></div>
               </>
             )}
-
-            {/* Upcoming-only fields */}
             {formStatus === 'upcoming' && (
-              <div className="space-y-2">
-                <Label htmlFor="zone">Zona o colonia</Label>
-                <Input
-                  id="zone"
-                  value={formZone}
-                  onChange={(e) => setFormZone(e.target.value)}
-                  placeholder="Ej: Zona Norte"
-                />
-              </div>
+              <div className="space-y-2"><Label className="font-semibold">Zona</Label><Input value={formZone} onChange={(e) => setFormZone(e.target.value)} placeholder="Ej: Zona Norte" className="h-12 rounded-[10px] border-[1.5px]" /></div>
             )}
-
-            {/* Image Upload */}
             <div className="space-y-2">
-              <Label>Imagen de sucursal *</Label>
-              <div
-                onDragEnter={handleDrag}
-                onDragLeave={handleDrag}
-                onDragOver={handleDrag}
-                onDrop={handleDrop}
-                onClick={() => fileInputRef.current?.click()}
-                className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors ${
-                  dragActive 
-                    ? 'border-electric-blue bg-electric-blue/5' 
-                    : 'border-andrea-blue hover:bg-andrea-blue/5'
-                }`}
-              >
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/jpeg,image/png,image/webp"
-                  onChange={(e) => e.target.files?.[0] && handleFileChange(e.target.files[0])}
-                  className="hidden"
-                />
-                
-                {uploading ? (
-                  <Loader2 className="w-10 h-10 mx-auto text-electric-blue animate-spin" />
-                ) : formImage ? (
-                  <div className="relative">
-                    <img 
-                      src={formImage} 
-                      alt="Preview" 
-                      className="max-h-48 mx-auto rounded-lg"
-                    />
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setFormImage('');
-                      }}
-                      className="absolute top-2 right-2 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center"
-                    >
-                      <X size={16} />
-                    </button>
-                  </div>
-                ) : (
-                  <>
-                    <Upload className="w-10 h-10 mx-auto text-andrea-blue mb-3" />
-                    <p className="text-foreground font-medium mb-1">
-                      Arrastra una imagen o haz clic para seleccionar
-                    </p>
-                    <p className="text-sm text-dark-powder-blue">
-                      JPG, PNG o WEBP • Máx. 5MB
-                    </p>
-                  </>
-                )}
+              <Label className="font-semibold">Imagen *</Label>
+              <div onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop} onClick={() => fileInputRef.current?.click()} className={`admin-dropzone ${dragActive ? 'drag-active' : ''}`}>
+                <input ref={fileInputRef} type="file" accept="image/*" onChange={(e) => e.target.files?.[0] && handleFileChange(e.target.files[0])} className="hidden" />
+                {uploading ? <Loader2 className="w-16 h-16 mx-auto text-primary animate-spin" /> : formImage ? (
+                  <div className="relative"><img src={formImage} alt="Preview" className="max-h-48 mx-auto rounded-xl" /><button onClick={(e) => { e.stopPropagation(); setFormImage(''); }} className="absolute top-2 right-2 w-8 h-8 bg-destructive text-destructive-foreground rounded-full flex items-center justify-center"><X size={16} /></button></div>
+                ) : <><Upload className="w-16 h-16 mx-auto text-accent mb-4" /><p className="text-foreground font-semibold">Arrastra una imagen aquí</p><p className="text-secondary text-sm">o haz clic para seleccionar</p></>}
               </div>
             </div>
           </div>
-
-          <div className="flex justify-end gap-3">
-            <Button variant="outline" onClick={() => setModalOpen(false)}>
-              Cancelar
-            </Button>
-            <Button onClick={handleSave} className="bg-electric-blue hover:bg-dark-powder-blue">
-              Guardar sucursal
-            </Button>
+          <div className="p-6 border-t border-border bg-muted flex justify-end gap-3">
+            <Button variant="outline" onClick={() => setModalOpen(false)} className="h-11 px-6 font-semibold rounded-lg">Cancelar</Button>
+            <Button onClick={handleSave} className="admin-btn-primary h-11 px-8 font-bold rounded-lg">Guardar</Button>
           </div>
         </DialogContent>
       </Dialog>
 
-      {/* Delete Confirmation */}
       <AlertDialog open={deleteOpen} onOpenChange={setDeleteOpen}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>¿Estás seguro de eliminar esta sucursal?</AlertDialogTitle>
-            <AlertDialogDescription>
-              Esta acción no se puede deshacer. La sucursal será eliminada permanentemente.
-            </AlertDialogDescription>
+        <AlertDialogContent className="admin-modal">
+          <AlertDialogHeader className="p-8">
+            <div className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center mx-auto mb-4"><Trash2 className="text-destructive" size={32} /></div>
+            <AlertDialogTitle className="text-xl font-bold text-center">¿Eliminar sucursal?</AlertDialogTitle>
+            <AlertDialogDescription className="text-center text-secondary">Esta acción no se puede deshacer.</AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancelar</AlertDialogCancel>
-            <AlertDialogAction 
-              onClick={handleDelete}
-              className="bg-red-500 hover:bg-red-600"
-            >
-              Eliminar
-            </AlertDialogAction>
+          <AlertDialogFooter className="p-6 border-t border-border bg-muted">
+            <AlertDialogCancel className="h-11 px-6 font-semibold">Cancelar</AlertDialogCancel>
+            <AlertDialogAction onClick={handleDelete} className="h-11 px-6 font-bold bg-destructive hover:bg-destructive/90">Eliminar</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

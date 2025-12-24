@@ -44,16 +44,27 @@
     --electric-blue: 240 100% 50%;
     --dark-powder-blue: 218 100% 31%;
     --andrea-blue: 218 69% 58%;
+    --admin-gray-light: 210 20% 98%;
+    --admin-gray-medium: 220 13% 91%;
     
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(240 100% 50%) 0%, hsl(218 100% 31%) 100%);
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
     --gradient-glow: radial-gradient(ellipse at center, hsl(218 69% 58% / 0.15) 0%, transparent 70%);
+    --gradient-sidebar: linear-gradient(180deg, hsl(218 100% 31%) 0%, hsl(218 100% 20%) 100%);
+    --gradient-btn-primary: linear-gradient(135deg, hsl(240 100% 50%) 0%, hsl(218 100% 31%) 100%);
+    --gradient-active-nav: linear-gradient(135deg, hsl(240 100% 50%) 0%, hsl(218 69% 58%) 100%);
     
-    /* Shadows using black with low opacity */
-    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.1);
-    --shadow-button: 0 4px 14px -3px hsl(240 100% 50% / 0.4);
+    /* Premium Shadows */
+    --shadow-card: 0 1px 3px hsl(0 0% 0% / 0.12), 0 1px 2px hsl(0 0% 0% / 0.24);
+    --shadow-card-hover: 0 10px 20px hsl(0 0% 0% / 0.15), 0 3px 6px hsl(0 0% 0% / 0.10);
+    --shadow-button: 0 4px 14px hsl(240 100% 50% / 0.4);
+    --shadow-button-hover: 0 6px 20px hsl(240 100% 50% / 0.5);
     --shadow-hover: 0 8px 30px -4px hsl(240 100% 50% / 0.3);
+    --shadow-modal: 0 20px 60px hsl(0 0% 0% / 0.3);
+    --shadow-sidebar: 2px 0 12px hsl(0 0% 0% / 0.15);
+    --shadow-elegant: 0 4px 12px hsl(0 0% 0% / 0.08);
+    --shadow-nav-active: 0 4px 12px hsl(240 100% 50% / 0.3);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -158,6 +169,83 @@
 
   .bg-andrea-light {
     background-color: hsl(218 69% 58% / 0.1);
+  }
+
+  /* Premium Admin Styles */
+  .admin-card {
+    @apply bg-card rounded-2xl border border-border transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .admin-card:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-card-hover);
+    border-color: hsl(var(--andrea-blue));
+  }
+
+  .admin-btn-primary {
+    background: var(--gradient-btn-primary);
+    box-shadow: var(--shadow-button);
+    @apply transition-all duration-300;
+  }
+
+  .admin-btn-primary:hover {
+    @apply -translate-y-0.5;
+    box-shadow: var(--shadow-button-hover);
+  }
+
+  .admin-btn-primary:active {
+    @apply scale-[0.98];
+  }
+
+  .admin-input {
+    @apply h-12 px-4 border-[1.5px] border-border bg-muted rounded-lg font-medium transition-all duration-200;
+  }
+
+  .admin-input:focus {
+    @apply border-primary bg-background;
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+  }
+
+  .admin-sidebar-gradient {
+    background: var(--gradient-sidebar);
+  }
+
+  .admin-nav-active {
+    background: var(--gradient-active-nav);
+    box-shadow: var(--shadow-nav-active);
+  }
+
+  .admin-stat-card {
+    @apply bg-card rounded-2xl p-7 border border-border transition-all duration-300;
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .admin-stat-card:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .admin-table {
+    @apply bg-card rounded-2xl overflow-hidden;
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .admin-modal {
+    @apply rounded-[20px] p-0 overflow-hidden;
+    box-shadow: var(--shadow-modal);
+  }
+
+  .admin-dropzone {
+    @apply border-2 border-dashed border-accent rounded-2xl p-12 text-center cursor-pointer transition-all duration-300;
+    background: hsl(var(--andrea-blue) / 0.03);
+  }
+
+  .admin-dropzone:hover,
+  .admin-dropzone.drag-active {
+    @apply border-primary;
+    background: hsl(var(--primary) / 0.05);
+    transform: scale(1.01);
   }
 }
 
