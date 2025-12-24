@@ -197,6 +197,13 @@ const AdminLayout = ({ children, title, description }: AdminLayoutProps) => {
         <main className="flex-1 p-6 lg:p-10">
           {children}
         </main>
+
+        {/* Footer */}
+        <footer className="px-6 lg:px-10 py-4 border-t border-border/50 bg-card">
+          <p className="text-center text-sm text-muted-foreground">
+            A LAVAR 2026 - Diseñado y Desarrollado por Búho Solutions.
+          </p>
+        </footer>
       </div>
     </div>
   );
