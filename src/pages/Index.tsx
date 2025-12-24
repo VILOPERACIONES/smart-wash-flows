@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import PromotionsCarousel from "@/components/PromotionsCarousel";
 import ValueProposition from "@/components/ValueProposition";
 import Services from "@/components/Services";
+import WhatsAppNotifications from "@/components/WhatsAppNotifications";
 import TechFeatures from "@/components/TechFeatures";
 import Branches from "@/components/Branches";
 import CTA from "@/components/CTA";
@@ -53,6 +54,7 @@ const Index = () => {
           <PromotionsCarousel />
           <ValueProposition />
           <Services />
+          <WhatsAppNotifications />
           <div id="tecnologia">
             <TechFeatures />
           </div>
