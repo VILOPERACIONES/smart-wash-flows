@@ -19,6 +19,10 @@ const AdminDashboard = () => {
       label: 'Promociones activas',
       link: '/admin/promociones',
       linkText: 'Ver todas',
+      color: 'primary',
+      borderColor: 'hsl(240 100% 50%)',
+      bgColor: 'hsl(240 100% 50% / 0.1)',
+      iconColor: 'hsl(240 100% 50%)',
     },
     {
       icon: MapPin,
@@ -27,11 +31,19 @@ const AdminDashboard = () => {
       subtitle: `${upcomingBranches.length} próximamente`,
       link: '/admin/sucursales',
       linkText: 'Ver todas',
+      color: 'accent',
+      borderColor: 'hsl(218 69% 58%)',
+      bgColor: 'hsl(218 69% 58% / 0.1)',
+      iconColor: 'hsl(218 69% 58%)',
     },
     {
       icon: Clock,
       value: upcomingBranches.length,
       label: 'Próximas aperturas',
+      color: 'secondary',
+      borderColor: 'hsl(218 100% 31%)',
+      bgColor: 'hsl(218 100% 31% / 0.1)',
+      iconColor: 'hsl(218 100% 31%)',
     },
     {
       icon: Users,
@@ -39,6 +51,10 @@ const AdminDashboard = () => {
       label: 'Usuarios con acceso',
       link: '/admin/usuarios',
       linkText: 'Gestionar',
+      color: 'foreground',
+      borderColor: 'hsl(0 0% 0%)',
+      bgColor: 'hsl(0 0% 0% / 0.08)',
+      iconColor: 'hsl(0 0% 0%)',
     },
   ];
 
@@ -48,47 +64,49 @@ const AdminDashboard = () => {
       title: 'Promociones',
       description: 'Gestiona el carrusel de promociones',
       link: '/admin/promociones',
-      color: 'bg-electric-blue',
+      gradient: 'linear-gradient(135deg, hsl(240 100% 50%) 0%, hsl(218 100% 31%) 100%)',
     },
     {
       icon: MapPin,
       title: 'Sucursales',
       description: 'Administra tus ubicaciones',
       link: '/admin/sucursales',
-      color: 'bg-andrea-blue',
+      gradient: 'linear-gradient(135deg, hsl(218 69% 58%) 0%, hsl(218 100% 31%) 100%)',
     },
     {
       icon: Users,
       title: 'Usuarios',
       description: 'Gestiona permisos de acceso',
       link: '/admin/usuarios',
-      color: 'bg-dark-powder-blue',
+      gradient: 'linear-gradient(135deg, hsl(218 100% 31%) 0%, hsl(218 100% 20%) 100%)',
     },
   ];
 
   return (
     <AdminLayout title="Panel de Control">
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
         {stats.map((stat, index) => (
           <div 
             key={index}
-            className="bg-white rounded-xl p-6 shadow-sm border-t-[3px] border-electric-blue"
+            className="admin-stat-card group"
+            style={{ borderTop: `4px solid ${stat.borderColor}` }}
           >
-            <div className="flex items-start justify-between mb-4">
-              <div className="w-12 h-12 rounded-lg bg-electric-blue/10 flex items-center justify-center">
-                <stat.icon className="text-electric-blue" size={24} />
-              </div>
+            <div 
+              className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+              style={{ background: stat.bgColor }}
+            >
+              <stat.icon size={24} style={{ color: stat.iconColor }} />
             </div>
-            <p className="text-3xl font-bold text-foreground mb-1">{stat.value}</p>
-            <p className="text-dark-powder-blue text-sm font-medium">{stat.label}</p>
+            <p className="text-[3rem] font-bold text-foreground leading-none mb-2">{stat.value}</p>
+            <p className="text-secondary font-medium text-[0.95rem] mb-1">{stat.label}</p>
             {stat.subtitle && (
-              <p className="text-andrea-blue text-xs mt-1">{stat.subtitle}</p>
+              <p className="text-accent text-sm mt-2">{stat.subtitle}</p>
             )}
             {stat.link && (
               <Link 
                 to={stat.link}
-                className="inline-flex items-center gap-1 text-electric-blue text-sm font-medium mt-3 hover:underline"
+                className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold mt-4 hover:underline group-hover:gap-2 transition-all"
               >
                 {stat.linkText}
                 <ArrowRight size={14} />
@@ -100,21 +118,24 @@ const AdminDashboard = () => {
 
       {/* Quick Access */}
       <div>
-        <h2 className="text-lg font-bold text-foreground mb-4">Accesos rápidos</h2>
+        <h2 className="text-xl font-bold text-foreground mb-5">Accesos rápidos</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {quickAccess.map((item, index) => (
             <Link
               key={index}
               to={item.link}
-              className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow group"
+              className="admin-card p-7 group cursor-pointer"
             >
-              <div className={`w-14 h-14 rounded-xl ${item.color} flex items-center justify-center mb-4`}>
-                <item.icon className="text-white" size={28} />
+              <div 
+                className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
+                style={{ background: item.gradient }}
+              >
+                <item.icon className="text-primary-foreground" size={28} />
               </div>
-              <h3 className="font-bold text-foreground text-lg mb-1 group-hover:text-electric-blue transition-colors">
+              <h3 className="font-bold text-foreground text-lg mb-2 group-hover:text-primary transition-colors">
                 {item.title}
               </h3>
-              <p className="text-dark-powder-blue text-sm">{item.description}</p>
+              <p className="text-secondary text-sm">{item.description}</p>
             </Link>
           ))}
         </div>
