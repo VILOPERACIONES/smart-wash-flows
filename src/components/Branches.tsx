@@ -1,5 +1,6 @@
 import { MapPin, Clock } from 'lucide-react';
 import { Button } from './ui/button';
+import branchImage from '@/assets/branch-1.jpg';
 
 interface Branch {
   id: number;
@@ -50,15 +51,19 @@ const BranchCard = ({ branch }: { branch: Branch }) => {
         </span>
       </div>
 
-      {/* Image Placeholder */}
-      <div className="relative aspect-video bg-border rounded-xl mb-6 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-muted-foreground font-heading font-bold text-lg">
-            Sucursal {branch.id}
-          </span>
-        </div>
+      {/* Image */}
+      <div className="relative aspect-video rounded-xl mb-6 overflow-hidden">
+        <img 
+          src={branchImage} 
+          alt={`Sucursal ${branch.name} de A LAVAR`}
+          className="w-full h-full object-cover"
+        />
         {!isOpen && (
-          <div className="absolute inset-0 bg-foreground/60" />
+          <div className="absolute inset-0 bg-foreground/60 flex items-center justify-center">
+            <span className="text-primary-foreground font-heading font-bold text-lg">
+              Próximamente
+            </span>
+          </div>
         )}
       </div>
 
