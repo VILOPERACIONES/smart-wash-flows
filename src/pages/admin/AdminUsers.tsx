@@ -77,7 +77,7 @@ const AdminUsers = () => {
         <div 
           className="grid gap-6 px-6 py-4 border-b-2 font-semibold text-[0.875rem]"
           style={{ 
-            gridTemplateColumns: '18% 23% 13% 23% 10% 13%',
+            gridTemplateColumns: '22% 30% 18% 15% 15%',
             background: 'hsl(210 20% 98%)',
             borderColor: 'hsl(220 13% 91%)',
             color: 'hsl(218 100% 31%)'
@@ -86,7 +86,6 @@ const AdminUsers = () => {
           <span>Usuario</span>
           <span>Email</span>
           <span>Rol</span>
-          <span>Permisos</span>
           <span>Estado</span>
           <span className="text-center">Acciones</span>
         </div>
@@ -95,7 +94,7 @@ const AdminUsers = () => {
             key={user.id}
             className="grid gap-6 px-6 py-5 border-b last:border-0 items-center transition-colors duration-200 hover:bg-muted/50"
             style={{ 
-              gridTemplateColumns: '18% 23% 13% 23% 10% 13%',
+              gridTemplateColumns: '22% 30% 18% 15% 15%',
               borderColor: 'hsl(220 14% 96%)'
             }}
           >
@@ -132,22 +131,6 @@ const AdminUsers = () => {
                 {roleLabels[user.role]}
               </span>
             </span>
-
-            {/* Permisos */}
-            <div className="flex flex-wrap gap-2 items-start" style={{ marginRight: '32px' }}>
-              {user.permissions.map((p) => (
-                <span
-                  key={p}
-                  className="px-3 py-1.5 rounded-2xl text-[0.8rem] font-medium whitespace-nowrap"
-                  style={{
-                    background: 'hsl(218 69% 58% / 0.1)',
-                    color: 'hsl(218 69% 58%)',
-                  }}
-                >
-                  {p.charAt(0).toUpperCase() + p.slice(1)}
-                </span>
-              ))}
-            </div>
 
             {/* Estado */}
             <span>
@@ -232,20 +215,6 @@ const AdminUsers = () => {
               </span>
             </div>
 
-            <div className="flex flex-wrap gap-1.5 mb-4">
-              {user.permissions.map((p) => (
-                <span
-                  key={p}
-                  className="px-2.5 py-1 rounded-xl text-xs font-medium"
-                  style={{
-                    background: 'hsl(218 69% 58% / 0.1)',
-                    color: 'hsl(218 69% 58%)',
-                  }}
-                >
-                  {p.charAt(0).toUpperCase() + p.slice(1)}
-                </span>
-              ))}
-            </div>
 
             {user.id !== 'default' && (
               <div className="flex gap-2 pt-3 border-t border-border">
