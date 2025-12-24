@@ -10,6 +10,9 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminPromotions from "./pages/admin/AdminPromotions";
 import AdminBranches from "./pages/admin/AdminBranches";
 import AdminUsers from "./pages/admin/AdminUsers";
+import PromotionForm from "./pages/admin/PromotionForm";
+import BranchForm from "./pages/admin/BranchForm";
+import UserForm from "./pages/admin/UserForm";
 
 const queryClient = new QueryClient();
 
@@ -25,8 +28,14 @@ const App = () => (
             <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/admin/promociones" element={<AdminPromotions />} />
+            <Route path="/admin/promociones/nueva" element={<PromotionForm />} />
+            <Route path="/admin/promociones/editar/:id" element={<PromotionForm />} />
             <Route path="/admin/sucursales" element={<AdminBranches />} />
+            <Route path="/admin/sucursales/nueva" element={<BranchForm />} />
+            <Route path="/admin/sucursales/editar/:id" element={<BranchForm />} />
             <Route path="/admin/usuarios" element={<AdminUsers />} />
+            <Route path="/admin/usuarios/nuevo" element={<UserForm />} />
+            <Route path="/admin/usuarios/editar/:id" element={<UserForm />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
