@@ -1,20 +1,35 @@
 import { Zap, Eye, CheckCircle } from "lucide-react";
+import valueImage from "@/assets/value-proposition.jpg";
 
 const ValueProposition = () => {
   return (
     <section className="py-20 md:py-32 bg-andrea-subtle">
       <div className="container px-4 md:px-6">
-        <div className="max-w-4xl mx-auto">
-          {/* Section header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
-              Hacer que lavar
-              <br />
-              <span className="text-gradient">no se sienta pesado</span>
-            </h2>
-            <p className="text-lg text-secondary max-w-2xl mx-auto">
-              No somos una lavandería tradicional. Somos tecnología aplicada a un problema cotidiano.
-            </p>
+        <div className="max-w-6xl mx-auto">
+          {/* Two column layout */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            {/* Image */}
+            <div className="order-2 lg:order-1">
+              <div className="rounded-3xl overflow-hidden shadow-lg">
+                <img 
+                  src={valueImage} 
+                  alt="Cliente satisfecho recibiendo su ropa limpia en A LAVAR" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            
+            {/* Content */}
+            <div className="order-1 lg:order-2">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+                Hacer que lavar
+                <br />
+                <span className="text-gradient">no se sienta pesado</span>
+              </h2>
+              <p className="text-lg text-secondary">
+                No somos una lavandería tradicional. Somos tecnología aplicada a un problema cotidiano.
+              </p>
+            </div>
           </div>
 
           {/* Value cards */}

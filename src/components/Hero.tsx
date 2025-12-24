@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Clock, Tag } from "lucide-react";
+import heroImage from "@/assets/hero-laundry.jpg";
 
 const Hero = () => {
   const handleWhatsAppClick = () => {
@@ -120,18 +121,12 @@ const Hero = () => {
                 minHeight: '300px'
               }}
             >
-              {/* Gradient placeholder */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-primary flex items-center justify-center">
-                <div className="text-center text-white/90">
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white/20 flex items-center justify-center">
-                    <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <p className="text-lg font-medium px-4">Imagen de sucursal moderna</p>
-                  <p className="text-sm text-white/70 mt-2">Espacio tecnológico y limpio</p>
-                </div>
-              </div>
+              {/* Hero image */}
+              <img 
+                src={heroImage} 
+                alt="Interior moderno de lavandería A LAVAR con máquinas industriales" 
+                className="absolute inset-0 w-full h-full object-cover"
+              />
               
               {/* Hover overlay */}
               <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

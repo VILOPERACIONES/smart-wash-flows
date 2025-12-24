@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Timer, Zap, Shirt, DollarSign, CheckCircle2 } from "lucide-react";
+import selfServiceImage from "@/assets/services-self-service.jpg";
+import washFoldImage from "@/assets/services-wash-fold.jpg";
 
 const Services = () => {
   const handleWhatsAppClick = () => {
@@ -27,11 +29,17 @@ const Services = () => {
         {/* Services grid */}
         <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Autoservicio Card */}
-          <div className="group relative p-8 md:p-10 rounded-3xl bg-background border border-border shadow-card card-hover overflow-hidden transition-all duration-300 hover:border-primary">
-            {/* Decorative gradient */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full" />
+          <div className="group relative rounded-3xl bg-background border border-border shadow-card card-hover overflow-hidden transition-all duration-300 hover:border-primary">
+            {/* Image */}
+            <div className="aspect-video overflow-hidden">
+              <img 
+                src={selfServiceImage} 
+                alt="Servicio de autolavado en A LAVAR" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
             
-            <div className="relative">
+            <div className="relative p-8 md:p-10">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center">
                   <Zap className="w-7 h-7 text-primary-foreground" />
@@ -76,15 +84,23 @@ const Services = () => {
           </div>
 
           {/* Lavado por encargo Card */}
-          <div className="group relative p-8 md:p-10 rounded-3xl gradient-hero text-primary-foreground shadow-card card-hover overflow-hidden">
-            {/* Badge */}
-            <div className="absolute top-6 right-6">
-              <span className="px-3 py-1 rounded-full bg-primary-foreground/20 text-sm font-medium backdrop-blur-sm">
-                Más popular
-              </span>
+          <div className="group relative rounded-3xl gradient-hero text-primary-foreground shadow-card card-hover overflow-hidden">
+            {/* Image */}
+            <div className="aspect-video overflow-hidden relative">
+              <img 
+                src={washFoldImage} 
+                alt="Ropa limpia y doblada del servicio de lavado por encargo" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              {/* Badge */}
+              <div className="absolute top-4 right-4">
+                <span className="px-3 py-1 rounded-full bg-primary text-primary-foreground text-sm font-medium backdrop-blur-sm">
+                  Más popular
+                </span>
+              </div>
             </div>
 
-            <div className="relative">
+            <div className="relative p-8 md:p-10">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 rounded-2xl bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center">
                   <Shirt className="w-7 h-7" />
