@@ -8,129 +8,118 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-background">
-      {/* Subtle grid pattern */}
+    <section className="relative min-h-[90vh] md:min-h-[90vh] flex items-center overflow-hidden">
+      {/* Background Image */}
       <div 
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230000FF' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroImage})` }}
       />
+      
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/50" />
 
-      <div className="container relative z-10 px-6 md:px-20 py-12 md:py-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left Column - Content */}
-          <div className="order-1">
-            {/* Badge */}
-            <div className="animate-fade-in inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-accent-foreground mb-6">
-              <Clock className="w-4 h-4" />
-              <span className="text-sm font-medium">Entrega el mismo día</span>
-            </div>
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-6 md:px-20 py-16 flex flex-col items-center text-center max-w-[900px]">
+        {/* Badge */}
+        <div 
+          className="animate-fade-in inline-flex items-center gap-2 px-5 py-2.5 rounded-full mb-8"
+          style={{ 
+            backgroundColor: 'rgba(0, 0, 255, 0.9)',
+            boxShadow: '0 4px 12px rgba(0, 0, 255, 0.3)'
+          }}
+        >
+          <Clock className="w-4 h-4 text-white" />
+          <span className="text-[15px] font-bold text-white">Entrega el mismo día</span>
+        </div>
 
-            {/* Main headline */}
-            <h1 
-              className="animate-fade-in text-[2.5rem] md:text-[3.5rem] font-bold leading-[1.1] mb-6 text-foreground"
-              style={{ animationDelay: '100ms' }}
-            >
-              Lavar tu ropa
-              <br />
-              <span className="text-primary">nunca fue tan fácil</span>
-            </h1>
+        {/* Main headline */}
+        <h1 
+          className="animate-fade-in text-[2.8rem] md:text-[4rem] font-bold leading-[1.1] mb-6 text-white"
+          style={{ 
+            animationDelay: '100ms',
+            textShadow: '0 2px 8px rgba(0, 0, 0, 0.3)'
+          }}
+        >
+          Lavar tu ropa nunca fue tan fácil
+        </h1>
 
-            {/* Subheadline */}
+        {/* Subheadline */}
+        <p 
+          className="animate-fade-in text-[1.1rem] md:text-[1.25rem] leading-relaxed text-white mb-12 max-w-[700px]"
+          style={{ 
+            animationDelay: '200ms',
+            textShadow: '0 2px 6px rgba(0, 0, 0, 0.3)'
+          }}
+        >
+          Tecnología aplicada al lavado. Procesos claros, tiempos reales y cero complicaciones.
+        </p>
+
+        {/* CTA Button */}
+        <div 
+          className="animate-fade-in mb-14"
+          style={{ animationDelay: '300ms' }}
+        >
+          <Button 
+            onClick={handleWhatsAppClick}
+            className="px-10 py-5 text-lg font-bold rounded-[10px] bg-primary text-white hover:scale-105 transition-all duration-300"
+            style={{ 
+              boxShadow: '0 6px 20px rgba(0, 0, 255, 0.4)',
+            }}
+          >
+            <MessageCircle className="w-5 h-5" />
+            Escríbenos por WhatsApp
+          </Button>
+        </div>
+
+        {/* Facts Grid */}
+        <div 
+          className="animate-fade-in grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[800px]"
+          style={{ animationDelay: '400ms' }}
+        >
+          {/* Fact 1 - Precio */}
+          <div 
+            className="rounded-2xl p-6 text-center"
+            style={{
+              background: 'rgba(255, 255, 255, 0.15)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)'
+            }}
+          >
+            <Tag className="w-8 h-8 text-primary mx-auto mb-3" />
             <div 
-              className="animate-fade-in mb-10"
-              style={{ animationDelay: '200ms' }}
+              className="inline-block bg-white rounded-full px-4 py-2 mb-2"
             >
-              <p className="text-lg md:text-[1.125rem] leading-relaxed text-accent mb-1">
-                Tecnología aplicada al lavado. Procesos claros, tiempos reales y cero complicaciones.
-              </p>
-              <p className="text-lg md:text-[1.125rem] font-bold text-secondary">
-                Tú decides, nosotros ejecutamos.
-              </p>
+              <span className="text-[2.5rem] font-bold text-primary">$30<span className="text-lg">/kg</span></span>
             </div>
-
-            {/* CTA Buttons */}
-            <div 
-              className="animate-fade-in flex flex-col sm:flex-row gap-4"
-              style={{ animationDelay: '300ms' }}
-            >
-              <Button 
-                variant="hero" 
-                size="xl"
-                onClick={handleWhatsAppClick}
-                className="w-full sm:w-auto px-8 py-4 text-base font-bold"
-              >
-                <MessageCircle className="w-5 h-5" />
-                Escríbenos por WhatsApp
-              </Button>
-              <Button 
-                variant="heroOutline" 
-                size="xl"
-                className="w-full sm:w-auto px-8 py-4 text-base font-medium"
-                onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Ver servicios
-              </Button>
-            </div>
-
-            {/* Features badges */}
-            <div 
-              className="animate-fade-in mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6"
-              style={{ animationDelay: '400ms' }}
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                  <Tag className="w-5 h-5 text-accent" />
-                </div>
-                <div className="text-left">
-                  <p className="text-sm font-bold text-foreground">$30/kg</p>
-                  <p className="text-xs text-secondary">Precio claro</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-5 h-5 text-accent" />
-                </div>
-                <div className="text-left">
-                  <p className="text-sm font-bold text-foreground">Mismo día</p>
-                  <p className="text-xs text-secondary">Entrega rápida</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                  <MessageCircle className="w-5 h-5 text-accent" />
-                </div>
-                <div className="text-left">
-                  <p className="text-sm font-bold text-foreground">WhatsApp</p>
-                  <p className="text-xs text-secondary">Respuesta inmediata</p>
-                </div>
-              </div>
-            </div>
+            <p className="text-sm font-medium text-white">Precio claro y justo</p>
           </div>
 
-          {/* Right Column - Image */}
+          {/* Fact 2 - Entrega Rápida */}
           <div 
-            className="order-2 animate-fade-in"
-            style={{ animationDelay: '200ms' }}
+            className="rounded-2xl p-6 text-center"
+            style={{
+              background: 'rgba(255, 255, 255, 0.15)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)'
+            }}
           >
-            <div 
-              className="relative w-full aspect-[4/5] lg:aspect-[4/5] rounded-3xl lg:rounded-[24px] overflow-hidden shadow-hero group"
-              style={{ 
-                boxShadow: '0 20px 60px rgba(0, 0, 255, 0.15)',
-                minHeight: '300px'
-              }}
-            >
-              {/* Hero image */}
-              <img 
-                src={heroImage} 
-                alt="Interior moderno de lavandería A LAVAR con máquinas industriales" 
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
+            <Clock className="w-8 h-8 text-accent mx-auto mb-3" />
+            <p className="text-[1.5rem] font-bold text-white mb-1">Mismo día</p>
+            <p className="text-sm text-white/90">Entrega entre semana</p>
+          </div>
+
+          {/* Fact 3 - WhatsApp */}
+          <div 
+            className="rounded-2xl p-6 text-center"
+            style={{
+              background: 'rgba(255, 255, 255, 0.15)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)'
+            }}
+          >
+            <MessageCircle className="w-8 h-8 text-accent mx-auto mb-3" />
+            <p className="text-[1.5rem] font-bold text-white mb-1">Atención WhatsApp</p>
+            <p className="text-sm text-white/90">Te avisamos cuando esté listo</p>
           </div>
         </div>
       </div>
