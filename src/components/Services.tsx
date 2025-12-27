@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Zap, Shirt, CheckCircle2, Clock } from "lucide-react";
+import { MessageCircle, Zap, Shirt, CheckCircle2, Clock, Info } from "lucide-react";
 import selfServiceImage from "@/assets/services-self-service.jpg";
 import washFoldImage from "@/assets/services-wash-fold.jpg";
 
@@ -193,6 +193,21 @@ const Services = () => {
               </Button>
             </div>
           </div>
+        </div>
+
+        {/* Nota informativa sobre horarios de entrega */}
+        <div className="max-w-5xl mx-auto mt-8 px-4 md:px-0">
+          <aside 
+            role="note" 
+            aria-label="Nota importante sobre horarios de entrega"
+            className="bg-accent/10 border-l-4 border-accent rounded-xl p-5 md:p-6 flex items-start gap-4 shadow-sm"
+          >
+            <Info className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-secondary leading-relaxed">
+              <span className="font-bold text-accent">*[1]:</span>{" "}
+              El servicio de lavado por encargo con entrega el mismo día está disponible de lunes a viernes para pedidos recibidos antes de las 11:00 a. m.
+            </p>
+          </aside>
         </div>
       </div>
     </section>
