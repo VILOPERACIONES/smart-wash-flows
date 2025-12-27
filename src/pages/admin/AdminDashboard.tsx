@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Image, MapPin, Clock, Users, ArrowRight } from 'lucide-react';
+import { Image, MapPin, Clock, Users, ArrowRight, Zap } from 'lucide-react';
 import AdminLayout from '@/components/admin/AdminLayout';
 
 const AdminDashboard = () => {
@@ -25,21 +25,23 @@ const AdminDashboard = () => {
       iconColor: 'hsl(240 100% 50%)',
     },
     {
-      icon: MapPin,
-      value: activeBranches.length,
-      label: 'Sucursales activas',
-      subtitle: `${upcomingBranches.length} próximamente`,
-      link: '/admin/sucursales',
-      linkText: 'Ver todas',
+      icon: Zap,
+      value: 2,
+      label: 'Servicios configurados',
+      link: '/admin/servicios',
+      linkText: 'Gestionar',
       color: 'accent',
       borderColor: 'hsl(218 69% 58%)',
       bgColor: 'hsl(218 69% 58% / 0.1)',
       iconColor: 'hsl(218 69% 58%)',
     },
     {
-      icon: Clock,
-      value: upcomingBranches.length,
-      label: 'Próximas aperturas',
+      icon: MapPin,
+      value: activeBranches.length,
+      label: 'Sucursales activas',
+      subtitle: `${upcomingBranches.length} próximamente`,
+      link: '/admin/sucursales',
+      linkText: 'Ver todas',
       color: 'secondary',
       borderColor: 'hsl(218 100% 31%)',
       bgColor: 'hsl(218 100% 31% / 0.1)',
@@ -67,17 +69,17 @@ const AdminDashboard = () => {
       gradient: 'linear-gradient(135deg, hsl(240 100% 50%) 0%, hsl(218 100% 31%) 100%)',
     },
     {
+      icon: Zap,
+      title: 'Servicios',
+      description: 'Administra información y precios',
+      link: '/admin/servicios',
+      gradient: 'linear-gradient(135deg, hsl(218 69% 58%) 0%, hsl(218 100% 31%) 100%)',
+    },
+    {
       icon: MapPin,
       title: 'Sucursales',
       description: 'Administra tus ubicaciones',
       link: '/admin/sucursales',
-      gradient: 'linear-gradient(135deg, hsl(218 69% 58%) 0%, hsl(218 100% 31%) 100%)',
-    },
-    {
-      icon: Users,
-      title: 'Usuarios',
-      description: 'Gestiona permisos de acceso',
-      link: '/admin/usuarios',
       gradient: 'linear-gradient(135deg, hsl(218 100% 31%) 0%, hsl(218 100% 20%) 100%)',
     },
   ];

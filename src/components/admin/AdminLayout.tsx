@@ -8,7 +8,8 @@ import {
   Menu, 
   X,
   Bell,
-  ChevronDown
+  ChevronDown,
+  Zap
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -21,6 +22,7 @@ interface AdminLayoutProps {
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/admin/dashboard' },
   { icon: ImagePlus, label: 'Promociones', path: '/admin/promociones' },
+  { icon: Zap, label: 'Servicios', path: '/admin/servicios' },
   { icon: MapPin, label: 'Sucursales', path: '/admin/sucursales' },
   { icon: Users, label: 'Usuarios', path: '/admin/usuarios' },
 ];
