@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Timer, Zap, Shirt, DollarSign, CheckCircle2 } from "lucide-react";
+import { MessageCircle, Timer, Zap, Shirt, DollarSign, CheckCircle2, Clock, Tag } from "lucide-react";
 import selfServiceImage from "@/assets/services-self-service.jpg";
 import washFoldImage from "@/assets/services-wash-fold.jpg";
 
@@ -51,14 +51,14 @@ const Services = () => {
               </div>
 
               <p className="text-secondary mb-8">
-                Máquinas industriales de última generación a tu disposición. 
+                Equipos comerciales modernos a tu disposición. 
                 Rápido, autónomo y sin esperas innecesarias.
               </p>
 
               <ul className="space-y-4 mb-8">
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-sm text-foreground">Equipos industriales modernos</span>
+                  <span className="text-sm text-foreground">Equipos comerciales modernos</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
@@ -74,10 +74,19 @@ const Services = () => {
                 </li>
               </ul>
 
-              <div className="flex items-center justify-between pt-6 border-t border-border">
-                <div className="flex items-center gap-2">
-                  <Timer className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium text-foreground">~60 min ciclo completo</span>
+              {/* Precios y tiempos */}
+              <div className="pt-6 border-t border-border space-y-3">
+                <div className="flex items-center gap-3">
+                  <Clock className="w-5 h-5 text-accent flex-shrink-0" />
+                  <span className="text-sm text-secondary">Ciclo de Lavado y Secado ~80 min</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Tag className="w-5 h-5 text-accent flex-shrink-0" />
+                  <span className="text-sm text-secondary">Máquinas chicas: $80 MXN</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Tag className="w-5 h-5 text-accent flex-shrink-0" />
+                  <span className="text-sm text-secondary">Máquinas grandes: $125 MXN</span>
                 </div>
               </div>
             </div>
@@ -134,6 +143,14 @@ const Services = () => {
                   <span className="text-sm">Seguimiento por WhatsApp</span>
                 </li>
               </ul>
+
+              {/* Precio adicional */}
+              <div className="pt-6 border-t border-primary-foreground/20 mb-6">
+                <div className="flex items-center gap-3">
+                  <Tag className="w-5 h-5 text-primary-foreground/90 flex-shrink-0" />
+                  <span className="text-sm text-primary-foreground/90">Edredones y Hamacas: $80-$175 MXN</span>
+                </div>
+              </div>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-6 border-t border-primary-foreground/20">
                 <div className="flex items-center gap-2">
