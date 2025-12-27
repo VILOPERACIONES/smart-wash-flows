@@ -5,7 +5,7 @@ import PromotionsCarousel from "@/components/PromotionsCarousel";
 import ValueProposition from "@/components/ValueProposition";
 import Services from "@/components/Services";
 import WhatsAppNotifications from "@/components/WhatsAppNotifications";
-import TechFeatures from "@/components/TechFeatures";
+import Billing from "@/components/Billing";
 import Branches from "@/components/Branches";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -55,9 +55,7 @@ const Index = () => {
           <ValueProposition />
           <Services />
           <WhatsAppNotifications />
-          <div id="tecnologia">
-            <TechFeatures />
-          </div>
+          <Billing />
           <Branches />
           <CTA />
         </main>
