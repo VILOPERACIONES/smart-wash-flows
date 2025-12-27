@@ -7,11 +7,13 @@ import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import Facturacion from "./pages/Facturacion";
 import NotFound from "./pages/NotFound";
-import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminPromotions from "./pages/admin/AdminPromotions";
 import AdminBranches from "./pages/admin/AdminBranches";
 import AdminUsers from "./pages/admin/AdminUsers";
+import AdminServicios from "./pages/admin/AdminServicios";
+import EditAutoservicio from "./pages/admin/EditAutoservicio";
+import EditLavadoPorEncargo from "./pages/admin/EditLavadoPorEncargo";
 import PromotionForm from "./pages/admin/PromotionForm";
 import BranchForm from "./pages/admin/BranchForm";
 import UserForm from "./pages/admin/UserForm";
@@ -28,12 +30,14 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/facturacion" element={<Facturacion />} />
-            <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
-            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/admin/promociones" element={<AdminPromotions />} />
             <Route path="/admin/promociones/nueva" element={<PromotionForm />} />
             <Route path="/admin/promociones/editar/:id" element={<PromotionForm />} />
+            <Route path="/admin/servicios" element={<AdminServicios />} />
+            <Route path="/admin/servicios/autoservicio/editar" element={<EditAutoservicio />} />
+            <Route path="/admin/servicios/lavado-por-encargo/editar" element={<EditLavadoPorEncargo />} />
             <Route path="/admin/sucursales" element={<AdminBranches />} />
             <Route path="/admin/sucursales/nueva" element={<BranchForm />} />
             <Route path="/admin/sucursales/editar/:id" element={<BranchForm />} />
