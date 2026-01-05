@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Zap, Shirt, CheckCircle2, Clock, Info } from "lucide-react";
+import { MessageCircle, Zap, Shirt, CheckCircle2, Clock, Info, ShoppingBag } from "lucide-react";
 import selfServiceImage from "@/assets/services-self-service.jpg";
 import washFoldImage from "@/assets/services-wash-fold.jpg";
 
@@ -101,7 +101,22 @@ const Services = () => {
                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
                   <span className="text-sm text-foreground">Espacios limpios y ordenados</span>
                 </li>
+                <li className="flex items-center gap-3">
+                  <ShoppingBag className="w-5 h-5 text-accent flex-shrink-0" />
+                  <span className="text-sm text-foreground">Productos disponibles por ciclo</span>
+                </li>
               </ul>
+
+              {/* Banner de productos disponibles */}
+              <div className="bg-accent/10 border border-accent/20 rounded-xl p-4 flex items-start gap-3 mb-6">
+                <ShoppingBag className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold text-sm text-accent block mb-1">¿Sin productos?</span>
+                  <p className="text-sm text-secondary leading-relaxed">
+                    Vendemos detergente, blanqueador y suavizante por ciclo. Compra solo lo que necesitas.
+                  </p>
+                </div>
+              </div>
 
               {/* Tiempo de ciclo */}
               <div className="flex items-center gap-3 pt-4 border-t border-border">
