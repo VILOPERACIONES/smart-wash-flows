@@ -1,16 +1,50 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from './ui/button';
 
-const promotions = [
-  { id: 1, title: 'Promoción 1' },
-  { id: 2, title: 'Promoción 2' },
-  { id: 3, title: 'Promoción 3' },
-];
+interface ImageData {
+  url: string;
+  nombre: string;
+  tamaño: string;
+  dimensiones: string;
+}
+
+interface Promotion {
+  id: string;
+  name: string;
+  image?: string;
+  imagenes?: {
+    desktop: ImageData | null;
+    mobile: ImageData | null;
+  };
+  active: boolean;
+  createdAt: string;
+}
 
 const PromotionsCarousel = () => {
+  const [promotions, setPromotions] = useState<Promotion[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Load promotions from localStorage
+  useEffect(() => {
+    const stored = localStorage.getItem('admin_promotions');
+    if (stored) {
+      const allPromotions: Promotion[] = JSON.parse(stored);
+      // Only show active promotions
+      setPromotions(allPromotions.filter(p => p.active));
+    }
+  }, []);
+
+  // Detect mobile
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'center' },
     [Autoplay({ delay: 5000, stopOnInteraction: false })]
@@ -47,23 +81,58 @@ const PromotionsCarousel = () => {
     [emblaApi]
   );
 
+  // Helper to get the correct image based on device
+  const getImageUrl = (promotion: Promotion): string | null => {
+    if (isMobile) {
+      // Mobile: prefer mobile image, fallback to desktop, then legacy
+      if (promotion.imagenes?.mobile?.url) return promotion.imagenes.mobile.url;
+      if (promotion.imagenes?.desktop?.url) return promotion.imagenes.desktop.url;
+      if (promotion.image) return promotion.image;
+    } else {
+      // Desktop: prefer desktop image, fallback to mobile, then legacy
+      if (promotion.imagenes?.desktop?.url) return promotion.imagenes.desktop.url;
+      if (promotion.imagenes?.mobile?.url) return promotion.imagenes.mobile.url;
+      if (promotion.image) return promotion.image;
+    }
+    return null;
+  };
+
+  // Don't render if no active promotions
+  if (promotions.length === 0) {
+    return null;
+  }
+
   return (
     <section className="w-full bg-background py-10 md:py-[60px]">
       <div className="max-w-[1200px] mx-auto px-4 relative">
         <div className="overflow-hidden rounded-xl" ref={emblaRef}>
           <div className="flex gap-5">
-            {promotions.map((promo) => (
-              <div
-                key={promo.id}
-                className="flex-[0_0_100%] min-w-0"
-              >
-                <div className="aspect-[4/3] md:aspect-video bg-border rounded-xl shadow-lg flex items-center justify-center transition-transform duration-300">
-                  <span className="text-muted-foreground text-xl md:text-2xl font-heading font-bold">
-                    {promo.title}
-                  </span>
+            {promotions.map((promo) => {
+              const imageUrl = getImageUrl(promo);
+              
+              return (
+                <div
+                  key={promo.id}
+                  className="flex-[0_0_100%] min-w-0"
+                >
+                  {imageUrl ? (
+                    <div className="aspect-[4/3] md:aspect-video rounded-xl shadow-lg overflow-hidden">
+                      <img
+                        src={imageUrl}
+                        alt={promo.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="aspect-[4/3] md:aspect-video bg-border rounded-xl shadow-lg flex items-center justify-center transition-transform duration-300">
+                      <span className="text-muted-foreground text-xl md:text-2xl font-heading font-bold">
+                        {promo.name}
+                      </span>
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
