@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Image, MapPin, Clock, Users, ArrowRight, Zap } from 'lucide-react';
+import { Image, MapPin, Clock, Users, ArrowRight, Zap, Receipt } from 'lucide-react';
 import AdminLayout from '@/components/admin/AdminLayout';
 
 const AdminDashboard = () => {
@@ -29,6 +29,18 @@ const AdminDashboard = () => {
       value: 2,
       label: 'Servicios configurados',
       link: '/admin/servicios',
+      linkText: 'Gestionar',
+      color: 'accent',
+      borderColor: 'hsl(218 69% 58%)',
+      bgColor: 'hsl(218 69% 58% / 0.1)',
+      iconColor: 'hsl(218 69% 58%)',
+    },
+    {
+      icon: Receipt,
+      value: 'Configurado',
+      label: 'Imágenes de precios',
+      subtitle: 'Desktop y Mobile',
+      link: '/admin/detalle-precios',
       linkText: 'Gestionar',
       color: 'accent',
       borderColor: 'hsl(218 69% 58%)',
@@ -74,6 +86,13 @@ const AdminDashboard = () => {
       description: 'Administra información y precios',
       link: '/admin/servicios',
       gradient: 'linear-gradient(135deg, hsl(218 69% 58%) 0%, hsl(218 100% 31%) 100%)',
+    },
+    {
+      icon: Receipt,
+      title: 'Detalle de Precios',
+      description: 'Gestiona imágenes del pop-up',
+      link: '/admin/detalle-precios',
+      gradient: 'linear-gradient(135deg, hsl(218 69% 58%) 0%, hsl(240 100% 50%) 100%)',
     },
     {
       icon: MapPin,

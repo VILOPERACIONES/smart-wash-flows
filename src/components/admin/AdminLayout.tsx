@@ -9,7 +9,8 @@ import {
   X,
   Bell,
   ChevronDown,
-  Zap
+  Zap,
+  Receipt
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -23,6 +24,7 @@ const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/admin/dashboard' },
   { icon: ImagePlus, label: 'Promociones', path: '/admin/promociones' },
   { icon: Zap, label: 'Servicios', path: '/admin/servicios' },
+  { icon: Receipt, label: 'Detalle de Precios', path: '/admin/detalle-precios' },
   { icon: MapPin, label: 'Sucursales', path: '/admin/sucursales' },
   { icon: Users, label: 'Usuarios', path: '/admin/usuarios' },
 ];
