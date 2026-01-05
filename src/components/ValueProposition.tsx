@@ -1,4 +1,4 @@
-import { Zap, Eye, CheckCircle } from "lucide-react";
+import { Zap, Eye, CheckCircle, ShoppingBag } from "lucide-react";
 import valueImage from "@/assets/value-proposition.jpg";
 
 const ValueProposition = () => {
@@ -32,35 +32,45 @@ const ValueProposition = () => {
             </div>
           </div>
 
-          {/* Value cards */}
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+          {/* Value cards - Now 4 columns */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="group p-8 rounded-2xl bg-background shadow-card card-hover text-center border border-border">
-              <div className="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Zap className="w-7 h-7 text-primary" />
+              <div className="w-16 h-16 rounded-xl bg-accent/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Zap className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold mb-3 text-foreground">Rápido</h3>
-              <p className="text-secondary">
+              <p className="text-secondary text-sm">
                 Equipos industriales modernos. Procesos optimizados. Entrega el mismo día.
               </p>
             </div>
 
             <div className="group p-8 rounded-2xl bg-background shadow-card card-hover text-center border border-border">
-              <div className="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Eye className="w-7 h-7 text-primary" />
+              <div className="w-16 h-16 rounded-xl bg-accent/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Eye className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold mb-3 text-foreground">Transparente</h3>
-              <p className="text-secondary">
+              <p className="text-secondary text-sm">
                 Precios claros desde el inicio. Sin sorpresas. Sin letra pequeña.
               </p>
             </div>
 
             <div className="group p-8 rounded-2xl bg-background shadow-card card-hover text-center border border-border">
-              <div className="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <CheckCircle className="w-7 h-7 text-primary" />
+              <div className="w-16 h-16 rounded-xl bg-accent/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <CheckCircle className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold mb-3 text-foreground">Simple</h3>
-              <p className="text-secondary">
+              <p className="text-secondary text-sm">
                 Entiendes qué hacer, cuánto cuesta y cuánto tarda. Sin preguntar.
+              </p>
+            </div>
+
+            <div className="group p-8 rounded-2xl bg-background shadow-card card-hover text-center border border-border">
+              <div className="w-16 h-16 rounded-xl bg-accent/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <ShoppingBag className="w-8 h-8 text-accent" />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-foreground">Productos disponibles</h3>
+              <p className="text-secondary text-sm">
+                ¿Olvidaste tu detergente? En A LAVAR vendemos productos por ciclo. Compra solo lo que necesitas: detergente, blanqueador y suavizante.
               </p>
             </div>
           </div>

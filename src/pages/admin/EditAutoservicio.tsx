@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { Switch } from '@/components/ui/switch';
 
 const getServiciosData = () => {
   const defaultData = {
@@ -24,7 +25,13 @@ const getServiciosData = () => {
         maquinasChicas: 80,
         maquinasGrandes: 125
       },
-      tiempoCiclo: 80
+      tiempoCiclo: 80,
+      productosDisponibles: {
+        mostrarBanner: true,
+        titulo: "¿Sin productos?",
+        descripcion: "Vendemos detergente, blanqueador y suavizante por ciclo. Compra solo lo que necesitas.",
+        productos: "Detergente, Blanqueador, Suavizante"
+      }
     },
     lavadoPorEncargo: {
       titulo: "Lavado por encargo",
@@ -60,11 +67,21 @@ const EditAutoservicio = () => {
     caracteristicas: ['', '', '', ''],
     precioChicas: 0,
     precioGrandes: 0,
-    tiempoCiclo: 0
+    tiempoCiclo: 0,
+    mostrarBannerProductos: true,
+    tituloBannerProductos: '',
+    descripcionBannerProductos: '',
+    productosDisponibles: ''
   });
 
   useEffect(() => {
     const data = getServiciosData();
+    const productos = data.autoservicio.productosDisponibles || {
+      mostrarBanner: true,
+      titulo: "¿Sin productos?",
+      descripcion: "Vendemos detergente, blanqueador y suavizante por ciclo. Compra solo lo que necesitas.",
+      productos: "Detergente, Blanqueador, Suavizante"
+    };
     setFormData({
       titulo: data.autoservicio.titulo,
       subtitulo: data.autoservicio.subtitulo,
@@ -72,7 +89,11 @@ const EditAutoservicio = () => {
       caracteristicas: data.autoservicio.caracteristicas,
       precioChicas: data.autoservicio.precios.maquinasChicas,
       precioGrandes: data.autoservicio.precios.maquinasGrandes,
-      tiempoCiclo: data.autoservicio.tiempoCiclo
+      tiempoCiclo: data.autoservicio.tiempoCiclo,
+      mostrarBannerProductos: productos.mostrarBanner,
+      tituloBannerProductos: productos.titulo,
+      descripcionBannerProductos: productos.descripcion,
+      productosDisponibles: productos.productos
     });
   }, []);
 
@@ -105,7 +126,13 @@ const EditAutoservicio = () => {
         maquinasChicas: formData.precioChicas,
         maquinasGrandes: formData.precioGrandes
       },
-      tiempoCiclo: formData.tiempoCiclo
+      tiempoCiclo: formData.tiempoCiclo,
+      productosDisponibles: {
+        mostrarBanner: formData.mostrarBannerProductos,
+        titulo: formData.tituloBannerProductos,
+        descripcion: formData.descripcionBannerProductos,
+        productos: formData.productosDisponibles
+      }
     };
 
     localStorage.setItem('admin_servicios', JSON.stringify(allData));
@@ -235,6 +262,64 @@ const EditAutoservicio = () => {
                   min={1}
                 />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">min</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 4: Products */}
+          <div className="mb-8 pt-6 border-t border-border">
+            <h3 className="font-bold text-lg text-foreground mb-5">Información de Productos por Ciclo</h3>
+            
+            <div className="flex items-center justify-between mb-5">
+              <Label htmlFor="mostrarBanner" className="cursor-pointer">
+                Mostrar banner de productos disponibles
+              </Label>
+              <Switch
+                id="mostrarBanner"
+                checked={formData.mostrarBannerProductos}
+                onCheckedChange={(checked) => setFormData({ ...formData, mostrarBannerProductos: checked })}
+              />
+            </div>
+
+            <div className="space-y-5">
+              <div>
+                <Label htmlFor="tituloBanner">Título del banner</Label>
+                <Input
+                  id="tituloBanner"
+                  value={formData.tituloBannerProductos}
+                  onChange={(e) => setFormData({ ...formData, tituloBannerProductos: e.target.value })}
+                  className="mt-1.5"
+                  maxLength={40}
+                  placeholder="¿Sin productos?"
+                />
+                <p className="text-xs text-muted-foreground mt-1">
+                  {formData.tituloBannerProductos.length}/40 caracteres
+                </p>
+              </div>
+              <div>
+                <Label htmlFor="descripcionBanner">Descripción del banner</Label>
+                <Textarea
+                  id="descripcionBanner"
+                  value={formData.descripcionBannerProductos}
+                  onChange={(e) => setFormData({ ...formData, descripcionBannerProductos: e.target.value })}
+                  className="mt-1.5"
+                  rows={2}
+                  maxLength={150}
+                  placeholder="Vendemos detergente, blanqueador y suavizante por ciclo..."
+                />
+                <p className="text-xs text-muted-foreground mt-1">
+                  {formData.descripcionBannerProductos.length}/150 caracteres
+                </p>
+              </div>
+              <div>
+                <Label htmlFor="productosLista">Productos disponibles (separados por coma)</Label>
+                <Input
+                  id="productosLista"
+                  value={formData.productosDisponibles}
+                  onChange={(e) => setFormData({ ...formData, productosDisponibles: e.target.value })}
+                  className="mt-1.5"
+                  placeholder="Detergente, Blanqueador, Suavizante"
+                />
               </div>
             </div>
           </div>
