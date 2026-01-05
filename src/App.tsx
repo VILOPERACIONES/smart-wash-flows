@@ -12,6 +12,7 @@ import AdminPromotions from "./pages/admin/AdminPromotions";
 import AdminBranches from "./pages/admin/AdminBranches";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminServicios from "./pages/admin/AdminServicios";
+import AdminDetallePrecios from "./pages/admin/AdminDetallePrecios";
 import EditAutoservicio from "./pages/admin/EditAutoservicio";
 import EditLavadoPorEncargo from "./pages/admin/EditLavadoPorEncargo";
 import PromotionForm from "./pages/admin/PromotionForm";
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/admin/servicios" element={<AdminServicios />} />
             <Route path="/admin/servicios/autoservicio/editar" element={<EditAutoservicio />} />
             <Route path="/admin/servicios/lavado-por-encargo/editar" element={<EditLavadoPorEncargo />} />
+            <Route path="/admin/detalle-precios" element={<AdminDetallePrecios />} />
             <Route path="/admin/sucursales" element={<AdminBranches />} />
             <Route path="/admin/sucursales/nueva" element={<BranchForm />} />
             <Route path="/admin/sucursales/editar/:id" element={<BranchForm />} />

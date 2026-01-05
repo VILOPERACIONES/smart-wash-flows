@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Zap, Shirt, CheckCircle2, Clock, Info, ShoppingBag } from "lucide-react";
+import { MessageCircle, Zap, Shirt, CheckCircle2, Clock, Info, ShoppingBag, FileText } from "lucide-react";
 import selfServiceImage from "@/assets/services-self-service.jpg";
 import washFoldImage from "@/assets/services-wash-fold.jpg";
+import { PriceDetailModal } from "./PriceDetailModal";
 
 const Services = () => {
+  const [priceModalOpen, setPriceModalOpen] = useState(false);
+
   const handleWhatsAppClick = () => {
     window.open("https://wa.me/525512345678?text=Hola,%20quiero%20información%20sobre%20A%20LAVAR", "_blank");
   };
@@ -224,7 +228,22 @@ const Services = () => {
             </p>
           </aside>
         </div>
+
+        {/* Botón Ver Detalle de Precios */}
+        <div className="max-w-5xl mx-auto mt-8 text-center">
+          <Button
+            variant="outline"
+            onClick={() => setPriceModalOpen(true)}
+            className="border-accent text-accent hover:bg-accent/10"
+          >
+            <FileText className="w-4 h-4 mr-2" />
+            Ver detalle de precios
+          </Button>
+        </div>
       </div>
+
+      {/* Modal de Detalle de Precios */}
+      <PriceDetailModal isOpen={priceModalOpen} onClose={() => setPriceModalOpen(false)} />
     </section>
   );
 };
