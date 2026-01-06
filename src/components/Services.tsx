@@ -1,249 +1,255 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { MessageCircle, Zap, Shirt, CheckCircle2, Clock, Info, ShoppingBag, FileText } from "lucide-react";
-import selfServiceImage from "@/assets/services-self-service.jpg";
-import washFoldImage from "@/assets/services-wash-fold.jpg";
-import { PriceDetailModal } from "./PriceDetailModal";
+import React from 'react';
 
-const Services = () => {
-  const [priceModalOpen, setPriceModalOpen] = useState(false);
-
-  const handleWhatsAppClick = () => {
-    window.open("https://wa.me/525512345678?text=Hola,%20quiero%20información%20sobre%20A%20LAVAR", "_blank");
-  };
-
+const Services: React.FC = () => {
   return (
-    <section id="servicios" className="py-20 md:py-32 bg-background">
-      <div className="container px-4 md:px-6">
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/20 text-accent text-sm font-medium mb-4">
-            Servicios
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+    <section id="servicios" className="w-full bg-white pt-[61px] pb-32 px-5">
+      <div className="max-w-[1400px] mx-auto my-0">
+        <div className="text-center mb-20">
+          <div className="inline-flex justify-center items-center bg-[rgba(74,128,222,0.20)] mb-5 px-4 py-1.5 rounded-full">
+            <span className="text-[#4A80DE] font-poppins text-center text-sm font-medium leading-5">
+              Servicios
+            </span>
+          </div>
+          <h2 className="text-black text-center text-5xl font-poppins font-bold leading-[48px] tracking-[-1.2px] mb-5 max-md:text-[40px] max-md:leading-10 max-sm:text-[32px] max-sm:leading-9">
             Dos soluciones,
             <br />
-            <span className="text-gradient">un mismo estándar</span>
+            un mismo estándar
           </h2>
-          <p className="text-lg text-secondary max-w-2xl mx-auto">
-            Elige cómo quieres lavar. Nosotros garantizamos la misma calidad y eficiencia.
+          <p className="text-[#003A9E] text-center font-poppins text-lg font-normal leading-7 mb-[60px]">
+            Elige cómo quieres lavar. Nosotros garantizamos la misma calidad y
+            eficiencia.
           </p>
         </div>
-
-        {/* Services grid */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Autoservicio Card */}
-          <div className="group relative rounded-3xl bg-background border border-border shadow-card card-hover overflow-hidden transition-all duration-300 hover:border-primary">
-            {/* Image */}
-            <div className="aspect-video overflow-hidden">
-              <img 
-                src={selfServiceImage} 
-                alt="Servicio de autolavado en A LAVAR" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            
-            <div className="relative p-8 md:p-10">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center">
-                  <Zap className="w-7 h-7 text-primary-foreground" />
+        
+        <div className="flex justify-center items-start gap-8 flex-wrap">
+          {/* Self-Service Card */}
+          <article className="w-full max-w-[496px] border shadow-[0_1px_3px_0_rgba(0,0,0,0.12),0_1px_2px_0_rgba(0,0,0,0.24)] overflow-hidden bg-white rounded-3xl border-solid border-gray-200">
+            <img
+              src="https://api.builder.io/api/v1/image/assets/TEMP/49fbb81c47869c5604747fa44a42870e3d454604?width=988"
+              alt="Servicio de autolavado en A LAVAR"
+              className="w-full h-[275px] object-cover"
+            />
+            <div className="p-10">
+              <div className="flex items-center gap-4 mb-5">
+                <div className="flex w-14 h-14 justify-center items-center bg-[#00F] p-3.5 rounded-2xl">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.66674 16.3334C4.44596 16.3341 4.22951 16.2722 4.04252 16.1548C3.85553 16.0375 3.70568 15.8694 3.61038 15.6703C3.51508 15.4711 3.47825 15.249 3.50416 15.0298C3.53006 14.8105 3.61765 14.6031 3.75674 14.4317L15.3067 2.53169C15.3934 2.43169 15.5114 2.36411 15.6416 2.34005C15.7717 2.31599 15.9061 2.33688 16.0228 2.39928C16.1394 2.46169 16.2314 2.56191 16.2836 2.68349C16.3358 2.80507 16.3452 2.94078 16.3101 3.06836L14.0701 10.0917C14.004 10.2685 13.9818 10.4586 14.0054 10.6459C14.029 10.8331 14.0977 11.0118 14.2055 11.1667C14.3133 11.3216 14.4571 11.448 14.6246 11.535C14.792 11.6221 14.978 11.6673 15.1667 11.6667H23.3334C23.5542 11.6659 23.7706 11.7278 23.9576 11.8452C24.1446 11.9626 24.2945 12.1306 24.3898 12.3298C24.4851 12.5289 24.5219 12.751 24.496 12.9703C24.4701 13.1895 24.3825 13.3969 24.2434 13.5684L12.6934 25.4684C12.6068 25.5684 12.4887 25.6359 12.3586 25.66C12.2285 25.6841 12.0941 25.6632 11.9774 25.6008C11.8607 25.5384 11.7687 25.4381 11.7165 25.3166C11.6643 25.195 11.655 25.0593 11.6901 24.9317L13.9301 17.9084C13.9961 17.7316 14.0183 17.5414 13.9947 17.3542C13.9711 17.167 13.9025 16.9882 13.7946 16.8334C13.6868 16.6785 13.543 16.5521 13.3756 16.465C13.2082 16.3779 13.0221 16.3327 12.8334 16.3334H4.66674Z" stroke="white" strokeWidth="2.33333" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-foreground">Autoservicio</h3>
-                  <p className="text-sm text-secondary">Tú controlas tu tiempo</p>
-                </div>
-              </div>
-
-              {/* SECCIÓN DE PRECIOS DESTACADA */}
-              <div className="bg-gradient-to-br from-primary/5 to-accent/10 border-2 border-primary rounded-2xl p-6 my-6">
-                <span className="text-xs font-bold text-primary uppercase tracking-wider mb-4 block">
-                  PRECIOS
-                </span>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                  {/* Precio 1 */}
-                  <div className="flex flex-col">
-                    <span className="text-sm font-medium text-secondary mb-1">Máquinas chicas</span>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-bold text-primary">$80</span>
-                      <span className="text-sm text-accent">MXN</span>
-                    </div>
-                  </div>
-                  
-                  {/* Separador */}
-                  <div className="hidden sm:block w-px h-16 bg-border"></div>
-                  
-                  {/* Precio 2 */}
-                  <div className="flex flex-col">
-                    <span className="text-sm font-medium text-secondary mb-1">Máquinas grandes</span>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-bold text-primary">$125</span>
-                      <span className="text-sm text-accent">MXN</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-secondary mb-6">
-                Equipos comerciales modernos a tu disposición. 
-                Rápido, autónomo y sin esperas innecesarias.
-              </p>
-
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-sm text-foreground">Equipos comerciales modernos</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-sm text-foreground">Proceso visible y entendible</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-sm text-foreground">Sin filas, sin fricción</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-sm text-foreground">Espacios limpios y ordenados</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <ShoppingBag className="w-5 h-5 text-accent flex-shrink-0" />
-                  <span className="text-sm text-foreground">Productos disponibles por ciclo</span>
-                </li>
-              </ul>
-
-              {/* Banner de productos disponibles */}
-              <div className="bg-accent/10 border border-accent/20 rounded-xl p-4 flex items-start gap-3 mb-6">
-                <ShoppingBag className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold text-sm text-accent block mb-1">¿Sin productos?</span>
-                  <p className="text-sm text-secondary leading-relaxed">
-                    Vendemos detergente, blanqueador y suavizante por ciclo. Compra solo lo que necesitas.
+                  <h3 className="text-black text-2xl font-poppins font-bold leading-8 tracking-[-0.6px]">
+                    Autoservicio
+                  </h3>
+                  <p className="text-[#003A9E] font-poppins text-sm font-normal leading-5">
+                    Tú controlas tu tiempo
                   </p>
                 </div>
               </div>
+              
+              <p className="text-[#003A9E] font-poppins text-base font-normal leading-6 mb-8">
+                Equipos comerciales modernos a tu disposición. Rápido,
+                autónomo y ajustado a tus tiempos.
+              </p>
+              
+              <ul className="flex flex-col gap-4 mb-8">
+                {[
+                  'Equipos comerciales modernos',
+                  'Proceso visible y entendible',
+                  'Sin filas, sin fricción',
+                  'Espacios limpios y ordenados'
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10.0003 18.3334C14.6027 18.3334 18.3337 14.6025 18.3337 10.0001C18.3337 5.39771 14.6027 1.66675 10.0003 1.66675C5.39795 1.66675 1.66699 5.39771 1.66699 10.0001C1.66699 14.6025 5.39795 18.3334 10.0003 18.3334Z" stroke="#0000FF" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M7.5 9.99992L9.16667 11.6666L12.5 8.33325" stroke="#0000FF" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span className="text-black text-sm font-poppins font-normal leading-5">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              
+              <hr className="mb-5 border-t border-solid border-gray-200" />
+              
+              <div className="mb-5 p-[26px] rounded-2xl border-2 border-solid border-[#0000FF]">
+                <h4 className="text-[#00F] text-xs font-poppins font-bold leading-4 tracking-[0.6px] uppercase mb-4">
+                  PRECIOS (Lavado y secado)
+                </h4>
+                <div className="flex justify-between items-end">
+                  <div>
+                    <p className="text-[#003A9E] text-sm font-medium leading-5 mb-2">
+                      Máquinas chicas
+                    </p>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-[#00F] text-4xl font-poppins font-bold leading-10">
+                        $80
+                      </span>
+                      <span className="text-[#4A80DE] text-sm font-poppins font-normal leading-5">
+                        MXN
+                      </span>
+                    </div>
+                  </div>
+                  <div className="w-px h-16 bg-gray-200" />
+                  <div>
+                    <p className="text-[#003A9E] text-sm font-poppins font-medium leading-5 mb-2">
+                      Máquinas grandes
+                    </p>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-[#00F] text-4xl font-poppins font-bold leading-10">
+                        $125
+                      </span>
+                      <span className="text-[#4A80DE] text-sm font-poppins font-normal leading-5">
+                        MXN
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="mb-5 p-[26px] bg-[#4A80DE]/10 rounded-2xl ">
+                <div className="flex xl:gap-[12px] ">
+                  <svg className='w-10 h-5' width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 1.6665L2.5 4.99984V16.6665C2.5 17.1085 2.67559 17.5325 2.98816 17.845C3.30072 18.1576 3.72464 18.3332 4.16667 18.3332H15.8333C16.2754 18.3332 16.6993 18.1576 17.0118 17.845C17.3244 17.5325 17.5 17.1085 17.5 16.6665V4.99984L15 1.6665H5Z" stroke="#4A80DE" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2.5 5H17.5" stroke="#4A80DE" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M13.3337 8.3335C13.3337 9.21755 12.9825 10.0654 12.3573 10.6905C11.7322 11.3156 10.8844 11.6668 10.0003 11.6668C9.11627 11.6668 8.26842 11.3156 7.6433 10.6905C7.01818 10.0654 6.66699 9.21755 6.66699 8.3335" stroke="#4A80DE" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <div className='flex flex-col'>
+                    <p className='font-poppins xl:text-[14px] xl:leading-[20px] font-bold text-[#4A80DE]'>¿Sin productos?</p>
+                    <span className=' font-poppins xl:text-[14px] xl:leading-[22.8px] text-[#003A9E]  '>
+                      Vendemos detergente, blanqueador y suavizante por ciclo. Compra solo lo que necesitas.
+                    </span>
+                  </div>
 
-              {/* Tiempo de ciclo */}
-              <div className="flex items-center gap-3 pt-4 border-t border-border">
-                <Clock className="w-5 h-5 text-accent flex-shrink-0" />
-                <span className="text-sm text-secondary">Ciclo de Lavado y Secado ~80 min</span>
+                </div>
+                
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.0003 18.3334C14.6027 18.3334 18.3337 14.6025 18.3337 10.0001C18.3337 5.39771 14.6027 1.66675 10.0003 1.66675C5.39795 1.66675 1.66699 5.39771 1.66699 10.0001C1.66699 14.6025 5.39795 18.3334 10.0003 18.3334Z" stroke="#4A80DE" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M10 5V10L13.3333 11.6667" stroke="#4A80DE" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span className="text-[#003A9E] text-sm font-poppins font-normal leading-5">
+                  Ciclo de Lavado y Secado ~80 min
+                </span>
               </div>
             </div>
-          </div>
+          </article>
 
-          {/* Lavado por encargo Card */}
-          <div className="group relative rounded-3xl gradient-hero text-primary-foreground shadow-card card-hover overflow-hidden">
-            {/* Image */}
-            <div className="aspect-video overflow-hidden relative">
-              <img 
-                src={washFoldImage} 
-                alt="Ropa limpia y doblada del servicio de lavado por encargo" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          {/* Full Service Card */}
+          <article className="w-full max-w-[496px] shadow-[0_1px_3px_0_rgba(0,0,0,0.12),0_1px_2px_0_rgba(0,0,0,0.24)] overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a4fd8] to-[#003A9E]">
+            <div className="relative">
+              <img
+                src="https://api.builder.io/api/v1/image/assets/TEMP/75d11e288cfe9cccab7a2b6c900992ffd36c6532?width=992"
+                alt="Ropa limpia y doblada del servicio de lavado por encargo"
+                className="w-full h-[279px] object-cover"
               />
-              {/* Badge */}
-              <div className="absolute top-4 right-4">
-                <span className="px-3 py-1 rounded-full bg-primary text-primary-foreground text-sm font-medium backdrop-blur-sm">
+              <div className="inline-flex justify-center items-center backdrop-blur-[2px] absolute bg-[#00F] px-3 py-1 rounded-full right-3.5 top-3.5">
+                <span className="text-white text-sm font-poppins font-medium leading-5">
                   Más popular
                 </span>
               </div>
             </div>
-
-            <div className="relative p-8 md:p-10">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center">
-                  <Shirt className="w-7 h-7" />
+            
+            <div className="p-10">
+              <div className="flex items-center gap-4 mb-5">
+                <div className="flex w-14 h-14 justify-center items-center backdrop-blur-[2px] bg-[rgba(255,255,255,0.20)] p-3.5 rounded-2xl">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M23.7771 4.03659L18.6671 2.33325C18.6671 3.57093 18.1754 4.75791 17.3002 5.63308C16.4251 6.50825 15.2381 6.99992 14.0004 6.99992C12.7627 6.99992 11.5758 6.50825 10.7006 5.63308C9.82541 4.75791 9.33375 3.57093 9.33375 2.33325L4.22375 4.03659C3.69569 4.21251 3.24792 4.5714 2.96124 5.04849C2.67457 5.52557 2.56787 6.08941 2.66041 6.63825L3.33708 10.6866C3.3815 10.9606 3.52221 11.2099 3.73391 11.3895C3.94561 11.5691 4.21444 11.6674 4.49208 11.6666H7.00041V23.3333C7.00041 24.6166 8.05041 25.6666 9.33375 25.6666H18.6671C19.2859 25.6666 19.8794 25.4208 20.317 24.9832C20.7546 24.5456 21.0004 23.9521 21.0004 23.3333V11.6666H23.5087C23.7864 11.6674 24.0552 11.5691 24.2669 11.3895C24.4786 11.2099 24.6193 10.9606 24.6637 10.6866L25.3404 6.63825C25.433 6.08941 25.3263 5.52557 25.0396 5.04849C24.7529 4.5714 24.3051 4.21251 23.7771 4.03659Z" stroke="white" strokeWidth="2.33333" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">Lavado por encargo</h3>
-                  <p className="text-sm text-primary-foreground/80">Nosotros nos encargamos</p>
+                  <h3 className="text-white text-2xl font-poppins font-bold leading-8 tracking-[-0.6px]">
+                    Lavado por encargo
+                  </h3>
+                  <p className="text-[rgba(255,255,255,0.80)] font-poppins text-sm font-normal leading-5">
+                    Nosotros nos encargamos
+                  </p>
                 </div>
               </div>
-
-              {/* SECCIÓN DE PRECIOS DESTACADA */}
-              <div className="bg-background rounded-2xl p-6 md:p-7 my-6 shadow-lg text-center">
-                <span className="text-xs font-bold text-primary uppercase tracking-wider mb-3 block">
-                  PRECIO POR KILOGRAMO
-                </span>
-                <div className="flex items-baseline justify-center gap-1 mb-3">
-                  <span className="text-3xl font-bold text-primary">$</span>
-                  <span className="text-6xl md:text-7xl font-extrabold text-primary leading-none">30</span>
-                  <span className="text-xl font-medium text-secondary">/kg</span>
-                </div>
-                <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold">
-                  MXN
-                </span>
-                
-                {/* Precios especiales */}
-                <div className="mt-5 pt-5 border-t border-border">
-                  <span className="text-sm font-medium text-secondary block mb-2">Edredones y Hamacas</span>
-                  <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-2xl font-bold text-primary">$80-$175</span>
-                    <span className="text-sm text-secondary">MXN</span>
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-primary-foreground/90 mb-6">
-                La solución perfecta para gente ocupada. 
-                Delega sin culpa y recibe tu ropa impecable el mismo día.
+              
+              <p className="text-[rgba(255,255,255,0.90)] font-poppins text-base font-normal leading-6 mb-8">
+                La solución perfecta para gente ocupada. Delega sin culpa y
+                recibe tu ropa impecable el mismo día.
               </p>
-
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                  <span className="text-sm">Entrega el mismo día</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                  <span className="text-sm">Lavado + secado + doblado</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                  <span className="text-sm">Seguimiento por WhatsApp</span>
-                </li>
+              
+              <ul className="flex flex-col gap-4 mb-8">
+                  <li  className="flex items-start gap-3">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10.0003 18.3334C14.6027 18.3334 18.3337 14.6025 18.3337 10.0001C18.3337 5.39771 14.6027 1.66675 10.0003 1.66675C5.39795 1.66675 1.66699 5.39771 1.66699 10.0001C1.66699 14.6025 5.39795 18.3334 10.0003 18.3334Z" stroke="white" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M7.5 9.99992L9.16667 11.6666L12.5 8.33325" stroke="white" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span className={`text-sm font-poppins font-normal leading-5 text-white `}>
+                      Precio claro: $30/kg
+                    </span>
+                  </li>
+                  <li  className="flex items-start gap-3">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10.0003 18.3334C14.6027 18.3334 18.3337 14.6025 18.3337 10.0001C18.3337 5.39771 14.6027 1.66675 10.0003 1.66675C5.39795 1.66675 1.66699 5.39771 1.66699 10.0001C1.66699 14.6025 5.39795 18.3334 10.0003 18.3334Z" stroke="white" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M7.5 9.99992L9.16667 11.6666L12.5 8.33325" stroke="white" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <a className={`text-sm font-poppins font-normal leading-5 text-white underline`} href="#servicios">
+                      Entrega el mismo día *[1]
+                    </a>
+                  </li>
+                  <li  className="flex items-start gap-3">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10.0003 18.3334C14.6027 18.3334 18.3337 14.6025 18.3337 10.0001C18.3337 5.39771 14.6027 1.66675 10.0003 1.66675C5.39795 1.66675 1.66699 5.39771 1.66699 10.0001C1.66699 14.6025 5.39795 18.3334 10.0003 18.3334Z" stroke="white" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M7.5 9.99992L9.16667 11.6666L12.5 8.33325" stroke="white" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span className={`text-sm font-poppins font-normal leading-5 text-white `}>
+                      Lavado + secado + doblado
+                    </span>
+                  </li>
+                  <li  className="flex items-start gap-3">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10.0003 18.3334C14.6027 18.3334 18.3337 14.6025 18.3337 10.0001C18.3337 5.39771 14.6027 1.66675 10.0003 1.66675C5.39795 1.66675 1.66699 5.39771 1.66699 10.0001C1.66699 14.6025 5.39795 18.3334 10.0003 18.3334Z" stroke="white" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M7.5 9.99992L9.16667 11.6666L12.5 8.33325" stroke="white" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span className={`text-sm font-poppins font-normal leading-5 text-white `}>
+                      Seguimiento por WhatsApp
+                    </span>
+                  </li>
               </ul>
-
-              <Button 
-                variant="default"
-                className="w-full bg-primary-foreground text-primary hover:bg-primary-foreground/90"
-                onClick={handleWhatsAppClick}
-              >
-                <MessageCircle className="w-4 h-4" />
-                Agendar por WhatsApp
-              </Button>
+              
+              <hr className="mb-5 border-t-[rgba(255,255,255,0.20)] border-t border-solid" />
+              
+              <div className="mb-5 p-4 py-10 rounded-2xl border-2 border-white border-opacity-20 bg-gradient-to-r from-blue-500/10 to-blue-600/10 flex flex-col items-center">
+                <h4 className="text-white text-xs font-poppins font-bold leading-4 tracking-[0.6px] uppercase mb-4 text-center">
+                  PRECIO POR KILOGRAMO
+                </h4>
+                <div className="text-center mb-4">
+                  <span className="text-white text-6xl font-poppins font-bold">$30</span>
+                  <span className="text-white text-lg font-poppins ml-2">/kg</span>
+                </div>
+                <h2 className='px-6 flex justify-center text-white font-poppins bg-[#ffffff]/10 rounded-full xl:text-[14px] xl:leading-[20px] font-semibold w-[64.48px] py-[6px] text-center '>
+                  MXN
+                </h2>
+                <div className="w-full h-[1px] bg-white  my-4" />
+                <h2 className=' font-poppins text-white xl:text-[14px] xl:leading-[20px] font-medium mb-4 '>Edredones y Hamacas</h2>
+                <div className="text-center mb-4">
+                  <span className="text-white text-2xl font-poppins font-bold">$80-$175</span>
+                  <span className="text-white text-[14px] font-poppins ml-2">MXN</span>
+                </div>
+              </div>
+              
+              
             </div>
-          </div>
+          </article>
         </div>
-
-        {/* Nota informativa sobre horarios de entrega */}
-        <div className="max-w-5xl mx-auto mt-8 px-4 md:px-0">
-          <aside 
-            role="note" 
-            aria-label="Nota importante sobre horarios de entrega"
-            className="bg-accent/10 border-l-4 border-accent rounded-xl p-5 md:p-6 flex items-start gap-4 shadow-sm"
-          >
-            <Info className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-secondary leading-relaxed">
-              <span className="font-bold text-accent">*[1]:</span>{" "}
-              El servicio de lavado por encargo con entrega el mismo día está disponible de lunes a viernes para pedidos recibidos antes de las 11:00 a. m.
-            </p>
-          </aside>
-        </div>
-
-        {/* Botón Ver Detalle de Precios */}
-        <div className="max-w-5xl mx-auto mt-8 text-center">
-          <Button
-            variant="outline"
-            onClick={() => setPriceModalOpen(true)}
-            className="border-accent text-accent hover:bg-accent/10"
-          >
-            <FileText className="w-4 h-4 mr-2" />
-            Ver detalle de precios
-          </Button>
+        
+        <div className="text-center mt-[60px]">
+          <button className="inline-flex justify-center items-center shadow-[0_4px_14px_0_rgba(0,0,255,0.40)] gap-[13px] bg-[#00F] pt-[11px] pb-3 px-[34px] rounded-xl hover:bg-blue-700 transition-colors">
+            <span className="text-white text-center font-poppins text-lg font-bold leading-7">
+              Ver detalle de precios
+            </span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.33301 8H12.6663" stroke="white" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M8 3.3335L12.6667 8.00016L8 12.6668" stroke="white" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
       </div>
-
-      {/* Modal de Detalle de Precios */}
-      <PriceDetailModal isOpen={priceModalOpen} onClose={() => setPriceModalOpen(false)} />
     </section>
   );
 };

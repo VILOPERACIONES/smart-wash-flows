@@ -1,67 +1,33 @@
-import { Helmet } from "react-helmet-async";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import PromotionsCarousel from "@/components/PromotionsCarousel";
-import ValueProposition from "@/components/ValueProposition";
-import Services from "@/components/Services";
-import WhatsAppNotifications from "@/components/WhatsAppNotifications";
-import Billing from "@/components/Billing";
-import Branches from "@/components/Branches";
-import CTA from "@/components/CTA";
-import Footer from "@/components/Footer";
+import React from 'react';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import Promotions from '@/components/Promotions';
+import Services from '@/components/Services';
+import Benefits from '@/components/Benefits';
+import Billing from '@/components/Billing';
+import Branches from '@/components/Branches';
+import Footer from '@/components/Footer';
+import TerminosCondiciones from '@/components/TerminosCondiciones';
+import WhatsAppNotificationsSection from '@/components/WhatsAppNotificationsSection';
+import WhatsAppCTA from '@/components/WhatsAppCTA';
 
-const Index = () => {
+const Index: React.FC = () => {
   return (
-    <>
-      <Helmet>
-        <title>A LAVAR | Lavandería Tecnológica - Rápido, Simple, Sin Complicaciones</title>
-        <meta 
-          name="description" 
-          content="A LAVAR: lavandería urbana con tecnología de punta. Lavado por encargo $30/kg con entrega el mismo día. Autoservicio con equipos industriales. ¡Escríbenos por WhatsApp!" 
-        />
-        <meta name="keywords" content="lavandería, lavandería tecnológica, lavado por encargo, autoservicio lavandería, lavandería CDMX" />
-        <link rel="canonical" href="https://alavar.mx" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="A LAVAR | Lavandería Tecnológica" />
-        <meta property="og:description" content="Tecnología aplicada al lavado. Rápido, simple y sin complicaciones. Entrega el mismo día." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://alavar.mx" />
-        
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "A LAVAR",
-            "description": "Lavandería tecnológica con servicio de lavado por encargo y autoservicio",
-            "priceRange": "$$",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Ciudad de México",
-              "addressCountry": "MX"
-            },
-            "openingHours": ["Mo-Sa 07:00-21:00", "Su 08:00-18:00"],
-            "telephone": "+525512345678"
-          })}
-        </script>
-      </Helmet>
-
-      <div className="min-h-screen">
-        <Header />
-        <main>
-          <Hero />
-          <PromotionsCarousel />
-          <ValueProposition />
-          <Services />
-          <WhatsAppNotifications />
-          <Billing />
-          <Branches />
-          <CTA />
-        </main>
-        <Footer />
-      </div>
-    </>
+    <div className="w-full relative bg-white">
+      <Header />
+      <main>
+        <Hero />
+        <Promotions />
+        <Benefits />
+        <Services />
+        <TerminosCondiciones message={"*[1]: El servicio de lavado por encargo con entrega el mismo día está disponible de lunes a viernes para pedidos recibidos antes de las 11:00 a. m."} />
+        <WhatsAppNotificationsSection />
+        <Billing />
+        <Branches />
+        <WhatsAppCTA />
+      </main>
+      <Footer />
+    </div>
   );
 };
 

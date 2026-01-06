@@ -2,12 +2,7 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
+  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
     container: {
@@ -18,10 +13,6 @@ export default {
       },
     },
     extend: {
-      fontFamily: {
-        sans: ["Poppins", "system-ui", "sans-serif"],
-        heading: ["Poppins", "system-ui", "sans-serif"],
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -56,17 +47,8 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        electric: {
-          DEFAULT: "hsl(var(--electric-blue))",
-          dark: "hsl(var(--dark-powder-blue))",
-          andrea: "hsl(var(--andrea-blue))",
-        },
-        "electric-blue": "hsl(var(--electric-blue))",
-        "dark-powder-blue": "hsl(var(--dark-powder-blue))",
-        "andrea-blue": "hsl(var(--andrea-blue))",
-        "admin-gray": {
-          light: "hsl(var(--admin-gray-light))",
-          medium: "hsl(var(--admin-gray-medium))",
+        fontFamily: {
+          poppins: ["Poppins", "sans-serif"],
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -79,24 +61,31 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      boxShadow: {
-        card: "var(--shadow-card)",
-        button: "var(--shadow-button)",
-        hover: "var(--shadow-hover)",
-      },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
         },
       },
       animation: {

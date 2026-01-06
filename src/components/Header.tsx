@@ -1,92 +1,64 @@
-import { Button } from "@/components/ui/button";
-import { MessageCircle, Menu, X } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from 'react';
 
-const Header = () => {
+const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleWhatsAppClick = () => {
-    window.open("https://wa.me/525512345678?text=Hola,%20quiero%20información%20sobre%20A%20LAVAR", "_blank");
-  };
-
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setIsMenuOpen(false);
-  };
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent ">
-      <div className="container px-4 md:px-6">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
-            <span className="text-xl md:text-2xl font-bold text-gradient">A LAVAR</span>
-          </a>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <button
-              onClick={() => scrollToSection("servicios")}
-              className="text-sm font-medium text-secondary hover:text-primary transition-colors"
-            >
-              Servicios
-            </button>
-            <button
-              onClick={() => scrollToSection("tecnologia")}
-              className="text-sm font-medium text-secondary hover:text-primary transition-colors"
-            >
-              Tecnología
-            </button>
-            <button
-              onClick={() => scrollToSection("sucursales")}
-              className="text-sm font-medium text-secondary hover:text-primary transition-colors"
-            >
-              Sucursales
-            </button>
+    <header className="flex w-full justify-center items-center  absolute z-10 md:px-[50px] xl:px-[88px] py-5 left-0 top-0 max-md:px-5">
+      <div className="flex w-full max-w-[1264px] justify-between items-center">
+        <img
+          src="https://api.builder.io/api/v1/image/assets/TEMP/fdebf2230022f3a59dfddaf30f66b3b43b056236?width=324"
+          alt="A LAVAR Logo"
+          className="w-[162px] h-[53px]"
+        />
+        <div className="flex items-center gap-6">
+          
+          <nav className="flex justify-center items-start gap-8 max-sm:hidden">
+            <a href="#promociones" className="text-white font-poppins text-center text-sm font-medium leading-5 hover:text-blue-200 transition-colors">
+              Promociones
+            </a>
+            <a href="#servicios" className="flex justify-center items-center">
+              <span className="text-white text-center text-sm font-medium font-poppins leading-5 hover:text-blue-200 transition-colors">
+                Servicios
+              </span>
+            </a>
+            <a href="#facturacion" className="flex justify-center items-center">
+              <span className="text-white text-center text-sm font-medium font-poppins leading-5 hover:text-blue-200 transition-colors">
+                Facturación
+              </span>
+            </a>
+            <a href="#sucursales" className="flex justify-center items-center">
+              <span className="text-white text-center text-sm font-medium font-poppins leading-5 hover:text-blue-200 transition-colors">
+                Sucursales
+              </span>
+            </a>
           </nav>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
-            <Button variant="default" onClick={handleWhatsAppClick}>
-              <MessageCircle className="w-4 h-4" />
-              WhatsApp
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 text-foreground" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <button 
+            className="text-white text-2xl cursor-pointer sm:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            ☰
           </button>
         </div>
       </div>
-
-      {/* Mobile Menu */}
+      
       {isMenuOpen && (
-        <div className="md:hidden bg-background border-t border-border animate-fade-in">
-          <div className="container px-4 py-6 space-y-4">
-            <button
-              onClick={() => scrollToSection("servicios")}
-              className="block w-full text-left py-2 text-lg font-medium text-foreground hover:text-primary transition-colors"
-            >
+        <div className="absolute top-full left-0 w-full bg-black bg-opacity-90 backdrop-blur-md sm:hidden">
+          <nav className="flex flex-col gap-4 p-6">
+            <a href="#promociones" className="text-white text-sm font-medium hover:text-blue-200 transition-colors">
+              Promociones
+            </a>
+            <a href="#servicios" className="text-white text-sm font-medium hover:text-blue-200 transition-colors">
               Servicios
-            </button>
-            <button
-              onClick={() => scrollToSection("tecnologia")}
-              className="block w-full text-left py-2 text-lg font-medium text-foreground hover:text-primary transition-colors"
-            >
-              Tecnología
-            </button>
-            <button
-              onClick={() => scrollToSection("sucursales")}
-              className="block w-full text-left py-2 text-lg font-medium text-foreground hover:text-primary transition-colors"
-            >
+            </a>
+            <a href="#facturacion" className="text-white text-sm font-medium hover:text-blue-200 transition-colors">
+              Facturación
+            </a>
+            <a href="#sucursales" className="text-white text-sm font-medium hover:text-blue-200 transition-colors">
               Sucursales
-            </button>
-            <Button variant="default" className="w-full mt-4" onClick={handleWhatsAppClick}>
-              <MessageCircle className="w-4 h-4" />
-              Escribir por WhatsApp
-            </Button>
-          </div>
+            </a>
+          </nav>
         </div>
       )}
     </header>
