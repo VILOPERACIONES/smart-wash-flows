@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
           {/* Subtitle - responsive with proper line height */}
           <p
             className="text-white/90 text-center font-poppins font-normal max-w-lg mx-auto
-            text-sm leading-6 px-2
+            text-[11px] leading-6 px-2
             sm:text-base sm:leading-7 sm:px-0
             md:text-lg md:leading-8
             lg:text-xl lg:leading-8"
