@@ -72,17 +72,17 @@ const Services: React.FC = () => {
               
               <hr className="mb-5 border-t border-solid border-gray-200" />
               
-              <div className="mb-5 p-[26px] rounded-2xl border-2 border-solid border-[#0000FF]">
+              <div className="mb-5 p-4 sm:p-[26px] rounded-2xl border-2 border-solid border-[#0000FF]">
                 <h4 className="text-[#00F] text-xs font-poppins font-bold leading-4 tracking-[0.6px] uppercase mb-4">
                   PRECIOS (Lavado y secado)
                 </h4>
-                <div className="flex justify-between items-end">
-                  <div>
+                <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-4 sm:gap-0">
+                  <div className="text-center sm:text-left">
                     <p className="text-[#003A9E] text-sm font-medium leading-5 mb-2">
-                      Máquinas chicas
+                      Máquinas<br className="sm:hidden" /> chicas
                     </p>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-[#00F] text-4xl font-poppins font-bold leading-10">
+                    <div className="flex items-baseline gap-1 justify-center sm:justify-start">
+                      <span className="text-[#00F] text-2xl sm:text-4xl font-poppins font-bold leading-8 sm:leading-10">
                         $80
                       </span>
                       <span className="text-[#4A80DE] text-sm font-poppins font-normal leading-5">
@@ -90,13 +90,13 @@ const Services: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="w-px h-16 bg-gray-200" />
-                  <div>
+                  <div className="w-full sm:w-px h-px sm:h-16 bg-gray-200" />
+                  <div className="text-center sm:text-left">
                     <p className="text-[#003A9E] text-sm font-poppins font-medium leading-5 mb-2">
-                      Máquinas grandes
+                      Máquinas<br className="sm:hidden" /> grandes
                     </p>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-[#00F] text-4xl font-poppins font-bold leading-10">
+                    <div className="flex items-baseline gap-1 justify-center sm:justify-start">
+                      <span className="text-[#00F] text-2xl sm:text-4xl font-poppins font-bold leading-8 sm:leading-10">
                         $125
                       </span>
                       <span className="text-[#4A80DE] text-sm font-poppins font-normal leading-5">
@@ -106,22 +106,20 @@ const Services: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="mb-5 p-[26px] bg-[#4A80DE]/10 rounded-2xl ">
-                <div className="flex xl:gap-[12px] ">
-                  <svg className='w-10 h-5' width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 1.6665L2.5 4.99984V16.6665C2.5 17.1085 2.67559 17.5325 2.98816 17.845C3.30072 18.1576 3.72464 18.3332 4.16667 18.3332H15.8333C16.2754 18.3332 16.6993 18.1576 17.0118 17.845C17.3244 17.5325 17.5 17.1085 17.5 16.6665V4.99984L15 1.6665H5Z" stroke="#4A80DE" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M2.5 5H17.5" stroke="#4A80DE" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M13.3337 8.3335C13.3337 9.21755 12.9825 10.0654 12.3573 10.6905C11.7322 11.3156 10.8844 11.6668 10.0003 11.6668C9.11627 11.6668 8.26842 11.3156 7.6433 10.6905C7.01818 10.0654 6.66699 9.21755 6.66699 8.3335" stroke="#4A80DE" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+              <div className="mb-5 p-4 sm:p-[26px] bg-[#4A80DE]/10 rounded-2xl">
+                <div className="flex gap-3 sm:gap-[12px]">
+                  <svg className='w-6 h-5 flex-shrink-0 mt-0.5' width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 1.6665L2.5 4.99984V16.6665C2.5 17.1085 2.67559 17.5325 2.98816 17.845C3.30072 18.1576 3.72464 18.3332 4.16667 18.3332H15.8333C16.2754 18.3332 16.6993 18.1576 17.0118 17.845C17.3244 17.5325 17.5 17.1085 17.5 16.6665V4.99984L15 1.6665H5Z" stroke="#4A80DE" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M2.5 5H17.5" stroke="#4A80DE" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M13.3337 8.3335C13.3337 9.21755 12.9825 10.0654 12.3573 10.6905C11.7322 11.3156 10.8844 11.6668 10.0003 11.6668C9.11627 11.6668 8.26842 11.3156 7.6433 10.6905C7.01818 10.0654 6.66699 9.21755 6.66699 8.3335" stroke="#4A80DE" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <div className='flex flex-col'>
-                    <p className='font-poppins xl:text-[14px] xl:leading-[20px] font-bold text-[#4A80DE]'>¿Sin productos?</p>
-                    <span className=' font-poppins xl:text-[14px] xl:leading-[22.8px] text-[#003A9E]  '>
+                  <div className='flex flex-col gap-1'>
+                    <p className='font-poppins text-sm xl:text-[14px] xl:leading-[20px] font-bold text-[#4A80DE]'>¿Sin productos?</p>
+                    <span className='font-poppins text-sm xl:text-[14px] xl:leading-[22.8px] text-[#003A9E]'>
                       Vendemos detergente, blanqueador y suavizante por ciclo. Compra solo lo que necesitas.
                     </span>
                   </div>
-
                 </div>
-                
               </div>
               
               <div className="flex items-center gap-3">
