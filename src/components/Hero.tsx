@@ -41,10 +41,10 @@ const Hero: React.FC = () => {
           {/* Main heading - responsive typography */}
           <h1
             className="text-white text-center font-poppins font-bold tracking-tight
-            text-[2rem] leading-[2.25rem]
+            text-[30px] leading-[36px]
             sm:text-[2.75rem] sm:leading-[3rem]
             md:text-[3.5rem] md:leading-[3.75rem]
-            lg:text-[30px] lg:leading-[36px]
+            lg:text-[3.75rem] lg:leading-[3.9375rem]
             max-w-[90%] sm:max-w-none"
           >
             Lavar tu ropa,
