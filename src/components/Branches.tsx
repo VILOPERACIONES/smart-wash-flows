@@ -54,7 +54,7 @@ const Branches: React.FC = () => {
                 <div className="w-full h-[188px] bg-[#C4C4C4] rounded-lg" />
 
                 {branch.status === "coming-soon" && (
-                  <div className="flex w-[calc(100%-32px)] sm:w-[calc(100%-64px)] xl:w-[333.79px] h-[188px] rounded-lg justify-center items-center absolute bg-[#4A80DE] left-4 sm:left-8 top-8 sm:top-16">
+                  <div className="flex w-[calc(100%-32px)] sm:w-[calc(100%-64px)] xl:w-[333.79px] h-[188px] rounded-lg justify-center items-center absolute bg-[#4A80DE] left-4 sm:left-8 top-16 sm:top-16">
                     <span className="text-white font-poppins text-lg font-bold leading-7">Próximamente</span>
                   </div>
                 )}
