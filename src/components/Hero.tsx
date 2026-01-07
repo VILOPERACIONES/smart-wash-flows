@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full sm:w-auto mt-2">
             <a 
               href='#promociones' 
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 shadow-[0_4px_14px_-3px_hsla(240,100%,50%,0.40)] bg-[hsl(240,100%,50%)] px-6 py-4 sm:py-3.5 rounded-xl hover:bg-[hsl(240,100%,40%)] transition-colors"
+              className="w-full max-w-[280px] sm:max-w-none sm:w-auto inline-flex items-center justify-center gap-3 shadow-[0_4px_14px_-3px_hsla(240,100%,50%,0.40)] bg-[hsl(240,100%,50%)] px-6 py-4 sm:py-3.5 rounded-xl hover:bg-[hsl(240,100%,40%)] transition-colors"
             >
               <svg width="24" height="24" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0">
                 <path d="M20.9808 3.20624L21.6671 7.54874L25.6158 9.56249L23.6246 13.5L25.6271 17.4375L21.6446 19.4512L20.9583 23.7937L16.5821 23.1075L13.4658 26.2125L10.3383 23.0625L5.99582 23.7825L5.29832 19.4062L1.37207 17.4037L3.37457 13.4662L1.38332 9.56249L5.33207 7.52624L6.01832 3.21749L10.3721 3.93749L13.4996 0.776245L16.6158 3.89249L20.9808 3.20624ZM10.6871 7.87499C10.2395 7.87499 9.8103 8.05278 9.49383 8.36925C9.17736 8.68572 8.99957 9.11494 8.99957 9.56249C8.99957 10.01 9.17736 10.4393 9.49383 10.7557C9.8103 11.0722 10.2395 11.25 10.6871 11.25C11.1346 11.25 11.5638 11.0722 11.8803 10.7557C12.1968 10.4393 12.3746 10.01 12.3746 9.56249C12.3746 9.11494 12.1968 8.68572 11.8803 8.36925C11.5638 8.05278 11.1346 7.87499 10.6871 7.87499ZM16.3121 15.75C15.8645 15.75 15.4353 15.9278 15.1188 16.2443C14.8024 16.5607 14.6246 16.9899 14.6246 17.4375C14.6246 17.885 14.8024 18.3143 15.1188 18.6307C15.4353 18.9472 15.8645 19.125 16.3121 19.125C16.7596 19.125 17.1888 18.9472 17.5053 18.6307C17.8218 18.3143 17.9996 17.885 17.9996 17.4375C17.9996 16.9899 17.8218 16.5607 17.5053 16.2443C17.1888 15.9278 16.7596 15.75 16.3121 15.75ZM9.46082 19.125L19.1246 9.46124L17.5383 7.87499L7.87457 17.5387L9.46082 19.125Z" fill="white" />
@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
             
             <a 
               href='#servicios' 
-              className="w-full sm:w-auto flex justify-center items-center backdrop-blur-sm bg-white/80 px-8 py-4 sm:py-3.5 rounded-xl border-2 border-white/30 hover:bg-white transition-colors"
+              className="w-full max-w-[280px] sm:max-w-none sm:w-auto flex justify-center items-center backdrop-blur-sm bg-white/80 px-8 py-4 sm:py-3.5 rounded-xl border-2 border-white/30 hover:bg-white transition-colors"
             >
               <span className="text-black text-center font-poppins text-base sm:text-lg font-semibold">
                 Ver servicios
@@ -71,10 +71,10 @@ const Hero: React.FC = () => {
             </a>
           </div>
           
-          {/* Features - vertical on mobile, horizontal on larger screens */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8 w-full">
+          {/* Features - hidden on mobile, horizontal on larger screens */}
+          <div className="hidden sm:flex flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8 w-full">
             {/* Feature 1 */}
-            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2.5 sm:bg-transparent sm:backdrop-blur-none sm:px-0 sm:py-0">
+            <div className="flex items-center gap-3 sm:bg-transparent sm:backdrop-blur-none sm:px-0 sm:py-0">
               <div className="flex w-9 h-9 sm:w-10 sm:h-10 justify-center items-center bg-[hsla(220,68%,57%,0.25)] rounded-full flex-shrink-0">
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5">
                   <path d="M8.28086 12.9166C8.20647 12.6283 8.05615 12.3651 7.84555 12.1545C7.63494 11.9439 7.37176 11.7935 7.08336 11.7191L1.97086 10.4008C1.88364 10.3761 1.80687 10.3235 1.75221 10.2512C1.69754 10.1788 1.66797 10.0907 1.66797 9.99998C1.66797 9.90931 1.69754 9.82112 1.75221 9.74878C1.80687 9.67644 1.88364 9.62391 1.97086 9.59915L7.08336 8.27998C7.37166 8.20565 7.63477 8.05546 7.84537 7.84502C8.05596 7.63457 8.20634 7.37156 8.28086 7.08332L9.5992 1.97082C9.6237 1.88325 9.67618 1.8061 9.74863 1.75115C9.82108 1.69619 9.90951 1.66644 10.0004 1.66644C10.0914 1.66644 10.1798 1.69619 10.2523 1.75115C10.3247 1.8061 10.3772 1.88325 10.4017 1.97082L11.7192 7.08332C11.7936 7.37171 11.9439 7.6349 12.1545 7.8455C12.3651 8.0561 12.6283 8.20642 12.9167 8.28082L18.0292 9.59832C18.1171 9.62257 18.1946 9.67499 18.2499 9.74755C18.3052 9.8201 18.3351 9.90878 18.3351 9.99998C18.3351 10.0912 18.3052 10.1799 18.2499 10.2524C18.1946 10.325 18.1171 10.3774 18.0292 10.4016L12.9167 11.7191C12.6283 11.7935 12.3651 11.9439 12.1545 12.1545C11.9439 12.3651 11.7936 12.6283 11.7192 12.9166L10.4009 18.0291C10.3764 18.1167 10.3239 18.1939 10.2514 18.2488C10.179 18.3038 10.0905 18.3335 9.99961 18.3335C9.90868 18.3335 9.82025 18.3038 9.7478 18.2488C9.67535 18.1939 9.62287 18.1167 9.59836 18.0291L8.28086 12.9166Z" stroke="white" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
@@ -95,7 +95,7 @@ const Hero: React.FC = () => {
             </div>
             
             {/* Feature 2 */}
-            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2.5 sm:bg-transparent sm:backdrop-blur-none sm:px-0 sm:py-0">
+            <div className="flex items-center gap-3 sm:bg-transparent sm:backdrop-blur-none sm:px-0 sm:py-0">
               <div className="flex w-9 h-9 sm:w-10 sm:h-10 justify-center items-center bg-[hsla(220,68%,57%,0.25)] rounded-full flex-shrink-0">
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5">
                   <path d="M10.0003 18.3334C14.6027 18.3334 18.3337 14.6024 18.3337 10C18.3337 5.39765 14.6027 1.66669 10.0003 1.66669C5.39795 1.66669 1.66699 5.39765 1.66699 10C1.66699 14.6024 5.39795 18.3334 10.0003 18.3334Z" stroke="white" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
@@ -113,7 +113,7 @@ const Hero: React.FC = () => {
             </div>
             
             {/* Feature 3 */}
-            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2.5 sm:bg-transparent sm:backdrop-blur-none sm:px-0 sm:py-0">
+            <div className="flex items-center gap-3 sm:bg-transparent sm:backdrop-blur-none sm:px-0 sm:py-0">
               <div className="flex w-9 h-9 sm:w-10 sm:h-10 justify-center items-center bg-[hsla(220,68%,57%,0.25)] rounded-full flex-shrink-0">
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 sm:w-5 sm:h-5">
                   <path d="M13.9958 11.4095C13.8049 11.3146 12.5641 10.7453 12.3732 10.6504C12.1823 10.5556 11.9915 10.5556 11.8006 10.7453C11.6097 10.9351 11.2279 11.5044 11.037 11.6941C10.9415 11.8839 10.7506 11.8839 10.5597 11.789C9.8916 11.5044 9.2235 11.1248 8.6508 10.6504C8.1736 10.176 7.6963 9.6067 7.3145 9.0375C7.2191 8.8477 7.3145 8.6579 7.41 8.563C7.5054 8.4682 7.6009 8.2784 7.7918 8.1835C7.8872 8.0886 7.9827 7.8989 7.9827 7.804C8.0781 7.7091 8.0781 7.5194 7.9827 7.4245C7.8872 7.3296 7.41 6.191 7.2191 5.7166C7.1236 5.0524 6.9327 5.0524 6.7419 5.0524H6.2646C6.0737 5.0524 5.7874 5.2422 5.6919 5.3371C5.1193 5.9064 4.8329 6.5705 4.8329 7.3296C4.9284 8.1835 5.2147 9.0375 5.7874 9.7965C6.8373 11.3146 8.1736 12.5481 9.7962 13.3071C10.2734 13.4969 10.6552 13.6866 11.1324 13.7815C11.6097 13.9713 12.0869 13.9713 12.6596 13.8764C13.3277 13.7815 13.9004 13.3071 14.2822 12.7378C14.4731 12.3583 14.4731 11.9788 14.3776 11.5992L13.9958 11.4095ZM16.382 2.7753C12.6596 -0.92509 6.6464 -0.92509 2.924 2.7753C-0.1303 5.8115 -0.703 10.4607 1.3968 14.161L0.0605 19L5.1193 17.6717C6.551 18.4307 8.0781 18.8102 9.6053 18.8102C14.8549 18.8102 19.0545 14.6355 19.0545 9.417C19.15 6.9501 18.1001 4.578 16.382 2.7753ZM13.8049 16.0587C12.5641 16.8177 11.1324 17.2921 9.6053 17.2921C8.1736 17.2921 6.8373 16.9126 5.5965 16.2484L5.3101 16.0587L2.3513 16.8177L3.1149 13.9713L2.924 13.6866C0.6332 9.8914 1.7786 5.1473 5.501 2.7753C9.2235 0.4032 13.9958 1.6367 16.2866 5.2422C18.5773 8.9426 17.5274 13.7815 13.8049 16.0587Z" fill="white" />

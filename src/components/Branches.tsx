@@ -36,7 +36,7 @@ const Branches: React.FC = () => {
     <section id="sucursales" className="w-full bg-white px-5 py-20">
       <div className="max-w-screen-xl mx-auto my-0">
         <div className="text-center mb-20">
-          <h2 className="text-black text-center font-poppins text-[40px] font-bold leading-[60px] tracking-[-1px] mb-3">
+          <h2 className="text-black text-center font-poppins text-[32px] leading-[36px] sm:text-[40px] sm:leading-[60px] font-bold tracking-[-1px] mb-3">
             Nuestras Sucursales
           </h2>
           <p className="text-[#003A9E] text-center font-poppins text-lg font-normal leading-7">
@@ -47,11 +47,11 @@ const Branches: React.FC = () => {
         <div className="flex justify-center gap-6 flex-wrap">
           {branches.map((branch) => (
             <article key={branch.id} className="w-full max-w-[400px] border overflow-hidden bg-white rounded-2xl border-solid border-gray-200">
-              <div className="relative px-8 pt-16">
-                <div className="w-full h-[188px] bg-[#C4C4C4] rounded-lg " />
+              <div className="relative px-4 sm:px-8 pt-8 sm:pt-16">
+                <div className="w-full h-[188px] bg-[#C4C4C4] rounded-lg" />
                 
                 {branch.status === 'coming-soon' && (
-                  <div className="flex w-full xl:w-[333.79px] h-[188px] rounded-lg justify-center items-center absolute bg-[#4A80DE] left-[32px] top-[64px] ">
+                  <div className="flex w-[calc(100%-32px)] sm:w-[calc(100%-64px)] xl:w-[333.79px] h-[188px] rounded-lg justify-center items-center absolute bg-[#4A80DE] left-4 sm:left-8 top-8 sm:top-16">
                     <span className="text-white font-poppins text-lg font-bold leading-7">
                       Próximamente
                     </span>
@@ -94,7 +94,7 @@ const Branches: React.FC = () => {
                       </span>
                     </div>
                     
-                    <button className="flex justify-center items-center shadow-[0_4px_14px_-3px_rgba(0,0,255,0.40)] bg-[#00F] px-20 py-3 rounded-xl w-full hover:bg-blue-700 transition-colors">
+                    <button className="flex justify-center items-center shadow-[0_4px_14px_-3px_rgba(0,0,255,0.40)] bg-[#00F] px-4 sm:px-20 py-3 rounded-xl w-full hover:bg-blue-700 transition-colors whitespace-nowrap">
                       <span className="text-white text-center text-sm font-poppins font-semibold leading-5">
                         Ver en Google Maps
                       </span>

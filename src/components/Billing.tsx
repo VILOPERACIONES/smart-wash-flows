@@ -54,7 +54,7 @@ const Billing: React.FC = () => {
               Facturación
             </span>
           </div>
-          <h2 className="text-black text-center font-poppins text-[40px] font-bold leading-9 tracking-[-1px] mb-5">
+          <h2 className="text-black text-center font-poppins text-[32px] leading-[36px] sm:text-[40px] sm:leading-9 font-bold tracking-[-1px] mb-5">
             Solicita tu factura fácilmente
           </h2>
           <p className="text-[#003A9E] text-center font-poppins text-lg font-normal leading-[29px] mb-[60px]">
