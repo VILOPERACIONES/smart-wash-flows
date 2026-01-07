@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-[#003A9E] pt-[61px] pb-0 px-5">
-      <div className="max-w-[1400px] mx-auto my-0">
+    <footer className="w-full bg-[#003A9E] pt-[61px] pb-0 px-6 md:px-12 lg:px-16 xl:px-20">
+      <div className="max-w-[1280px] mx-auto my-0">
         <div className="flex justify-between items-start gap-10 flex-wrap mb-10">
           <img
             src="https://api.builder.io/api/v1/image/assets/TEMP/e48e5c35b47e6510970fbfd83a7e4cb76ce602bf?width=654"
