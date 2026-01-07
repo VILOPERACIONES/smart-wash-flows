@@ -6,7 +6,7 @@ interface WhatsAppCTAProps {
 
 const WhatsAppCTA: FC<WhatsAppCTAProps> = ({ whatsappUrl = "https://wa.me/5210000000000" }) => {
   return (
-    <section className="w-full px-4 py-16">
+    <section className="w-full px-4 py-16 bg-[#EDEFF4]">
       <div className="mx-auto max-w-4xl">
         <div
           className="relative overflow-hidden rounded-2xl px-6 py-20 text-center text-white shadow-xl md:px-12"
