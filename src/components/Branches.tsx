@@ -50,7 +50,7 @@ const Branches: React.FC = () => {
               key={branch.id}
               className="w-full max-w-[400px] border overflow-hidden bg-white rounded-2xl border-solid border-gray-200"
             >
-              <div className="relative px-4 sm:px-8 pt-10 sm:pt-16">
+              <div className="relative px-4 sm:px-8 pt-16 sm:pt-16">
                 <div className="w-full h-[188px] bg-[#C4C4C4] rounded-lg" />
 
                 {branch.status === "coming-soon" && (
