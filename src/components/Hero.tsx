@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
       
       {/* Content container - centered vertically and horizontally */}
       <div className="relative z-10 min-h-[100dvh] flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 sm:py-16">
-        <div className="w-full max-w-4xl text-center flex flex-col items-center gap-5 sm:gap-6 md:gap-8">
+        <div className="w-full max-w-4xl text-center flex flex-col items-center gap-5 sm:gap-6 xl:gap-6">
           {/* Badge */}
           <div className="inline-flex justify-center items-center gap-2 bg-[hsl(220,68%,57%)] px-4 py-2 rounded-full">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,8 +31,7 @@ const Hero: React.FC = () => {
             text-[2rem] leading-[2.25rem]
             sm:text-[2.75rem] sm:leading-[3rem]
             md:text-[3.5rem] md:leading-[3.75rem]
-            lg:text-[4rem] lg:leading-[4.25rem]
-            xl:text-[4.5rem] xl:leading-[4.75rem]
+            lg:text-[3.75rem] lg:leading-[3.9375rem]
             max-w-[90%] sm:max-w-none">
             Lavar tu ropa,
             <br />
