@@ -10,7 +10,7 @@ const WhatsAppCTA: FC<WhatsAppCTAProps> = ({
   return (
     <section className="w-full px-4 py-16">
       <div className="mx-auto max-w-4xl">
-        <div className="relative overflow-hidden rounded-2xl bg-[#0000FF] px-6 py-20 text-center text-white shadow-xl md:px-12">
+        <div className="relative overflow-hidden rounded-2xl px-6 py-20 text-center text-white shadow-xl md:px-12" style={{ background: 'radial-gradient(circle at 20% 30%, rgba(100, 100, 255, 0.8) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(0, 100, 255, 0.6) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(50, 80, 255, 0.5) 0%, transparent 40%), linear-gradient(135deg, #0000CC 0%, #0033FF 50%, #0066FF 100%)' }}>
           {/* Title */}
           <h2 className="text-2xl xl:text-[48px] xl:leading-[48px] font-bold font-poppins leading-tight md:text-4xl">
             ¿Listo para lavar

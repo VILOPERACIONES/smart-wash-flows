@@ -53,7 +53,7 @@ const Benefits: React.FC = () => {
         
         <div className="w-full flex justify-between gap-6 flex-wrap">
           {benefits.map((benefit, index) => (
-            <article key={index} className="text-center bg-white p-[23px] xl:p-[33px] max-w-[342.66px]">
+            <article key={index} className="text-center bg-white p-[23px] xl:p-[33px] max-w-[342.66px] rounded-[20px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]">
               <div className="flex w-14 h-14 justify-center items-center bg-[rgba(0,0,255,0.10)] mt-0 mb-5 mx-auto p-3.5 rounded-2xl">
                 {benefit.icon}
               </div>
