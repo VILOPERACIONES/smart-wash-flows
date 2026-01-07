@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setIsMenuOpen(prev => !prev);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
-    <header className="flex w-full justify-center items-center  absolute z-10 md:px-[50px] xl:px-[88px] py-5 left-0 top-0 max-md:px-5">
-      <div className="flex w-full max-w-[1264px] justify-between items-center">
+    <header className="absolute z-50 left-0 top-0 w-full md:px-[50px] xl:px-[88px] py-5 max-md:px-5">
+      <div className="flex w-full max-w-[1264px] mx-auto justify-between items-center">
         <img
           src="https://api.builder.io/api/v1/image/assets/TEMP/fdebf2230022f3a59dfddaf30f66b3b43b056236?width=324"
           alt="A LAVAR Logo"
           className="w-[162px] h-[53px]"
         />
         <div className="flex items-center gap-6">
-          
           <nav className="flex justify-center items-start gap-8 max-sm:hidden">
             <a href="#promociones" className="text-white font-poppins text-center text-sm font-medium leading-5 hover:text-blue-200 transition-colors">
               Promociones
@@ -34,33 +42,54 @@ const Header: React.FC = () => {
             </a>
           </nav>
           <button 
-            className="text-white text-2xl cursor-pointer sm:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
+            className="text-white cursor-pointer sm:hidden p-2 z-50"
+            onClick={toggleMenu}
+            aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            type="button"
           >
-            ☰
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
       
-      {isMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-black bg-opacity-90 backdrop-blur-md sm:hidden">
-          <nav className="flex flex-col gap-4 p-6">
-            <a href="#promociones" className="text-white text-sm font-medium hover:text-blue-200 transition-colors">
-              Promociones
-            </a>
-            <a href="#servicios" className="text-white text-sm font-medium hover:text-blue-200 transition-colors">
-              Servicios
-            </a>
-            <a href="#facturacion" className="text-white text-sm font-medium hover:text-blue-200 transition-colors">
-              Facturación
-            </a>
-            <a href="#sucursales" className="text-white text-sm font-medium hover:text-blue-200 transition-colors">
-              Sucursales
-            </a>
-          </nav>
-        </div>
-      )}
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={`fixed inset-0 bg-black/95 backdrop-blur-md sm:hidden transition-all duration-300 ${
+          isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
+        style={{ top: '73px' }}
+      >
+        <nav className="flex flex-col gap-6 p-8 pt-6">
+          <a 
+            href="#promociones" 
+            className="text-white text-lg font-medium hover:text-blue-200 transition-colors"
+            onClick={closeMenu}
+          >
+            Promociones
+          </a>
+          <a 
+            href="#servicios" 
+            className="text-white text-lg font-medium hover:text-blue-200 transition-colors"
+            onClick={closeMenu}
+          >
+            Servicios
+          </a>
+          <a 
+            href="#facturacion" 
+            className="text-white text-lg font-medium hover:text-blue-200 transition-colors"
+            onClick={closeMenu}
+          >
+            Facturación
+          </a>
+          <a 
+            href="#sucursales" 
+            className="text-white text-lg font-medium hover:text-blue-200 transition-colors"
+            onClick={closeMenu}
+          >
+            Sucursales
+          </a>
+        </nav>
+      </div>
     </header>
   );
 };
