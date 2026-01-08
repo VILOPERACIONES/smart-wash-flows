@@ -6,9 +6,9 @@ const Footer: React.FC = () => {
       <div className="max-w-[1280px] mx-auto my-0">
         <div className="flex justify-between items-start gap-10 flex-wrap mb-10">
           <img
-            src="https://api.builder.io/api/v1/image/assets/TEMP/e48e5c35b47e6510970fbfd83a7e4cb76ce602bf?width=654"
+            src="https://res.cloudinary.com/diefluaw7/image/upload/v1767894340/Group_14_rwibjk.svg"
             alt="A LAVAR Logo"
-            className="w-[327px] h-[107px]"
+            className="w-[327px] h-auto"
           />
           
           <div>
