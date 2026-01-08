@@ -16,9 +16,9 @@ const Header: React.FC = () => {
     <header className="absolute z-50 left-0 top-0 w-full md:px-[50px] xl:px-[88px] py-5 max-md:px-5">
       <div className="flex w-full max-w-[1264px] mx-auto justify-between items-center">
         <img
-          src="https://api.builder.io/api/v1/image/assets/TEMP/fdebf2230022f3a59dfddaf30f66b3b43b056236?width=324"
+          src="https://res.cloudinary.com/diefluaw7/image/upload/v1767894340/Group_14_rwibjk.svg"
           alt="A LAVAR Logo"
-          className="w-[162px] h-[53px]"
+          className="w-[162px] h-auto"
         />
         <div className="flex items-center gap-6">
           <nav className="flex justify-center items-start gap-8 max-sm:hidden">
