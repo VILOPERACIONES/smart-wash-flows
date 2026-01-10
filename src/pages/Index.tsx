@@ -4,7 +4,7 @@ import Hero from '@/components/Hero';
 import Promotions from '@/components/Promotions';
 import Services from '@/components/Services';
 import Benefits from '@/components/Benefits';
-import Facilities from '@/components/Facilities';
+import WaitingRoom from '@/components/WaitingRoom';
 import Billing from '@/components/Billing';
 import Branches from '@/components/Branches';
 import Footer from '@/components/Footer';
@@ -21,7 +21,7 @@ const Index: React.FC = () => {
         <Promotions />
         <Benefits />
         <Services />
-        <Facilities />
+        <WaitingRoom />
         <TerminosCondiciones message={"*[1]: El servicio de lavado por encargo con entrega el mismo día está disponible de lunes a viernes para pedidos recibidos antes de las 11:00 a. m."} />
         <WhatsAppNotificationsSection />
         <Billing />
