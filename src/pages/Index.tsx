@@ -1,17 +1,17 @@
-import React from 'react';
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import Promotions from '@/components/Promotions';
-import Services from '@/components/Services';
-import Benefits from '@/components/Benefits';
-import WaitingRoom from '@/components/WaitingRoom';
-import Facilities from '@/components/Facilities';
-import Billing from '@/components/Billing';
-import Branches from '@/components/Branches';
-import Footer from '@/components/Footer';
-import TerminosCondiciones from '@/components/TerminosCondiciones';
-import WhatsAppNotificationsSection from '@/components/WhatsAppNotificationsSection';
-import WhatsAppCTA from '@/components/WhatsAppCTA';
+import React from "react";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import Promotions from "@/components/Promotions";
+import Services from "@/components/Services";
+import Benefits from "@/components/Benefits";
+import WaitingRoom from "@/components/WaitingRoom";
+import Facilities from "@/components/Facilities";
+import Billing from "@/components/Billing";
+import Branches from "@/components/Branches";
+import Footer from "@/components/Footer";
+import TerminosCondiciones from "@/components/TerminosCondiciones";
+import WhatsAppNotificationsSection from "@/components/WhatsAppNotificationsSection";
+import WhatsAppCTA from "@/components/WhatsAppCTA";
 
 const Index: React.FC = () => {
   return (
@@ -22,9 +22,13 @@ const Index: React.FC = () => {
         <Promotions />
         <Benefits />
         <Services />
-        <WaitingRoom />
+        {/* <WaitingRoom /> */}
         <Facilities />
-        <TerminosCondiciones message={"*[1]: El servicio de lavado por encargo con entrega el mismo día está disponible de lunes a viernes para pedidos recibidos antes de las 11:00 a. m."} />
+        <TerminosCondiciones
+          message={
+            "*[1]: El servicio de lavado por encargo con entrega el mismo día está disponible de lunes a viernes para pedidos recibidos antes de las 11:00 a. m."
+          }
+        />
         <WhatsAppNotificationsSection />
         <Billing />
         <Branches />
