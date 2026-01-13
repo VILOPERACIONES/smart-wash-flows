@@ -17,19 +17,20 @@ const facilities = [
   {
     icon: Armchair,
     title: "Espacios Cómodos",
-    description: "Áreas de espera amplias y climatizadas con asientos cómodos. Aprovecha el tiempo como prefieras.",
+    description:
+      "Áreas con asientos cómodos y mesas disponibles para trabajar, estudiar o simplemente relajarte. (Agua y Café sin costo).",
   },
   {
     icon: Sparkles,
     title: "Ambiente Limpio",
     description: "Instalaciones impecables y bien mantenidas. Espacios ordenados y agradables para tu comodidad.",
   },
-  {
-    icon: Clock,
-    title: "Tiempo Productivo",
-    description:
-      "Trabaja, estudia o relájate. El ciclo de lavado (~80 min) es perfecto para avanzar en tus pendientes.",
-  },
+  // {
+  //   icon: Clock,
+  //   title: "Tiempo Productivo",
+  //   description:
+  //     "Trabaja, estudia o relájate. El ciclo de lavado (~80 min) es perfecto para avanzar en tus pendientes.",
+  // },
 ];
 
 const Facilities: React.FC = () => {
