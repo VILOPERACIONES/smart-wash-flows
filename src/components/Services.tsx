@@ -281,7 +281,7 @@ const Services: React.FC = () => {
                   />
                 </svg>
                 <span className="text-[#003A9E] text-sm font-poppins font-normal leading-5">
-                  {"Ciclo de Lavado y Secado ~ services[0]?.tiempo_desde" || "Ciclo de Lavado y Secado ~80 min"}
+                  {"Ciclo de Lavado y Secado ~" + services[0]?.tiempo_desde || "Ciclo de Lavado y Secado ~80 min"}
                 </span>
               </div>
             </div>
