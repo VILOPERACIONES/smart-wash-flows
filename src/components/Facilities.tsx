@@ -4,13 +4,14 @@ import { Wifi, Coffee, LayoutGrid, Armchair, Sparkles, Clock, MapPin } from "luc
 const facilities = [
   {
     icon: Coffee,
-    title: "Café y Agua Gratis",
-    description: "Disfruta de café recién hecho y agua purificada sin costo. Haz tu espera más agradable.",
+    title: "Tiempo Productivo",
+    description:
+      "Trabaja, estudia o relájate. El ciclo de lavado (~80 min) es perfecto para avanzar en tus pendientes.",
   },
   {
     icon: Wifi,
     title: "WiFi Gratuito",
-    description: "Conexión de alta velocidad para que trabajes, estudies o disfrutes de películas y redes sociales.",
+    description: "Conexión rápida y estable para trabajar, ver películas o navegar en redes sociales mientras esperas.",
   },
 
   {
