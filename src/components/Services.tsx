@@ -1,6 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+interface Servicio {
+  id: number;
+  nombre: string;
+  subtitulo: string;
+  descripcion: string;
+  caracteristicas: string[];
+  precio_desde: string;
+  tiempo_desde: string;
+  especial_min: string;
+  especial_max: string;
+  etiqueta: string;
+  badge_popular: number;
+}
 
 const Services: React.FC = () => {
+  const [services, setServices] = useState<Servicio[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/api/servicios");
+        const result = await response.json();
+        if (result.success && result.data) {
+          setServices(result.data);
+        }
+      } catch (error) {
+        console.error("Error fetching services:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="servicios" className="w-full bg-white pt-[61px] pb-32 px-5">
+        <div className="max-w-[1400px] mx-auto my-0 flex justify-center items-center min-h-[400px]">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#00F]"></div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="servicios" className="w-full bg-white pt-[61px] pb-32 px-5">
       <div className="max-w-[1400px] mx-auto my-0">
@@ -41,43 +86,93 @@ const Services: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-black text-2xl font-poppins font-bold leading-8 tracking-[-0.6px]">
-                    Autoservicio
+                    {services[0]?.nombre || "Autoservicio"}
                   </h3>
-                  <p className="text-[#003A9E] font-poppins text-sm font-normal leading-5">Tú controlas tu tiempo</p>
+                  <p className="text-[#003A9E] font-poppins text-sm font-normal leading-5">{services[0]?.subtitulo || "Tú controlas tu tiempo"}</p>
                 </div>
               </div>
 
               <p className="text-[#003A9E] font-poppins text-base font-normal leading-6 mb-8">
-                Equipos comerciales modernos a tu disposición. Rápido, autónomo y ajustado a tus tiempos.
+                {services[0]?.descripcion || "Equipos comerciales modernos a tu disposición. Rápido, autónomo y ajustado a tus tiempos."}
               </p>
 
               <ul className="flex flex-col gap-4 mb-8">
-                {[
-                  "Equipos comerciales modernos",
-                  "Proceso visible y entendible",
-                  "Sin filas, sin fricción",
-                  "Espacios limpios y ordenados",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M10.0003 18.3334C14.6027 18.3334 18.3337 14.6025 18.3337 10.0001C18.3337 5.39771 14.6027 1.66675 10.0003 1.66675C5.39795 1.66675 1.66699 5.39771 1.66699 10.0001C1.66699 14.6025 5.39795 18.3334 10.0003 18.3334Z"
-                        stroke="#0000FF"
-                        strokeWidth="1.66667"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M7.5 9.99992L9.16667 11.6666L12.5 8.33325"
-                        stroke="#0000FF"
-                        strokeWidth="1.66667"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <span className="text-black text-sm font-poppins font-normal leading-5">{item}</span>
-                  </li>
-                ))}
+                <li className="flex items-start gap-3">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.0003 18.3334C14.6027 18.3334 18.3337 14.6025 18.3337 10.0001C18.3337 5.39771 14.6027 1.66675 10.0003 1.66675C5.39795 1.66675 1.66699 5.39771 1.66699 10.0001C1.66699 14.6025 5.39795 18.3334 10.0003 18.3334Z"
+                      stroke="#0000FF"
+                      strokeWidth="1.66667"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M7.5 9.99992L9.16667 11.6666L12.5 8.33325"
+                      stroke="#0000FF"
+                      strokeWidth="1.66667"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span className="text-black text-sm font-poppins font-normal leading-5">{services[0]?.caracteristicas?.[0] || "Equipos comerciales modernos"}</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.0003 18.3334C14.6027 18.3334 18.3337 14.6025 18.3337 10.0001C18.3337 5.39771 14.6027 1.66675 10.0003 1.66675C5.39795 1.66675 1.66699 5.39771 1.66699 10.0001C1.66699 14.6025 5.39795 18.3334 10.0003 18.3334Z"
+                      stroke="#0000FF"
+                      strokeWidth="1.66667"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M7.5 9.99992L9.16667 11.6666L12.5 8.33325"
+                      stroke="#0000FF"
+                      strokeWidth="1.66667"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span className="text-black text-sm font-poppins font-normal leading-5">{services[0]?.caracteristicas?.[1] || "Proceso visible y entendible"}</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.0003 18.3334C14.6027 18.3334 18.3337 14.6025 18.3337 10.0001C18.3337 5.39771 14.6027 1.66675 10.0003 1.66675C5.39795 1.66675 1.66699 5.39771 1.66699 10.0001C1.66699 14.6025 5.39795 18.3334 10.0003 18.3334Z"
+                      stroke="#0000FF"
+                      strokeWidth="1.66667"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M7.5 9.99992L9.16667 11.6666L12.5 8.33325"
+                      stroke="#0000FF"
+                      strokeWidth="1.66667"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span className="text-black text-sm font-poppins font-normal leading-5">{services[0]?.caracteristicas?.[2] || "Sin filas, sin fricción"}</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.0003 18.3334C14.6027 18.3334 18.3337 14.6025 18.3337 10.0001C18.3337 5.39771 14.6027 1.66675 10.0003 1.66675C5.39795 1.66675 1.66699 5.39771 1.66699 10.0001C1.66699 14.6025 5.39795 18.3334 10.0003 18.3334Z"
+                      stroke="#0000FF"
+                      strokeWidth="1.66667"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M7.5 9.99992L9.16667 11.6666L12.5 8.33325"
+                      stroke="#0000FF"
+                      strokeWidth="1.66667"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span className="text-black text-sm font-poppins font-normal leading-5">{services[0]?.caracteristicas?.[3] || "Espacios limpios y ordenados"}</span>
+                </li>
               </ul>
 
               <hr className="mb-5 border-t border-solid border-gray-200" />
@@ -175,7 +270,7 @@ const Services: React.FC = () => {
                   />
                 </svg>
                 <span className="text-[#003A9E] text-sm font-poppins font-normal leading-5">
-                  Ciclo de Lavado y Secado ~80 min
+                  {services[0]?.tiempo_desde || "Ciclo de Lavado y Secado ~80 min"}
                 </span>
               </div>
             </div>
@@ -189,9 +284,11 @@ const Services: React.FC = () => {
                 alt="Ropa limpia y doblada del servicio de lavado por encargo"
                 className="w-full h-[279px] object-cover"
               />
-              <div className="inline-flex justify-center items-center backdrop-blur-[2px] absolute bg-[#00F] px-3 py-1 rounded-full right-3.5 top-3.5">
-                <span className="text-white text-sm font-poppins font-medium leading-5">Más popular</span>
-              </div>
+              {services[1]?.badge_popular === 1 && (
+                <div className="inline-flex justify-center items-center backdrop-blur-[2px] absolute bg-[#00F] px-3 py-1 rounded-full right-3.5 top-3.5">
+                  <span className="text-white text-sm font-poppins font-medium leading-5">Más popular</span>
+                </div>
+              )}
             </div>
 
             <div className="p-10">
@@ -209,16 +306,16 @@ const Services: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-white text-2xl font-poppins font-bold leading-8 tracking-[-0.6px]">
-                    Lavado por encargo
+                    {services[1]?.nombre || "Lavado por encargo"}
                   </h3>
                   <p className="text-[rgba(255,255,255,0.80)] font-poppins text-sm font-normal leading-5">
-                    Nosotros nos encargamos
+                    {services[1]?.subtitulo || "Nosotros nos encargamos"}
                   </p>
                 </div>
               </div>
 
               <p className="text-[rgba(255,255,255,0.90)] font-poppins text-base font-normal leading-6 mb-8">
-                La solución perfecta para gente ocupada. Delega sin culpa y recibe tu ropa impecable el mismo día.
+                {services[1]?.descripcion || "La solución perfecta para gente ocupada. Delega sin culpa y recibe tu ropa impecable el mismo día."}
               </p>
 
               <ul className="flex flex-col gap-4 mb-8">
@@ -239,7 +336,7 @@ const Services: React.FC = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <span className={`text-sm font-poppins font-normal leading-5 text-white `}>Precio claro: $30/kg</span>
+                  <span className={`text-sm font-poppins font-normal leading-5 text-white `}>{services[1]?.caracteristicas?.[0] || "Precio claro: $30/kg"}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -259,7 +356,7 @@ const Services: React.FC = () => {
                     />
                   </svg>
                   <a className={`text-sm font-poppins font-normal leading-5 text-white underline`} href="#servicios">
-                    Entrega el mismo día *[1]
+                    {services[1]?.caracteristicas?.[1] || "Entrega el mismo día *[1]"}
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
@@ -280,7 +377,7 @@ const Services: React.FC = () => {
                     />
                   </svg>
                   <span className={`text-sm font-poppins font-normal leading-5 text-white `}>
-                    Lavado + secado + doblado
+                    {services[1]?.caracteristicas?.[2] || "Lavado + secado + doblado"}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -301,7 +398,7 @@ const Services: React.FC = () => {
                     />
                   </svg>
                   <span className={`text-sm font-poppins font-normal leading-5 text-white `}>
-                    Seguimiento por WhatsApp
+                    {services[1]?.caracteristicas?.[3] || "Seguimiento por WhatsApp"}
                   </span>
                 </li>
               </ul>
@@ -313,7 +410,7 @@ const Services: React.FC = () => {
                   PRECIO POR KILOGRAMO
                 </h4>
                 <div className="text-center mb-4">
-                  <span className="text-white text-6xl font-poppins font-bold">$30</span>
+                  <span className="text-white text-6xl font-poppins font-bold">{services[1]?.precio_desde || "$30"}</span>
                   <span className="text-white text-lg font-poppins ml-2">/kg</span>
                 </div>
                 <h2 className="px-6 flex justify-center text-white font-poppins bg-[#ffffff]/10 rounded-full xl:text-[14px] xl:leading-[20px] font-semibold w-[64.48px] py-[6px] text-center ">
@@ -321,10 +418,10 @@ const Services: React.FC = () => {
                 </h2>
                 <div className="w-full h-[1px] bg-white  my-4" />
                 <h2 className=" font-poppins text-white xl:text-[14px] xl:leading-[20px] font-medium mb-4 ">
-                  Edredones y Hamacas
+                  {services[1]?.etiqueta || "Edredones y Hamacas"}
                 </h2>
                 <div className="text-center mb-4">
-                  <span className="text-white text-2xl font-poppins font-bold">$80-$175</span>
+                  <span className="text-white text-2xl font-poppins font-bold">{services[1]?.especial_min && services[1]?.especial_max ? `$${services[1].especial_min}-$${services[1].especial_max}` : "$80-$175"}</span>
                   <span className="text-white text-[14px] font-poppins ml-2">MXN</span>
                 </div>
               </div>
