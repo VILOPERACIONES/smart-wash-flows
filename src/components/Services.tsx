@@ -88,12 +88,15 @@ const Services: React.FC = () => {
                   <h3 className="text-black text-2xl font-poppins font-bold leading-8 tracking-[-0.6px]">
                     {services[0]?.nombre || "Autoservicio"}
                   </h3>
-                  <p className="text-[#003A9E] font-poppins text-sm font-normal leading-5">{services[0]?.subtitulo || "Tú controlas tu tiempo"}</p>
+                  <p className="text-[#003A9E] font-poppins text-sm font-normal leading-5">
+                    {services[0]?.subtitulo || "Tú controlas tu tiempo"}
+                  </p>
                 </div>
               </div>
 
               <p className="text-[#003A9E] font-poppins text-base font-normal leading-6 mb-8">
-                {services[0]?.descripcion || "Equipos comerciales modernos a tu disposición. Rápido, autónomo y ajustado a tus tiempos."}
+                {services[0]?.descripcion ||
+                  "Equipos comerciales modernos a tu disposición. Rápido, autónomo y ajustado a tus tiempos."}
               </p>
 
               <ul className="flex flex-col gap-4 mb-8">
@@ -114,7 +117,9 @@ const Services: React.FC = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <span className="text-black text-sm font-poppins font-normal leading-5">{services[0]?.caracteristicas?.[0] || "Equipos comerciales modernos"}</span>
+                  <span className="text-black text-sm font-poppins font-normal leading-5">
+                    {services[0]?.caracteristicas?.[0] || "Equipos comerciales modernos"}
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -133,7 +138,9 @@ const Services: React.FC = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <span className="text-black text-sm font-poppins font-normal leading-5">{services[0]?.caracteristicas?.[1] || "Proceso visible y entendible"}</span>
+                  <span className="text-black text-sm font-poppins font-normal leading-5">
+                    {services[0]?.caracteristicas?.[1] || "Proceso visible y entendible"}
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -152,7 +159,9 @@ const Services: React.FC = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <span className="text-black text-sm font-poppins font-normal leading-5">{services[0]?.caracteristicas?.[2] || "Sin filas, sin fricción"}</span>
+                  <span className="text-black text-sm font-poppins font-normal leading-5">
+                    {services[0]?.caracteristicas?.[2] || "Sin filas, sin fricción"}
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -171,7 +180,9 @@ const Services: React.FC = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <span className="text-black text-sm font-poppins font-normal leading-5">{services[0]?.caracteristicas?.[3] || "Espacios limpios y ordenados"}</span>
+                  <span className="text-black text-sm font-poppins font-normal leading-5">
+                    {services[0]?.caracteristicas?.[3] || "Espacios limpios y ordenados"}
+                  </span>
                 </li>
               </ul>
 
@@ -270,7 +281,7 @@ const Services: React.FC = () => {
                   />
                 </svg>
                 <span className="text-[#003A9E] text-sm font-poppins font-normal leading-5">
-                  {services[0]?.tiempo_desde || "Ciclo de Lavado y Secado ~80 min"}
+                  Ciclo de Lavado y Secado ~{services[0]?.tiempo_desde || "Ciclo de Lavado y Secado ~80 min"}
                 </span>
               </div>
             </div>
@@ -315,7 +326,8 @@ const Services: React.FC = () => {
               </div>
 
               <p className="text-[rgba(255,255,255,0.90)] font-poppins text-base font-normal leading-6 mb-8">
-                {services[1]?.descripcion || "La solución perfecta para gente ocupada. Delega sin culpa y recibe tu ropa impecable el mismo día."}
+                {services[1]?.descripcion ||
+                  "La solución perfecta para gente ocupada. Delega sin culpa y recibe tu ropa impecable el mismo día."}
               </p>
 
               <ul className="flex flex-col gap-4 mb-8">
@@ -336,7 +348,9 @@ const Services: React.FC = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <span className={`text-sm font-poppins font-normal leading-5 text-white `}>{services[1]?.caracteristicas?.[0] || "Precio claro: $30/kg"}</span>
+                  <span className={`text-sm font-poppins font-normal leading-5 text-white `}>
+                    {services[1]?.caracteristicas?.[0] || "Precio claro: $30/kg"}
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -410,7 +424,9 @@ const Services: React.FC = () => {
                   PRECIO POR KILOGRAMO
                 </h4>
                 <div className="text-center mb-4">
-                  <span className="text-white text-6xl font-poppins font-bold">{services[1]?.precio_desde || "$30"}</span>
+                  <span className="text-white text-6xl font-poppins font-bold">
+                    {services[1]?.precio_desde || "$30"}
+                  </span>
                   <span className="text-white text-lg font-poppins ml-2">/kg</span>
                 </div>
                 <h2 className="px-6 flex justify-center text-white font-poppins bg-[#ffffff]/10 rounded-full xl:text-[14px] xl:leading-[20px] font-semibold w-[64.48px] py-[6px] text-center ">
@@ -421,7 +437,11 @@ const Services: React.FC = () => {
                   {services[1]?.etiqueta || "Edredones y Hamacas"}
                 </h2>
                 <div className="text-center mb-4">
-                  <span className="text-white text-2xl font-poppins font-bold">{services[1]?.especial_min && services[1]?.especial_max ? `$${services[1].especial_min}-$${services[1].especial_max}` : "$80-$175"}</span>
+                  <span className="text-white text-2xl font-poppins font-bold">
+                    {services[1]?.especial_min && services[1]?.especial_max
+                      ? `$${services[1].especial_min}-$${services[1].especial_max}`
+                      : "$80-$175"}
+                  </span>
                   <span className="text-white text-[14px] font-poppins ml-2">MXN</span>
                 </div>
               </div>
