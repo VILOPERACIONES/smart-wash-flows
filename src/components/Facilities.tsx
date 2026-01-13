@@ -1,22 +1,18 @@
-import React from 'react';
-import { Wifi, Coffee, LayoutGrid, Armchair, Sparkles, Clock, MapPin } from 'lucide-react';
+import React from "react";
+import { Wifi, Coffee, LayoutGrid, Armchair, Sparkles, Clock, MapPin } from "lucide-react";
 
 const facilities = [
   {
-    icon: LayoutGrid,
-    title: "Mesas Disponibles",
-    description: "Mesas amplias para trabajar en tu laptop, estudiar o simplemente relajarte con comodidad.",
+    icon: Coffee,
+    title: "Café y Agua Gratis",
+    description: "Disfruta de café recién hecho y agua purificada sin costo. Haz tu espera más agradable.",
   },
   {
     icon: Wifi,
     title: "WiFi Gratuito",
     description: "Conexión de alta velocidad para que trabajes, estudies o disfrutes de películas y redes sociales.",
   },
-  {
-    icon: Coffee,
-    title: "Café y Agua Gratis",
-    description: "Disfruta de café recién hecho y agua purificada sin costo. Haz tu espera más agradable.",
-  },
+
   {
     icon: Armchair,
     title: "Espacios Cómodos",
@@ -30,15 +26,16 @@ const facilities = [
   {
     icon: Clock,
     title: "Tiempo Productivo",
-    description: "Trabaja, estudia o relájate. El ciclo de lavado (~80 min) es perfecto para avanzar en tus pendientes.",
+    description:
+      "Trabaja, estudia o relájate. El ciclo de lavado (~80 min) es perfecto para avanzar en tus pendientes.",
   },
 ];
 
 const Facilities: React.FC = () => {
   const scrollToSucursales = () => {
-    const sucursalesSection = document.getElementById('sucursales');
+    const sucursalesSection = document.getElementById("sucursales");
     if (sucursalesSection) {
-      sucursalesSection.scrollIntoView({ behavior: 'smooth' });
+      sucursalesSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -66,9 +63,7 @@ const Facilities: React.FC = () => {
                 <facility.icon className="w-7 h-7 md:w-8 md:h-8 text-[#0000FF]" />
               </div>
               <div className="flex-1">
-                <h3 className="font-bold text-[1.125rem] md:text-[1.25rem] text-black mb-2">
-                  {facility.title}
-                </h3>
+                <h3 className="font-bold text-[1.125rem] md:text-[1.25rem] text-black mb-2">{facility.title}</h3>
                 <p className="text-[#0033a0] text-[0.875rem] md:text-[0.95rem] leading-relaxed">
                   {facility.description}
                 </p>
