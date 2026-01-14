@@ -200,7 +200,7 @@ const Services: React.FC = () => {
                     </p>
                     <div className="flex items-baseline gap-1 justify-center sm:justify-start">
                       <span className="text-[#00F] text-2xl sm:text-4xl font-poppins font-bold leading-8 sm:leading-10">
-                        $80
+                        ${services[0].precio_desde}
                       </span>
                       <span className="text-[#4A80DE] text-sm font-poppins font-normal leading-5">MXN</span>
                     </div>
