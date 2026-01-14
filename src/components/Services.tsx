@@ -7,6 +7,7 @@ interface Servicio {
   descripcion: string;
   caracteristicas: string[];
   precio_desde: string;
+  precio_hasta: string;
   tiempo_desde: string;
   especial_min: string;
   especial_max: string;
@@ -213,7 +214,7 @@ const Services: React.FC = () => {
                     </p>
                     <div className="flex items-baseline gap-1 justify-center sm:justify-start">
                       <span className="text-[#00F] text-2xl sm:text-4xl font-poppins font-bold leading-8 sm:leading-10">
-                        $125
+                        $ ${services[0]?.precio_hasta}
                       </span>
                       <span className="text-[#4A80DE] text-sm font-poppins font-normal leading-5">MXN</span>
                     </div>
