@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 interface Sucursal {
   id: string;
   nombre: string;
-  estado: "open" | "coming-soon";
-  direccion?: string;
-  horario?: string;
+  estado: string;
+  direccion: string;
+  horario: string;
   url_google_maps?: string;
   imagen: String;
 }
