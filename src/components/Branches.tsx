@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-interface Branch {
+interface Sucursal {
   id: string;
-  name: string;
-  status: "open" | "coming-soon";
-  address?: string;
-  hours?: string;
-  description?: string;
+  nombre: string;
+  estado: "open" | "coming-soon";
+  direccion?: string;
+  horario?: string;
+  url_google_maps?: string;
+  imagen: String;
 }
 
 const Branches: React.FC = () => {
