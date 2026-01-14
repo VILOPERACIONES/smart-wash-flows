@@ -131,7 +131,9 @@ const Branches: React.FC = () => {
                     </div>
 
                     <a
-                      href="{sucursal.url_google_maps}"
+                      href={sucursal.url_google_maps} // ✅ Correcto
+                      target="_blank" // Abre en nueva pestaña
+                      rel="noopener noreferrer"
                       className="flex justify-center items-center shadow-[0_4px_14px_-3px_rgba(0,0,255,0.40)] bg-[#00F] px-4 sm:px-20 py-3 rounded-xl w-full hover:bg-blue-700 transition-colors whitespace-nowrap"
                     >
                       <span className="text-white text-center text-sm font-poppins font-semibold leading-5">
