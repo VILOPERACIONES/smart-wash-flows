@@ -54,15 +54,15 @@ const Branches: React.FC = () => {
         </div>
 
         <div className="flex justify-center gap-6 flex-wrap">
-          {branches.map((branch) => (
+          {sucursales.map((sucursal) => (
             <article
-              key={branch.id}
+              key={sucursal.id}
               className="w-full max-w-[400px] border overflow-hidden bg-white rounded-2xl border-solid border-gray-200"
             >
               <div className="relative px-4 sm:px-8 pt-16 sm:pt-16">
                 <div className="w-full h-[188px] bg-[#C4C4C4] rounded-lg" />
 
-                {branch.status === "coming-soon" && (
+                {sucursal.estado === "proximamente" && (
                   <div className="flex w-[calc(100%-32px)] sm:w-[calc(100%-64px)] xl:w-[333.79px] h-[188px] rounded-lg justify-center items-center absolute bg-[#4A80DE] left-4 sm:left-8 top-16 sm:top-16">
                     <span className="text-white font-poppins text-lg font-bold leading-7">Próximamente</span>
                   </div>
@@ -70,21 +70,21 @@ const Branches: React.FC = () => {
 
                 <div
                   className={`inline-flex justify-center items-center absolute px-4 py-1.5 rounded-full left-4 top-4 ${
-                    branch.status === "open" ? "bg-[#00F]" : "bg-[#003A9E]"
+                    sucursal.estado === "activa" ? "bg-[#00F]" : "bg-[#003A9E]"
                   }`}
                 >
                   <span className="text-white text-sm font-medium leading-5">
-                    {branch.status === "open" ? "ABIERTO" : "PRÓXIMAMENTE"}
+                    {sucursal.estado === "activa" ? "ABIERTO" : "PRÓXIMAMENTE"}
                   </span>
                 </div>
               </div>
 
               <div className="p-[33px]">
                 <h3 className="text-black text-xl font-bold font-poppins leading-7 tracking-[-0.5px] mb-4">
-                  {branch.name}
+                  {sucursal.nombre}
                 </h3>
 
-                {branch.status === "open" ? (
+                {sucursal.estado === "activa" ? (
                   <>
                     <div className="flex items-center gap-3 mb-3">
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -104,7 +104,7 @@ const Branches: React.FC = () => {
                         />
                       </svg>
                       <span className="text-[#003A9E] font-poppins text-sm font-normal leading-5">
-                        {branch.address}
+                        {sucursal.direccion}
                       </span>
                     </div>
 
@@ -125,7 +125,9 @@ const Branches: React.FC = () => {
                           strokeLinejoin="round"
                         />
                       </svg>
-                      <span className="text-[#003A9E] text-sm font-poppins font-normal leading-5">{branch.hours}</span>
+                      <span className="text-[#003A9E] text-sm font-poppins font-normal leading-5">
+                        {sucursal.horario}
+                      </span>
                     </div>
 
                     <button className="flex justify-center items-center shadow-[0_4px_14px_-3px_rgba(0,0,255,0.40)] bg-[#00F] px-4 sm:px-20 py-3 rounded-xl w-full hover:bg-blue-700 transition-colors whitespace-nowrap">
@@ -136,9 +138,7 @@ const Branches: React.FC = () => {
                   </>
                 ) : (
                   <>
-                    <p className="text-[#003A9E] text-sm font-normal font-poppins leading-5 mb-16">
-                      {branch.description}
-                    </p>
+                    <p className="text-[#003A9E] text-sm font-normal font-poppins leading-5 mb-16"></p>
 
                     <button
                       className="flex justify-center items-center opacity-50 shadow-[0_4px_14px_-3px_rgba(0,0,255,0.40)] bg-[#F3F5F7] px-[114px] py-3 rounded-xl w-full"
