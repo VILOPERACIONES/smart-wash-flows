@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 interface Branch {
   id: string;
@@ -10,36 +10,27 @@ interface Branch {
 }
 
 const Branches: React.FC = () => {
-  const [services, setServices] = useState<Servicio[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const response = await fetch("http://127.0.0.1:8000/api/servicios");
-        const result = await response.json();
-        if (result.success && result.data) {
-          setServices(result.data);
-        }
-      } catch (error) {
-        console.error("Error fetching services:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchServices();
-  }, []);
-
-  if (loading) {
-    return (
-      <section id="servicios" className="w-full bg-white pt-[61px] pb-32 px-5">
-        <div className="max-w-[1400px] mx-auto my-0 flex justify-center items-center min-h-[400px]">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#00F]"></div>
-        </div>
-      </section>
-    );
-  }
+  const branches: Branch[] = [
+    {
+      id: "centro",
+      name: "Plaza Polígono 108",
+      status: "open",
+      address: "Calle X #123, Col. Polígono Itzimná",
+      hours: "Lun - Dom: 7:00 AM - 8:00 PM",
+    },
+    {
+      id: "norte",
+      name: "Sucursal Norte",
+      status: "coming-soon",
+      description: "Muy pronto en Zona Norte",
+    },
+    {
+      id: "poniente",
+      name: "Sucursal Poniente",
+      status: "coming-soon",
+      description: "Muy pronto en Zona Poniente",
+    },
+  ];
 
   return (
     <section id="sucursales" className="w-full bg-white px-5 py-20">
