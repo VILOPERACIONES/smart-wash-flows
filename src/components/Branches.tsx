@@ -6,7 +6,7 @@ interface Sucursal {
   estado: string;
   direccion: string;
   horario: string;
-  url_google_maps?: string;
+  url_google_maps: string;
   imagen: String;
 }
 
@@ -130,7 +130,10 @@ const Branches: React.FC = () => {
                       </span>
                     </div>
 
-                    <a className="flex justify-center items-center shadow-[0_4px_14px_-3px_rgba(0,0,255,0.40)] bg-[#00F] px-4 sm:px-20 py-3 rounded-xl w-full hover:bg-blue-700 transition-colors whitespace-nowrap">
+                    <a
+                      href="{sucursal.url_google_maps}"
+                      className="flex justify-center items-center shadow-[0_4px_14px_-3px_rgba(0,0,255,0.40)] bg-[#00F] px-4 sm:px-20 py-3 rounded-xl w-full hover:bg-blue-700 transition-colors whitespace-nowrap"
+                    >
                       <span className="text-white text-center text-sm font-poppins font-semibold leading-5">
                         Ver en Google Maps
                       </span>
