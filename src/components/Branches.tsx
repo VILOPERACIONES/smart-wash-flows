@@ -6,7 +6,7 @@ interface Sucursal {
   estado: string;
   direccion: string;
   horario: string;
-  url_google_maps?: string;
+  url_google_maps: string;
   imagen: String;
 }
 
@@ -130,35 +130,18 @@ const Branches: React.FC = () => {
                       </span>
                     </div>
 
-                    <button className="flex justify-center items-center shadow-[0_4px_14px_-3px_rgba(0,0,255,0.40)] bg-[#00F] px-4 sm:px-20 py-3 rounded-xl w-full hover:bg-blue-700 transition-colors whitespace-nowrap">
+                    <a
+                      href={sucursal.url_google_maps}
+                      className="flex justify-center items-center shadow-[0_4px_14px_-3px_rgba(0,0,255,0.40)] bg-[#00F] px-4 sm:px-20 py-3 rounded-xl w-full hover:bg-blue-700 transition-colors whitespace-nowrap"
+                    >
                       <span className="text-white text-center text-sm font-poppins font-semibold leading-5">
                         Ver en Google Maps
                       </span>
-                    </button>
+                    </a>
                   </>
                 ) : (
                   <>
-                    <div className="flex items-center gap-3 mb-3">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M16.6663 8.33317C16.6663 12.494 12.0505 16.8273 10.5005 18.1657C10.3561 18.2742 10.1803 18.333 9.99967 18.333C9.81901 18.333 9.64324 18.2742 9.49884 18.1657C7.94884 16.8273 3.33301 12.494 3.33301 8.33317C3.33301 6.56506 4.03539 4.86937 5.28563 3.61913C6.53587 2.36888 8.23156 1.6665 9.99967 1.6665C11.7678 1.6665 13.4635 2.36888 14.7137 3.61913C15.964 4.86937 16.6663 6.56506 16.6663 8.33317Z"
-                          stroke="#4A80DE"
-                          strokeWidth="1.66667"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M10 10.8335C11.3807 10.8335 12.5 9.71421 12.5 8.3335C12.5 6.95278 11.3807 5.8335 10 5.8335C8.61929 5.8335 7.5 6.95278 7.5 8.3335C7.5 9.71421 8.61929 10.8335 10 10.8335Z"
-                          stroke="#4A80DE"
-                          strokeWidth="1.66667"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      <span className="text-[#003A9E] font-poppins text-sm font-normal leading-5">
-                        {sucursal.direccion}
-                      </span>
-                    </div>
+                    <p className="text-[#003A9E] text-sm font-normal font-poppins leading-5 mb-16"></p>
 
                     <button
                       className="flex justify-center items-center opacity-50 shadow-[0_4px_14px_-3px_rgba(0,0,255,0.40)] bg-[#F3F5F7] px-[114px] py-3 rounded-xl w-full"
