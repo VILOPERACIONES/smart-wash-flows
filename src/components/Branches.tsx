@@ -17,7 +17,7 @@ const Branches: React.FC = () => {
   useEffect(() => {
     const fetchSucursales = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/servicios");
+        const response = await fetch("http://127.0.0.1:8000/api/sucursal");
         const result = await response.json();
         if (result.success && result.data) {
           setSucursales(result.data);
