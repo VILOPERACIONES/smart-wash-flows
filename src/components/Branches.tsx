@@ -11,7 +11,7 @@ interface Sucursal {
 }
 
 const Branches: React.FC = () => {
-  const [sucursales, setSucursales] = useState<Servicio[]>([]);
+  const [sucursales, setSucursales] = useState<Sucursal[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
