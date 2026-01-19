@@ -125,7 +125,7 @@ const Footer: React.FC = () => {
               </svg>
             </a>
           </div>
-          <p className="text-[rgba(255,255,255,0.60)] font-poppins text-sm font-normal leading-5">
+          <p className="hidden sm:block text-[rgba(255,255,255,0.60)] font-poppins text-sm font-normal leading-5">
             Mejor y más rápido.
           </p>
         </div>
