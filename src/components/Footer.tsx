@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
             alt="A LAVAR Logo"
             className="hidden sm:block sm:w-[327px] sm:h-auto"
           />
-          <div>
+          <div className="hidden sm:block">
             <h4 className="text-white text-base font-poppins font-semibold leading-6 tracking-[-0.4px] mb-5">
               Contacto
             </h4>
