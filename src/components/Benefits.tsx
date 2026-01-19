@@ -1,6 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 
 const Benefits: React.FC = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
+    return () => {
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
+  const scrollTo = useCallback((index: number) => {
+    if (emblaApi) emblaApi.scrollTo(index);
+  }, [emblaApi]);
+
   const benefits = [
     {
       icon: (
@@ -24,15 +56,29 @@ const Benefits: React.FC = () => {
     {
       icon: (
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 2.66675L4 8.00008V26.6667C4 27.374 4.28095 28.0523 4.78105 28.5524C5.28115 29.0525 5.95942 29.3334 6.66667 29.3334H25.3333C26.0406 29.3334 26.7189 29.0525 27.219 28.5524C27.719 28.0523 28 27.374 28 26.6667V8.00008L24 2.66675H8Z" stroke="#0000FF" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M4 8H28" stroke="#0000FF" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M21.3337 13.3333C21.3337 14.7477 20.7718 16.1043 19.7716 17.1045C18.7714 18.1047 17.4148 18.6666 16.0003 18.6666C14.5858 18.6666 13.2293 18.1047 12.2291 17.1045C11.2289 16.1043 10.667 14.7477 10.667 13.3333" stroke="#0000FF" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 2.66675L4 8.00008V26.6667C4 27.374 4.28095 28.0523 4.78105 28.5524C5.28115 29.0525 5.95942 29.3334 6.66667 29.3334H25.3333C26.0406 29.3334 26.7189 29.0525 27.219 28.5524C27.719 28.0523 28 27.374 28 26.6667V8.00008L24 2.66675H8Z" stroke="#0000FF" strokeWidth="2.66667" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M4 8H28" stroke="#0000FF" strokeWidth="2.66667" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M21.3337 13.3333C21.3337 14.7477 20.7718 16.1043 19.7716 17.1045C18.7714 18.1047 17.4148 18.6666 16.0003 18.6666C14.5858 18.6666 13.2293 18.1047 12.2291 17.1045C11.2289 16.1043 10.667 14.7477 10.667 13.3333" stroke="#0000FF" strokeWidth="2.66667" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       ),
       title: 'Productos Disponibles',
       description: 'Detergente, blanqueador, suavizante y más productos disponibles por ciclo. Compra justo lo necesario.'
     }
   ];
+
+  const BenefitCard = ({ benefit }: { benefit: typeof benefits[0] }) => (
+    <article className="text-center bg-white p-[23px] xl:p-[33px] max-w-[342.66px] rounded-[20px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]">
+      <div className="flex w-14 h-14 justify-center items-center bg-[rgba(0,0,255,0.10)] mt-0 mb-5 mx-auto p-3.5 rounded-2xl">
+        {benefit.icon}
+      </div>
+      <h3 className="text-black text-xl font-bold leading-7 mb-3">
+        {benefit.title}
+      </h3>
+      <p className="text-[#003A9E] text-base font-normal leading-6">
+        {benefit.description}
+      </p>
+    </article>
+  );
 
   return (
     <section className="w-full bg-[#EDEFF4] px-5 py-20">
@@ -51,21 +97,42 @@ const Benefits: React.FC = () => {
           </div>
         </div>
         
-        <div className="w-full flex justify-between gap-6 flex-wrap">
+        {/* Desktop: Static flex layout */}
+        <div className="hidden md:flex w-full justify-between gap-6 flex-wrap">
           {benefits.map((benefit, index) => (
-            <article key={index} className="text-center bg-white p-[23px] xl:p-[33px] max-w-[342.66px] rounded-[20px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]">
-              <div className="flex w-14 h-14 justify-center items-center bg-[rgba(0,0,255,0.10)] mt-0 mb-5 mx-auto p-3.5 rounded-2xl">
-                {benefit.icon}
-              </div>
-              <h3 className="text-black text-xl font-bold leading-7 mb-3">
-                {benefit.title}
-              </h3>
-              <p className="text-[#003A9E] text-base font-normal leading-6">
-                {benefit.description}
-              </p>
-            </article>
+            <BenefitCard key={index} benefit={benefit} />
           ))}
         </div>
+
+        {/* Mobile: Carousel */}
+        {isMobile && (
+          <div className="md:hidden">
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex">
+                {benefits.map((benefit, index) => (
+                  <div key={index} className="flex-[0_0_100%] min-w-0 flex justify-center px-4">
+                    <BenefitCard benefit={benefit} />
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Dots navigation */}
+            <div className="flex justify-center gap-2 mt-6">
+              {benefits.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(index)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                    index === selectedIndex 
+                      ? 'bg-[#003A9E] w-6' 
+                      : 'bg-[#003A9E]/30'
+                  }`}
+                  aria-label={`Ir a slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
