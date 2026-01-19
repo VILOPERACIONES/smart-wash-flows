@@ -100,7 +100,7 @@ const Services: React.FC = () => {
                   "Equipos comerciales modernos a tu disposición. Rápido, autónomo y ajustado a tus tiempos."}
               </p>
 
-              <ul className="flex flex-col gap-4 mb-8">
+              <ul className="hidden sm:flex flex-col gap-4 mb-8">
                 <li className="flex items-start gap-3">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -331,7 +331,7 @@ const Services: React.FC = () => {
                   "La solución perfecta para gente ocupada. Delega sin culpa y recibe tu ropa impecable el mismo día."}
               </p>
 
-              <ul className="hidden sm:flex flex-col gap-4 mb-8">
+              <ul className="flex flex-col gap-4 mb-8">
                 <li className="flex items-start gap-3">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
