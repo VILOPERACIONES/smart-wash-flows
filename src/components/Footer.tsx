@@ -5,12 +5,18 @@ const Footer: React.FC = () => {
     <footer className="w-full bg-[#003A9E] pt-[61px] pb-0 px-6 md:px-12 lg:px-16 xl:px-20">
       <div className="max-w-[1280px] mx-auto my-0">
         <div className="flex justify-between items-start gap-10 flex-wrap mb-10">
+          <div clssName="w-full flex justify-center">
+            <img
+              src="https://res.cloudinary.com/diefluaw7/image/upload/v1767894340/Group_14_rwibjk.svg"
+              alt="A LAVAR Logo"
+              className="w-[263px] h-[85px]"
+            />
+          </div>
           <img
             src="https://res.cloudinary.com/diefluaw7/image/upload/v1767894340/Group_14_rwibjk.svg"
             alt="A LAVAR Logo"
-            className="w-[263px] h-[85px] sm:w-[327px] sm:h-auto"
+            className="hidden sm:block sm:w-[327px] sm:h-auto"
           />
-
           <div>
             <h4 className="text-white text-base font-poppins font-semibold leading-6 tracking-[-0.4px] mb-5">
               Contacto
