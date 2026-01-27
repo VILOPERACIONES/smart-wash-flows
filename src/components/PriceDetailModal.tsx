@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  Dialog,
-  DialogContent,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 import logoWhite from "@/assets/logo-alavar-white.png";
 
@@ -22,9 +19,7 @@ const PriceRow: React.FC<PriceRowProps> = ({ name, priceCard, priceNoCard }) => 
     <span className="text-[#003A9E] font-poppins text-sm">{name}</span>
     <div className="flex items-center gap-2 text-right">
       <span className="text-[#00F] font-poppins font-bold text-sm">{priceCard}</span>
-      {priceNoCard && (
-        <span className="text-[#003A9E]/60 font-poppins text-xs">/ {priceNoCard}</span>
-      )}
+      {priceNoCard && <span className="text-[#003A9E]/60 font-poppins text-xs">/ {priceNoCard}</span>}
     </div>
   </div>
 );
@@ -55,24 +50,16 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
           >
             <X className="w-6 h-6" />
           </button>
-          
-          <img 
-            src={logoWhite} 
-            alt="A Lavar" 
-            className="h-8 md:h-10 mx-auto mb-3"
-          />
-          <h3 className="text-white font-poppins text-xl md:text-2xl font-bold">
-            Lista de Precios
-          </h3>
+
+          <img src={logoWhite} alt="A Lavar" className="h-8 md:h-10 mx-auto mb-3" />
+          <h3 className="text-white font-poppins text-xl md:text-2xl font-bold">Lista de Precios</h3>
         </div>
 
         {/* Content */}
         <div className="bg-white mx-3 md:mx-6 mb-4 md:mb-6 rounded-xl p-4 md:p-6">
           {/* Monedero highlight */}
           <div className="bg-gradient-to-r from-[#00F]/10 to-[#4A80DE]/10 rounded-xl p-3 md:p-4 mb-5 flex justify-between items-center">
-            <span className="text-[#0033A0] font-poppins text-sm md:text-base font-semibold">
-              Costo del monedero
-            </span>
+            <span className="text-[#0033A0] font-poppins text-sm md:text-base font-semibold">Costo del monedero</span>
             <span className="text-[#00F] font-poppins text-lg md:text-xl font-bold">$40</span>
           </div>
 
@@ -101,7 +88,7 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
                   <PriceRow name="Vanish" priceCard="$12" />
                   <PriceRow name="Jabón zote líquido" priceCard="$10" />
                   <PriceRow name="Perlitas" priceCard="$20" />
-                  <PriceRow name="Hojitas suavizantes" priceCard="$2 c/u" />
+                  <PriceRow name="Hojitas suavizantes" priceCard="$2c/u" />
                   <PriceRow name="Bolsas" priceCard="$3" />
                 </div>
               </Section>
@@ -116,14 +103,18 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
                       <p className="text-[#003A9E] font-poppins text-sm font-medium">Lavado por encargo</p>
                       <p className="text-[#003A9E]/60 font-poppins text-xs">Mínimo 5kg</p>
                     </div>
-                    <span className="text-[#00F] font-poppins text-xl font-bold">$30<span className="text-sm font-normal">/kg</span></span>
+                    <span className="text-[#00F] font-poppins text-xl font-bold">
+                      $30<span className="text-sm font-normal">/kg</span>
+                    </span>
                   </div>
                   <div className="bg-[#00F]/5 rounded-lg p-3 flex justify-between items-center">
                     <div>
                       <p className="text-[#003A9E] font-poppins text-sm font-medium">Secado por encargo</p>
                       <p className="text-[#003A9E]/60 font-poppins text-xs">Mínimo 5kg</p>
                     </div>
-                    <span className="text-[#00F] font-poppins text-xl font-bold">$20<span className="text-sm font-normal">/kg</span></span>
+                    <span className="text-[#00F] font-poppins text-xl font-bold">
+                      $20<span className="text-sm font-normal">/kg</span>
+                    </span>
                   </div>
                 </div>
               </Section>
