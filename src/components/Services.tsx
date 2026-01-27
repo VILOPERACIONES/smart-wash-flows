@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PriceDetailModal from "./PriceDetailModal";
 
 interface Servicio {
   id: number;
@@ -18,6 +19,7 @@ interface Servicio {
 const Services: React.FC = () => {
   const [services, setServices] = useState<Servicio[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isPriceModalOpen, setIsPriceModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -451,7 +453,10 @@ const Services: React.FC = () => {
         </div>
 
         <div className="text-center mt-[60px]">
-          <button className="inline-flex justify-center items-center shadow-[0_4px_14px_0_rgba(0,0,255,0.40)] gap-[13px] bg-[#00F] pt-[11px] pb-3 px-[34px] rounded-xl hover:bg-blue-700 transition-colors">
+          <button 
+            onClick={() => setIsPriceModalOpen(true)}
+            className="inline-flex justify-center items-center shadow-[0_4px_14px_0_rgba(0,0,255,0.40)] gap-[13px] bg-[#00F] pt-[11px] pb-3 px-[34px] rounded-xl hover:bg-blue-700 transition-colors"
+          >
             <span className="text-white text-center font-poppins text-lg font-bold leading-7">
               Ver detalle de precios
             </span>
@@ -473,6 +478,11 @@ const Services: React.FC = () => {
             </svg>
           </button>
         </div>
+
+        <PriceDetailModal 
+          isOpen={isPriceModalOpen} 
+          onClose={() => setIsPriceModalOpen(false)} 
+        />
       </div>
     </section>
   );
