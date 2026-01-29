@@ -227,6 +227,8 @@ const Hero: React.FC = () => {
       {/* WhatsApp floating button */}
       <a
         href="https://wa.me/529991349225"
+        target="_blank"
+        rel="noopener noreferrer"
         className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 hover:scale-105 transition-transform"
         aria-label="Contactar por WhatsApp"
       >
