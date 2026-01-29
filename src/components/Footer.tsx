@@ -34,10 +34,10 @@ const Footer: React.FC = () => {
                   />
                 </svg>
                 <a
-                  href="https://wa.me/529991234567"
+                  href="https://wa.me/529991349225"
                   className="text-[rgba(255,255,255,0.80)] text-sm font-normal leading-5 hover:text-white font-poppins transition-colors"
                 >
-                  WhatsApp: +52 999 123 4567
+                  WhatsApp: +52 999 134 9225
                 </a>
               </li>
               <li className="flex items-start gap-3">
