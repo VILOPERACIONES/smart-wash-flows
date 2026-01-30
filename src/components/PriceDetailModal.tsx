@@ -54,12 +54,13 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
           <img src={logoWhite} alt="A Lavar" className="h-8 md:h-10 mx-auto mb-3" />
           <h3 className="text-white font-poppins text-xl md:text-2xl font-bold">Lista de Precios</h3>
         </div>
-
-        <img
-          src={"https://res.cloudinary.com/diefluaw7/image/upload/v1769784656/Costo_del_monedero_nhutie.png"}
-          alt="A Lavar precios"
-          className=" hidden sm:block sm:w-[652px] sm:h-[661px] md:p-6 md:mx-6 rounded-xl "
-        />
+        <div className="flex justify-center items-center">
+          <img
+            src={"https://res.cloudinary.com/diefluaw7/image/upload/v1769784656/Costo_del_monedero_nhutie.png"}
+            alt="A Lavar precios"
+            className=" hidden sm:block sm:w-[652px] sm:h-[661px] md:p-6 md:mx-6 rounded-xl "
+          />
+        </div>
 
         {/* Content */}
         {/* <div className="bg-white mx-3 md:mx-6 mb-4 md:mb-6 rounded-xl p-4 md:p-6">
