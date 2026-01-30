@@ -24,7 +24,7 @@ const Services: React.FC = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/servicios");
+        const response = await fetch("https://admin.alavar.mx/api/servicios");
         const result = await response.json();
         if (result.success && result.data) {
           setServices(result.data);
@@ -453,7 +453,7 @@ const Services: React.FC = () => {
         </div>
 
         <div className="text-center mt-[60px]">
-          <button 
+          <button
             onClick={() => setIsPriceModalOpen(true)}
             className="inline-flex justify-center items-center shadow-[0_4px_14px_0_rgba(0,0,255,0.40)] gap-[13px] bg-[#00F] pt-[11px] pb-3 px-[34px] rounded-xl hover:bg-blue-700 transition-colors"
           >
@@ -479,10 +479,7 @@ const Services: React.FC = () => {
           </button>
         </div>
 
-        <PriceDetailModal 
-          isOpen={isPriceModalOpen} 
-          onClose={() => setIsPriceModalOpen(false)} 
-        />
+        <PriceDetailModal isOpen={isPriceModalOpen} onClose={() => setIsPriceModalOpen(false)} />
       </div>
     </section>
   );
