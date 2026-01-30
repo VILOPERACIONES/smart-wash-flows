@@ -72,7 +72,7 @@ const Branches: React.FC = () => {
       className="w-full max-w-[400px] border overflow-hidden bg-white rounded-2xl border-solid border-gray-200"
     >
       <div className="relative px-4 sm:px-8 pt-16 sm:pt-16">
-        <div className="w-full h-[188px] bg-[#C4C4C4] rounded-lg" />
+        <img src={sucursal.imagen} className="w-full h-[188px] bg-[#C4C4C4] rounded-lg" />
 
         {sucursal.estado === "proximamente" && (
           <div className="flex w-[calc(100%-32px)] sm:w-[calc(100%-64px)] xl:w-[333.79px] h-[188px] rounded-lg justify-center items-center absolute bg-[#4A80DE] left-4 sm:left-8 top-16 sm:top-16">
