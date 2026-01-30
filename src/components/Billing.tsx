@@ -212,7 +212,7 @@ const Billing: React.FC = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-            </button>
+            </a>
           </div>
         </div>
       </div>
