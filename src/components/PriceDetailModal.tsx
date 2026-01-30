@@ -56,16 +56,16 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
         </div>
 
         {/* Content */}
-        <div className="bg-white mx-3 md:mx-6 mb-4 md:mb-6 rounded-xl p-4 md:p-6">
-          {/* Monedero highlight */}
+        {/* <div className="bg-white mx-3 md:mx-6 mb-4 md:mb-6 rounded-xl p-4 md:p-6">
+          {/* Monedero highlight *}
           <div className="bg-gradient-to-r from-[#00F]/10 to-[#4A80DE]/10 rounded-xl p-3 md:p-4 mb-5 flex justify-between items-center">
             <span className="text-[#0033A0] font-poppins text-sm md:text-base font-semibold">Costo del monedero</span>
             <span className="text-[#00F] font-poppins text-lg md:text-xl font-bold">$40</span>
           </div>
 
-          {/* Grid Layout - responsive */}
+          {/* Grid Layout - responsive *}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-            {/* Column 1 */}
+            {/* Column 1 *}
             <div>
               <Section title="Lavadoras">
                 <PriceRow name="Lavadora chica" priceCard="$30" priceNoCard="$35" />
@@ -94,7 +94,7 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
               </Section>
             </div>
 
-            {/* Column 2 */}
+            {/* Column 2 }
             <div>
               <Section title="Por Encargo">
                 <div className="space-y-2">
@@ -158,13 +158,13 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
             </div>
           </div>
 
-          {/* Legend */}
+          {/* Legend }
           <div className="mt-4 pt-3 border-t border-gray-200 flex flex-wrap gap-4 justify-center text-xs text-[#003A9E]/60">
             <span>Precios con tarjeta / sin tarjeta</span>
             <span>•</span>
             <span>Precios en MXN</span>
           </div>
-        </div>
+        </div> */}
       </DialogContent>
     </Dialog>
   );
