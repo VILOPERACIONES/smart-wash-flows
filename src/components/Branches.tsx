@@ -35,13 +35,13 @@ const Branches: React.FC = () => {
     (index: number) => {
       if (emblaApi) emblaApi.scrollTo(index);
     },
-    [emblaApi]
+    [emblaApi],
   );
 
   useEffect(() => {
     const fetchSucursales = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/sucursal");
+        const response = await fetch("https://admin.alavar.mx/api/sucursal");
         const result = await response.json();
         if (result.success && result.data) {
           setSucursales(result.data);
@@ -115,9 +115,7 @@ const Branches: React.FC = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="text-[#003A9E] font-poppins text-sm font-normal leading-5">
-                {sucursal.direccion}
-              </span>
+              <span className="text-[#003A9E] font-poppins text-sm font-normal leading-5">{sucursal.direccion}</span>
             </div>
 
             <div className="flex items-center gap-3 mb-8">
@@ -137,9 +135,7 @@ const Branches: React.FC = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="text-[#003A9E] text-sm font-poppins font-normal leading-5">
-                {sucursal.horario}
-              </span>
+              <span className="text-[#003A9E] text-sm font-poppins font-normal leading-5">{sucursal.horario}</span>
             </div>
 
             <a
@@ -172,9 +168,7 @@ const Branches: React.FC = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="text-[#003A9E] font-poppins text-sm font-normal leading-5">
-                {sucursal.direccion}
-              </span>
+              <span className="text-[#003A9E] font-poppins text-sm font-normal leading-5">{sucursal.direccion}</span>
             </div>
             <button
               className="flex justify-center items-center opacity-50 shadow-[0_4px_14px_-3px_rgba(0,0,255,0.40)] bg-[#F3F5F7] px-[114px] py-3 rounded-xl w-full"
@@ -212,10 +206,7 @@ const Branches: React.FC = () => {
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
               {sucursales.map((sucursal) => (
-                <div
-                  key={sucursal.id}
-                  className="flex-[0_0_100%] min-w-0 flex justify-center px-2"
-                >
+                <div key={sucursal.id} className="flex-[0_0_100%] min-w-0 flex justify-center px-2">
                   {renderCard(sucursal)}
                 </div>
               ))}
@@ -229,9 +220,7 @@ const Branches: React.FC = () => {
                 key={index}
                 onClick={() => scrollTo(index)}
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  index === selectedIndex
-                    ? "bg-[#00F] w-6"
-                    : "bg-gray-300 hover:bg-gray-400"
+                  index === selectedIndex ? "bg-[#00F] w-6" : "bg-gray-300 hover:bg-gray-400"
                 }`}
                 aria-label={`Ir a sucursal ${index + 1}`}
               />
