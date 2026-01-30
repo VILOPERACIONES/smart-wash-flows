@@ -55,6 +55,12 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
           <h3 className="text-white font-poppins text-xl md:text-2xl font-bold">Lista de Precios</h3>
         </div>
 
+        <img
+          src={"https://res.cloudinary.com/diefluaw7/image/upload/v1769784656/Costo_del_monedero_nhutie.png"}
+          alt="A Lavar precios"
+          className=" hidden sm:block sm:w-[705px] sm:h-[755px] md:p-6 md:mx-6 "
+        />
+
         {/* Content */}
         {/* <div className="bg-white mx-3 md:mx-6 mb-4 md:mb-6 rounded-xl p-4 md:p-6">
           {/* Monedero highlight *}
