@@ -58,7 +58,7 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
           <img
             src={"https://res.cloudinary.com/diefluaw7/image/upload/v1769784656/Costo_del_monedero_nhutie.png"}
             alt="A Lavar precios"
-            className=" hidden sm:block sm:w-[652px] sm:h-[661px] md:p-6 md:mx-6 rounded-xl "
+            className=" hidden sm:block sm:w-[652px] sm:h-[661px] md:p-6 md:mx-6 rounded-[2.75rem]"
           />
         </div>
 
