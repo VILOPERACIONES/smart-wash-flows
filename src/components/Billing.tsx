@@ -185,7 +185,7 @@ const Billing: React.FC = () => {
 
           <div className="text-center mt-8">
             <a
-              href="https://wa.me/529991349225"
+              href="https://wa.me/529999967459"
               target="_blank"
               className="inline-flex justify-center items-center shadow-[0_4px_14px_0_rgba(0,0,255,0.40)] gap-[13px] bg-[#00F] pt-[11px] pb-3 px-[34px] rounded-xl hover:bg-blue-700 transition-colors"
             >
