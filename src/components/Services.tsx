@@ -56,10 +56,12 @@ const Services: React.FC = () => {
           <div className="inline-flex justify-center items-center bg-[rgba(74,128,222,0.20)] mb-5 px-4 py-1.5 rounded-full">
             <span className="text-[#4A80DE] font-poppins text-center text-sm font-medium leading-5">Servicios</span>
           </div>
-          <h2 className="text-black text-center text-5xl font-poppins font-bold leading-[48px] tracking-[-1.2px] mb-5 max-md:text-[40px] max-md:leading-10 max-sm:text-[32px] max-sm:leading-9">
-            Dos soluciones,
+          <h2 className="text-center text-5xl font-poppins font-bold leading-[48px] tracking-[-1.2px] mb-5 max-md:text-[40px] max-md:leading-10 max-sm:text-[32px] max-sm:leading-9">
+            <span className="text-black">Dos soluciones,</span>
             <br />
-            un mismo estándar
+            <span className="bg-gradient-to-r from-[#0000FF] to-[#003A9E] bg-clip-text text-transparent">
+              un mismo estándar
+            </span>
           </h2>
           <p className="text-[#003A9E] text-center font-poppins text-lg font-normal leading-7 mb-[60px]">
             Elige cómo quieres lavar. Nosotros garantizamos la misma calidad y eficiencia.
