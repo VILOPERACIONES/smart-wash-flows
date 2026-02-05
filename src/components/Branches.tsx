@@ -8,7 +8,7 @@ interface Sucursal {
   direccion: string;
   horario: string;
   url_google_maps: string;
-  imagen: String;
+  imagen: string;
 }
 
 const Branches: React.FC = () => {

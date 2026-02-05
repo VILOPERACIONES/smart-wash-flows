@@ -189,22 +189,23 @@ const Promotions: React.FC = () => {
                 </div>
               )}
             </div>
-
-            {promociones.length > 1 && (
-              <div className="flex justify-center gap-2 mt-5">
-                {promociones.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      currentSlide === index ? "bg-[#00F] w-8" : "bg-gray-200 hover:bg-gray-300"
-                    }`}
-                    aria-label={`Ir a promoción ${index + 1}`}
-                  />
-                ))}
-              </div>
-            )}
           </div>
+
+          {/* Dots navigation - moved outside the overflow-hidden container */}
+          {promociones.length > 1 && (
+            <div className="flex justify-center gap-2 mt-6">
+              {promociones.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    currentSlide === index ? "bg-[#00F] w-8" : "bg-gray-200 hover:bg-gray-300"
+                  }`}
+                  aria-label={`Ir a promoción ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
 
           {promociones.length > 1 && (
             <>
