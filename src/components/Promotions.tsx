@@ -165,35 +165,75 @@ const Promotions: React.FC = () => {
           </h2>
         </div>
 
-        <div className="relative max-w-[1074px] mx-auto my-0">
-          <div className="relative rounded-xl overflow-hidden">
-            <div className="w-full h-[586px] max-md:h-[400px] max-sm:h-[300px] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.10),0_4px_6px_-4px_rgba(0,0,0,0.10)] bg-gray-100 rounded-xl">
-              {/* Desktop image */}
-              <img
-                src={currentPromocion.imagen_desktop}
-                alt={currentPromocion.nombre || `Promoción ${currentSlide + 1}`}
-                className="hidden md:block w-full h-full object-cover"
-              />
+        <div className="max-w-[1074px] mx-auto my-0">
+          {/* Image container with navigation arrows */}
+          <div className="relative">
+            <div className="rounded-xl overflow-hidden">
+              <div className="w-full h-[586px] max-md:h-[400px] max-sm:h-[300px] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.10),0_4px_6px_-4px_rgba(0,0,0,0.10)] bg-gray-100 rounded-xl">
+                {/* Desktop image */}
+                <img
+                  src={currentPromocion.imagen_desktop}
+                  alt={currentPromocion.nombre || `Promoción ${currentSlide + 1}`}
+                  className="hidden md:block w-full h-full object-cover"
+                />
 
-              {/* Mobile image */}
-              <img
-                src={currentPromocion.imagen_mobile}
-                alt={currentPromocion.nombre || `Promoción ${currentSlide + 1}`}
-                className="block md:hidden w-full h-full object-cover"
-              />
+                {/* Mobile image */}
+                <img
+                  src={currentPromocion.imagen_mobile}
+                  alt={currentPromocion.nombre || `Promoción ${currentSlide + 1}`}
+                  className="block md:hidden w-full h-full object-cover"
+                />
 
-              {/* Overlay with title (if nombre exists) */}
-              {currentPromocion.nombre && (
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6 md:p-8">
-                  <h3 className="text-white font-poppins font-bold text-lg md:text-2xl">{currentPromocion.nombre}</h3>
-                </div>
-              )}
+                {/* Overlay with title (if nombre exists) */}
+                {currentPromocion.nombre && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6 md:p-8">
+                    <h3 className="text-white font-poppins font-bold text-lg md:text-2xl">{currentPromocion.nombre}</h3>
+                  </div>
+                )}
+              </div>
             </div>
+
+            {/* Navigation arrows - positioned relative to image container */}
+            {promociones.length > 1 && (
+              <>
+                <button
+                  onClick={prevSlide}
+                  className="flex w-12 h-12 justify-center items-center shadow-[0_4px_6px_-1px_rgba(0,0,0,0.10),0_2px_4px_-2px_rgba(0,0,0,0.10)] absolute -translate-y-1/2 bg-[rgba(255,255,255,0.80)] p-4 rounded-full left-0 top-1/2 hover:bg-white transition-colors"
+                  aria-label="Promoción anterior"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10 12L6 8L10 4"
+                      stroke="#0000FF"
+                      strokeWidth="1.33333"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+
+                <button
+                  onClick={nextSlide}
+                  className="flex w-12 h-12 justify-center items-center shadow-[0_4px_6px_-1px_rgba(0,0,0,0.10),0_2px_4px_-2px_rgba(0,0,0,0.10)] absolute -translate-y-1/2 bg-[rgba(255,255,255,0.80)] p-4 rounded-full right-0 top-1/2 hover:bg-white transition-colors"
+                  aria-label="Siguiente promoción"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M6 12L10 8L6 4"
+                      stroke="#0000FF"
+                      strokeWidth="1.33333"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              </>
+            )}
           </div>
 
-          {/* Dots navigation - moved outside the overflow-hidden container */}
+          {/* Dots navigation - completely outside the image container */}
           {promociones.length > 1 && (
-            <div className="flex justify-center gap-2 mt-6">
+            <div className="flex justify-center gap-2 mt-8">
               {promociones.map((_, index) => (
                 <button
                   key={index}
@@ -205,42 +245,6 @@ const Promotions: React.FC = () => {
                 />
               ))}
             </div>
-          )}
-
-          {promociones.length > 1 && (
-            <>
-              <button
-                onClick={prevSlide}
-                className="flex w-12 h-12 justify-center items-center shadow-[0_4px_6px_-1px_rgba(0,0,0,0.10),0_2px_4px_-2px_rgba(0,0,0,0.10)] absolute -translate-y-2/4 bg-[rgba(255,255,255,0.80)] p-4 rounded-full left-0 top-2/4 hover:bg-white transition-colors"
-                aria-label="Promoción anterior"
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M10 12L6 8L10 4"
-                    stroke="#0000FF"
-                    strokeWidth="1.33333"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-
-              <button
-                onClick={nextSlide}
-                className="flex w-12 h-12 justify-center items-center shadow-[0_4px_6px_-1px_rgba(0,0,0,0.10),0_2px_4px_-2px_rgba(0,0,0,0.10)] absolute -translate-y-2/4 bg-[rgba(255,255,255,0.80)] p-4 rounded-full right-0 top-2/4 hover:bg-white transition-colors"
-                aria-label="Siguiente promoción"
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6 12L10 8L6 4"
-                    stroke="#0000FF"
-                    strokeWidth="1.33333"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </>
           )}
         </div>
       </div>
