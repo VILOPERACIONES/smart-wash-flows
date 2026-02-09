@@ -136,29 +136,19 @@ const Hero: React.FC = () => {
                   className="w-4 h-4 sm:w-5 sm:h-5"
                 >
                   <path
-                    d="M10.0003 18.3334C14.6027 18.3334 18.3337 14.6024 18.3337 10C18.3337 5.39765 14.6027 1.66669 10.0003 1.66669C5.39795 1.66669 1.66699 5.39765 1.66699 10C1.66699 14.6024 5.39795 18.3334 10.0003 18.3334Z"
-                    stroke="white"
-                    strokeWidth="1.66667"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M10 5V10L13.3333 11.6667"
-                    stroke="white"
-                    strokeWidth="1.66667"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                    xmlns="http://www.w3.org/2000/svg"
+                    d="M8.8 0L5.86667 3.06667H1.46667C1.46667 3.06667 0 3.06667 0 4.6V18.4C0 19.9333 1.46667 19.9333 1.46667 19.9333H14.6667C14.6667 19.9333 16.1333 19.9333 16.1333 18.4V1.53333C16.1333 0 14.6667 0 14.6667 0H8.8ZM9.53333 1.53333H12.4667C12.6612 1.53333 12.8477 1.61411 12.9852 1.75788C13.1227 1.90166 13.2 2.09667 13.2 2.3C13.2 2.50333 13.1227 2.69834 12.9852 2.84211C12.8477 2.98589 12.6612 3.06667 12.4667 3.06667H9.53333C9.33884 3.06667 9.15232 2.98589 9.01479 2.84211C8.87726 2.69834 8.8 2.50333 8.8 2.3C8.8 2.09667 8.87726 1.90166 9.01479 1.75788C9.15232 1.61411 9.33884 1.53333 9.53333 1.53333ZM8.06667 7.66667C9.23362 7.66667 10.3528 8.15131 11.1779 9.01398C12.0031 9.87664 12.4667 11.0467 12.4667 12.2667C12.4667 13.4867 12.0031 14.6567 11.1779 15.5194C10.3528 16.382 9.23362 16.8667 8.06667 16.8667C6.89971 16.8667 5.78056 16.382 4.9554 15.5194C4.13024 14.6567 3.66667 13.4867 3.66667 12.2667C3.66667 11.0467 4.13024 9.87664 4.9554 9.01398C5.78056 8.15131 6.89971 7.66667 8.06667 7.66667Z"
+                    fill="white"
                   />
                 </svg>
               </div>
               <div className="text-left">
-                <div className="text-white font-poppins text-xs sm:text-sm font-semibold leading-tight">Mismo día</div>
-                <a
-                  href="#terminos"
-                  className="text-white/70 font-poppins text-[10px] sm:text-xs font-normal leading-tight underline hover:text-white/90"
-                >
-                  Entrega rápida *[1]
-                </a>
+                <div className="text-white font-poppins text-xs sm:text-sm font-semibold leading-tight">
+                  Espacios Cómodos
+                </div>
+                <p className="text-white/70 font-poppins text-[10px] sm:text-xs font-normal leading-tight underline hover:text-white/90">
+                  Sucursales limpias y desinfectadas
+                </p>
               </div>
             </div>
 
