@@ -155,24 +155,25 @@ const Hero: React.FC = () => {
             {/* Feature 3 */}
             <div className="flex items-center gap-3 sm:bg-transparent sm:backdrop-blur-none sm:px-0 sm:py-0">
               <div className="flex w-9 h-9 sm:w-10 sm:h-10 justify-center items-center bg-[hsla(220,68%,57%,0.25)] rounded-full flex-shrink-0">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
+                >
                   <path
                     d="M8 2.66675L4 8.00008V26.6667C4 27.374 4.28095 28.0523 4.78105 28.5524C5.28115 29.0525 5.95942 29.3334 6.66667 29.3334H25.3333C26.0406 29.3334 26.7189 29.0525 27.219 28.5524C27.719 28.0523 28 27.374 28 26.6667V8.00008L24 2.66675H8Z"
-                    stroke="#0000FF"
+                    fill="white"
                     strokeWidth="2.66667"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  <path
-                    d="M4 8H28"
-                    stroke="#0000FF"
-                    strokeWidth="2.66667"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
+                  <path d="M4 8H28" fill="white" strokeWidth="2.66667" strokeLinecap="round" strokeLinejoin="round" />
                   <path
                     d="M21.3337 13.3333C21.3337 14.7477 20.7718 16.1043 19.7716 17.1045C18.7714 18.1047 17.4148 18.6666 16.0003 18.6666C14.5858 18.6666 13.2293 18.1047 12.2291 17.1045C11.2289 16.1043 10.667 14.7477 10.667 13.3333"
-                    stroke="#0000FF"
+                    fill="white"
                     strokeWidth="2.66667"
                     strokeLinecap="round"
                     strokeLinejoin="round"
