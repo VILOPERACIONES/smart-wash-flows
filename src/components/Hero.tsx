@@ -64,40 +64,6 @@ const Hero: React.FC = () => {
             ejecutamos.
           </p>
 
-          {/* CTA Buttons - stack on mobile, row on larger screens */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full sm:w-auto mt-2">
-            <a
-              href="#promociones"
-              className="w-full max-w-[280px] sm:max-w-none sm:w-auto inline-flex items-center justify-center gap-3 shadow-[0_4px_14px_-3px_hsla(240,100%,50%,0.40)] bg-[hsl(240,100%,50%)] px-6 py-4 sm:py-3.5 rounded-xl hover:bg-[hsl(240,100%,40%)] transition-colors"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 27 27"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
-              >
-                <path
-                  d="M20.9808 3.20624L21.6671 7.54874L25.6158 9.56249L23.6246 13.5L25.6271 17.4375L21.6446 19.4512L20.9583 23.7937L16.5821 23.1075L13.4658 26.2125L10.3383 23.0625L5.99582 23.7825L5.29832 19.4062L1.37207 17.4037L3.37457 13.4662L1.38332 9.56249L5.33207 7.52624L6.01832 3.21749L10.3721 3.93749L13.4996 0.776245L16.6158 3.89249L20.9808 3.20624ZM10.6871 7.87499C10.2395 7.87499 9.8103 8.05278 9.49383 8.36925C9.17736 8.68572 8.99957 9.11494 8.99957 9.56249C8.99957 10.01 9.17736 10.4393 9.49383 10.7557C9.8103 11.0722 10.2395 11.25 10.6871 11.25C11.1346 11.25 11.5638 11.0722 11.8803 10.7557C12.1968 10.4393 12.3746 10.01 12.3746 9.56249C12.3746 9.11494 12.1968 8.68572 11.8803 8.36925C11.5638 8.05278 11.1346 7.87499 10.6871 7.87499ZM16.3121 15.75C15.8645 15.75 15.4353 15.9278 15.1188 16.2443C14.8024 16.5607 14.6246 16.9899 14.6246 17.4375C14.6246 17.885 14.8024 18.3143 15.1188 18.6307C15.4353 18.9472 15.8645 19.125 16.3121 19.125C16.7596 19.125 17.1888 18.9472 17.5053 18.6307C17.8218 18.3143 17.9996 17.885 17.9996 17.4375C17.9996 16.9899 17.8218 16.5607 17.5053 16.2443C17.1888 15.9278 16.7596 15.75 16.3121 15.75ZM9.46082 19.125L19.1246 9.46124L17.5383 7.87499L7.87457 17.5387L9.46082 19.125Z"
-                  fill="white"
-                />
-              </svg>
-              <span className="text-white text-center font-poppins text-base sm:text-lg font-semibold">
-                Ver Promociones
-              </span>
-            </a>
-
-            <a
-              href="#servicios"
-              className="w-full max-w-[280px] sm:max-w-none sm:w-auto flex justify-center items-center backdrop-blur-sm bg-white/80 px-8 py-4 sm:py-3.5 rounded-xl border-2 border-white/30 hover:bg-white transition-colors"
-            >
-              <span className="text-black text-center font-poppins text-base sm:text-lg font-semibold">
-                Ver servicios
-              </span>
-            </a>
-          </div>
-
           {/* Features - hidden on mobile, horizontal on larger screens */}
           <div className="hidden sm:flex flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8 w-full">
             {/* Feature 1 */}
@@ -219,6 +185,39 @@ const Hero: React.FC = () => {
                   Respuesta inmediata
                 </div>
               </div>
+            </div>
+            {/* CTA Buttons - stack on mobile, row on larger screens */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full sm:w-auto mt-2">
+              <a
+                href="#promociones"
+                className="w-full max-w-[280px] sm:max-w-none sm:w-auto inline-flex items-center justify-center gap-3 shadow-[0_4px_14px_-3px_hsla(240,100%,50%,0.40)] bg-[hsl(240,100%,50%)] px-6 py-4 sm:py-3.5 rounded-xl hover:bg-[hsl(240,100%,40%)] transition-colors"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 27 27"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
+                >
+                  <path
+                    d="M20.9808 3.20624L21.6671 7.54874L25.6158 9.56249L23.6246 13.5L25.6271 17.4375L21.6446 19.4512L20.9583 23.7937L16.5821 23.1075L13.4658 26.2125L10.3383 23.0625L5.99582 23.7825L5.29832 19.4062L1.37207 17.4037L3.37457 13.4662L1.38332 9.56249L5.33207 7.52624L6.01832 3.21749L10.3721 3.93749L13.4996 0.776245L16.6158 3.89249L20.9808 3.20624ZM10.6871 7.87499C10.2395 7.87499 9.8103 8.05278 9.49383 8.36925C9.17736 8.68572 8.99957 9.11494 8.99957 9.56249C8.99957 10.01 9.17736 10.4393 9.49383 10.7557C9.8103 11.0722 10.2395 11.25 10.6871 11.25C11.1346 11.25 11.5638 11.0722 11.8803 10.7557C12.1968 10.4393 12.3746 10.01 12.3746 9.56249C12.3746 9.11494 12.1968 8.68572 11.8803 8.36925C11.5638 8.05278 11.1346 7.87499 10.6871 7.87499ZM16.3121 15.75C15.8645 15.75 15.4353 15.9278 15.1188 16.2443C14.8024 16.5607 14.6246 16.9899 14.6246 17.4375C14.6246 17.885 14.8024 18.3143 15.1188 18.6307C15.4353 18.9472 15.8645 19.125 16.3121 19.125C16.7596 19.125 17.1888 18.9472 17.5053 18.6307C17.8218 18.3143 17.9996 17.885 17.9996 17.4375C17.9996 16.9899 17.8218 16.5607 17.5053 16.2443C17.1888 15.9278 16.7596 15.75 16.3121 15.75ZM9.46082 19.125L19.1246 9.46124L17.5383 7.87499L7.87457 17.5387L9.46082 19.125Z"
+                    fill="white"
+                  />
+                </svg>
+                <span className="text-white text-center font-poppins text-base sm:text-lg font-semibold">
+                  Ver Promociones
+                </span>
+              </a>
+
+              <a
+                href="#servicios"
+                className="w-full max-w-[280px] sm:max-w-none sm:w-auto flex justify-center items-center backdrop-blur-sm bg-white/80 px-8 py-4 sm:py-3.5 rounded-xl border-2 border-white/30 hover:bg-white transition-colors"
+              >
+                <span className="text-black text-center font-poppins text-base sm:text-lg font-semibold">
+                  Ver servicios
+                </span>
+              </a>
             </div>
           </div>
         </div>
