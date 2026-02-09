@@ -164,19 +164,28 @@ const Hero: React.FC = () => {
                   className="w-4 h-4 sm:w-5 sm:h-5"
                 >
                   <path
-                    d="M8 2.66675L4 8.00008V26.6667C4 27.374 4.28095 28.0523 4.78105 28.5524C5.28115 29.0525 5.95942 29.3334 6.66667 29.3334H25.3333C26.0406 29.3334 26.7189 29.0525 27.219 28.5524C27.719 28.0523 28 27.374 28 26.6667V8.00008L24 2.66675H8Z"
+                    xmlns="http://www.w3.org/2000/svg"
+                    d="M5 1.66663L2.5 4.99996V16.6666C2.5 17.1087 2.67559 17.5326 2.98816 17.8451C3.30072 18.1577 3.72464 18.3333 4.16667 18.3333H15.8333C16.2754 18.3333 16.6993 18.1577 17.0118 17.8451C17.3244 17.5326 17.5 17.1087 17.5 16.6666V4.99996L15 1.66663H5Z"
                     stroke="white"
-                    strokeWidth="2.66667"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
-                  <path d="M4 8H28" stroke="white" strokeWidth="2.66667" strokeLinecap="round" strokeLinejoin="round" />
                   <path
-                    d="M21.3337 13.3333C21.3337 14.7477 20.7718 16.1043 19.7716 17.1045C18.7714 18.1047 17.4148 18.6666 16.0003 18.6666C14.5858 18.6666 13.2293 18.1047 12.2291 17.1045C11.2289 16.1043 10.667 14.7477 10.667 13.3333"
+                    xmlns="http://www.w3.org/2000/svg"
+                    d="M2.5 5H17.5"
                     stroke="white"
-                    strokeWidth="2.66667"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    xmlns="http://www.w3.org/2000/svg"
+                    d="M13.3327 8.33337C13.3327 9.21743 12.9815 10.0653 12.3564 10.6904C11.7313 11.3155 10.8834 11.6667 9.99935 11.6667C9.11529 11.6667 8.26745 11.3155 7.64233 10.6904C7.0172 10.0653 6.66602 9.21743 6.66602 8.33337"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
                 </svg>
               </div>
