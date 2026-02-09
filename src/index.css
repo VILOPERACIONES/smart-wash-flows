@@ -109,4 +109,30 @@ All colors MUST be HSL.
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
     overflow: visible;
   }
+
+  .neon-pulse::before,
+  .neon-pulse::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border: 2px solid #4a80de;
+    border-radius: inherit;
+    animation: pulseOut 2s ease-out infinite;
+    opacity: 0;
+  }
+
+  .neon-pulse::after {
+    animation-delay: 1s;
+  }
+
+  @keyframes pulseOut {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
 }
