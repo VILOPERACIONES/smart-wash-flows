@@ -138,6 +138,7 @@ All colors MUST be HSL.
   }
 
   .btn-pulse {
+    transition: all 0.3s ease;
     animation: pulse 1.5s infinite;
   }
 
