@@ -111,6 +111,11 @@ All colors MUST be HSL.
     min-width: 205.77px;
   }
 
+  .btn-pulse {
+    transition: all 0.3s ease;
+    animation: pulse 1.5s infinite;
+  }
+
   .neon-pulse::before,
   .neon-pulse::after {
     content: "";
@@ -135,11 +140,6 @@ All colors MUST be HSL.
       transform: scale(1.5);
       opacity: 0;
     }
-  }
-
-  .btn-pulse {
-    transition: all 0.3s ease;
-    animation: pulse 1.5s infinite;
   }
 
   @keyframes pulse {
