@@ -286,8 +286,7 @@ const Services: React.FC = () => {
                   />
                 </svg>
                 <span className="text-[#003A9E] text-sm font-poppins font-normal leading-5">
-                  {"Ciclo de Lavado y Secado ~" + services[0]?.tiempo_desde + " minutos" ||
-                    "Ciclo de Lavado y Secado ~80 min"}
+                  {"Ciclo de Lavado y Secado ~" + services[0]?.tiempo_desde || "Ciclo de Lavado y Secado ~80 min"}
                 </span>
               </div>
             </div>
@@ -463,9 +462,7 @@ const Services: React.FC = () => {
             onClick={() => setIsPriceModalOpen(true)}
             className="animate-bounce inline-flex justify-center items-center shadow-[0_4px_14px_0_rgba(0,0,255,0.40)] gap-[13px] bg-[#00F] pt-[11px] pb-3 px-[34px] rounded-xl "
           >
-            <span className="text-white text-center font-poppins text-lg font-bold leading-7">
-              Ver detalle de precios
-            </span>
+            <span className="text-white text-center font-poppins text-lg font-bold leading-7">Lista de precios</span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M3.33301 8H12.6663"
