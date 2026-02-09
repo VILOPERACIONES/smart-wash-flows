@@ -146,7 +146,7 @@ const Hero: React.FC = () => {
                 <div className="text-white font-poppins text-xs sm:text-sm font-semibold leading-tight">
                   Espacios Cómodos
                 </div>
-                <p className="text-white/70 font-poppins text-[10px] sm:text-xs font-normal leading-tight underline hover:text-white/90">
+                <p className="text-white/70 font-poppins text-[10px] sm:text-xs font-normal leading-tight ">
                   Sucursales limpias y desinfectadas
                 </p>
               </div>
