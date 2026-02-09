@@ -189,7 +189,7 @@ const Hero: React.FC = () => {
           </div>
           {/* CTA Buttons - stack on mobile, row on larger screens */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full sm:w-auto mt-2">
-            <a
+            {/* <a
               href="#promociones"
               className="w-full max-w-[280px] sm:max-w-none sm:w-auto inline-flex items-center justify-center gap-3 shadow-[0_4px_14px_-3px_hsla(240,100%,50%,0.40)] bg-[hsl(240,100%,50%)] px-6 py-4 sm:py-3.5 rounded-xl hover:bg-[hsl(240,100%,40%)] transition-colors"
             >
@@ -209,7 +209,7 @@ const Hero: React.FC = () => {
               <span className="text-white text-center font-poppins text-base sm:text-lg font-semibold">
                 Ver Promociones
               </span>
-            </a>
+            </a> */}
 
             <a
               href="#servicios"
