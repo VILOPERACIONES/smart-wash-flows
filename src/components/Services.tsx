@@ -429,9 +429,12 @@ const Services: React.FC = () => {
                   PRECIO POR KILOGRAMO
                 </h4>
                 <div className="text-center mb-4">
-                  <span className="text-white text-6xl font-poppins font-bold">
-                    {services[1]?.precio_desde || "$30"}
-                  </span>
+                  <div className="flex">
+                    <p className="font-poppins font-bold text-[30px] text-white">$</p>
+                    <span className=" text-white text-6xl font-poppins font-bold">
+                      {services[1]?.precio_desde || "30"}
+                    </span>
+                  </div>
                   <span className="text-white text-lg font-poppins ml-2">/kg</span>
                 </div>
                 <h2 className="px-6 flex justify-center text-white font-poppins bg-[#ffffff]/10 rounded-full xl:text-[14px] xl:leading-[20px] font-semibold w-[64.48px] py-[6px] text-center ">
