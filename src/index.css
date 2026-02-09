@@ -108,6 +108,7 @@ All colors MUST be HSL.
     border: 2px solid #4a80de;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
     overflow: visible;
+    min-width: 205.77px;
   }
 
   .neon-pulse::before,
