@@ -20,7 +20,7 @@ const Index: React.FC = () => {
       <main>
         <Hero />
         <Promotions />
-        <Benefits />
+        {/* <Benefits /> */}
         <Services />
         {/* <WaitingRoom /> */}
         <Facilities />
