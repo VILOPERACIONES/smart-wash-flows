@@ -119,7 +119,7 @@ const Hero: React.FC = () => {
                   Tecnología Aplicada
                 </div>
                 <div className="text-white/70 font-poppins text-[10px] sm:text-xs font-normal leading-tight">
-                  Procesos modernos
+                  Procesos rápidos, simples y modernos
                 </div>
               </div>
             </div>
