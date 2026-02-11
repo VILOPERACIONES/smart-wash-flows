@@ -46,7 +46,7 @@ const Section: React.FC<SectionProps> = ({ title, children }) => (
 const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) => {
   const [data, setData] = useState<PrecioDetail | null>(null);
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/precioDetail")
+    fetch("https://admin.alavar.mx/api/precioDetail")
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((err) => console.error("Error cargando precios:", err));
