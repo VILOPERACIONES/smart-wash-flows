@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 import logoWhite from "@/assets/logo-alavar-white.png";
@@ -12,6 +12,11 @@ interface PriceRowProps {
   name: string;
   priceCard: string;
   priceNoCard?: string;
+}
+
+interface PrecioDetail {
+  imagen_desktop: string | null;
+  imagen_mobile: string | null;
 }
 
 const PriceRow: React.FC<PriceRowProps> = ({ name, priceCard, priceNoCard }) => (
@@ -39,6 +44,14 @@ const Section: React.FC<SectionProps> = ({ title, children }) => (
 );
 
 const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) => {
+  const [data, setData] = useState<PrecioDetail | null>(null);
+  useEffect(() => {
+    fetch("https://admin.alavar.mx/api/precioDetail")
+      .then((res) => res.json())
+      .then((data) => setData(data))
+      .catch((err) => console.error("Error cargando precios:", err));
+  }, []);
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-3xl w-[95vw] max-h-[90vh] overflow-y-auto p-0 bg-[#0033A0] border-none rounded-2xl">
@@ -55,16 +68,21 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
           <h3 className="text-white font-poppins text-xl md:text-2xl font-bold">Lista de Precios</h3>
         </div>
         <div className="flex justify-center items-center">
-          <img
-            src={"https://res.cloudinary.com/diefluaw7/image/upload/v1769784656/Costo_del_monedero_nhutie.png"}
-            alt="A Lavar precios"
-            className=" hidden sm:block sm:w-[652px] sm:h-[661px] md:p-6 md:mx-6 rounded-[2.75rem]"
-          />
-          <img
-            src={"https://res.cloudinary.com/diefluaw7/image/upload/v1769784656/Costo_del_monedero_1_i6etrq.png"}
-            alt="A Lavar precios"
-            className=" block sm:hidden w-[398px] h-auto p-6 mx-6 rounded-[2.75rem]"
-          />
+          {data?.imagen_desktop && (
+            <img
+              src={data.imagen_desktop}
+              alt="A Lavar precios desktop"
+              className="hidden sm:block sm:w-[652px] sm:h-[661px] md:p-6 md:mx-6 rounded-[2.75rem]"
+            />
+          )}
+
+          {data?.imagen_mobile && (
+            <img
+              src={data.imagen_mobile}
+              alt="A Lavar precios mobile"
+              className="block sm:hidden w-[398px] h-auto p-6 mx-6 rounded-[2.75rem]"
+            />
+          )}
         </div>
 
         {/* Content */}
