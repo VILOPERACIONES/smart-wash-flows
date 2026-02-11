@@ -17,35 +17,35 @@ import gsap from "gsap";
 const Index: React.FC = () => {
   return (
     <div className="w-full relative bg-white">
-      <div ref={headerRef}>
+      <div>
         <Header />
       </div>
       <main>
-        <div ref={heroRef}>
+        <div>
           <Hero />
         </div>
-        <div ref={promotionsRef}>
+        <div>
           <Promotions />
         </div>
-        <div ref={servicesRef}>
+        <div>
           <Services />
         </div>
-        <div ref={facilitiesRef}>
+        <div>
           <Facilities />
         </div>
-        <div ref={whatsappNotifRef}>
+        <div>
           <WhatsAppNotificationsSection />
         </div>
-        <div ref={billingRef}>
+        <div>
           <Billing />
         </div>
-        <div ref={branchesRef}>
+        <div>
           <Branches />
         </div>
-        <div ref={whatsappCtaRef}>
+        <div>
           <WhatsAppCTA />
         </div>
-        <div ref={terminosRef}>
+        <div>
           <TerminosCondiciones
             message={
               "*[1]: El servicio de lavado por encargo con entrega el mismo día está disponible de lunes a viernes para pedidos recibidos antes de las 11:00 a. m."
@@ -53,7 +53,7 @@ const Index: React.FC = () => {
           />
         </div>
       </main>
-      <div ref={footerRef}>
+      <div>
         <Footer />
       </div>
     </div>
