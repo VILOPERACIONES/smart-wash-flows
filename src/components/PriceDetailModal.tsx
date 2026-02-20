@@ -56,7 +56,7 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-3xl w-[95vw] max-h-[90vh] overflow-y-auto p-0 bg-transparent border-none rounded-2xl">
         {/* Header */}
-        <div className="sticky top-0 z-10 bg-[#0033A0] pt-6 pb-4 px-6 text-center">
+        <div className="sticky top-0 z-10 bg-transparent pt-6 pb-4 px-6 text-center">
           <button
             onClick={onClose}
             className="absolute right-4 top-4 text-white/70 hover:text-white transition-colors z-20"
