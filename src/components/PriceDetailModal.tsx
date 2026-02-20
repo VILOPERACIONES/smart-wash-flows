@@ -72,7 +72,7 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
             <img
               src={data.imagen_desktop}
               alt="A Lavar precios desktop"
-              className="hidden sm:block sm:w-[652px] sm:h-[661px] md:p-6 md:mx-6 rounded-[2.75rem]"
+              className="hidden sm:block sm:w-[652px] sm:h-[661px] md:p-6 md:mx-6 rounded-[2.75rem] z-[20]"
             />
           )}
 
@@ -80,7 +80,7 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
             <img
               src={data.imagen_mobile}
               alt="A Lavar precios mobile"
-              className="block sm:hidden w-[398px] h-auto p-6 mx-6 rounded-[2.75rem]"
+              className="block sm:hidden w-[398px] h-auto p-6 mx-6 rounded-[2.75rem] z-[20] "
             />
           )}
         </div>
