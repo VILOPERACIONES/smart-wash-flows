@@ -64,8 +64,8 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
             <X className="w-6 h-6" />
           </button>
 
-          <img src={logoWhite} alt="A Lavar" className="h-8 md:h-10 mx-auto mb-3" />
-          <h3 className="text-white font-poppins text-xl md:text-2xl font-bold">Lista de Precios</h3>
+          {/* <img src={logoWhite} alt="A Lavar" className="h-8 md:h-10 mx-auto mb-3" />
+          <h3 className="text-white font-poppins text-xl md:text-2xl font-bold">Lista de Precios</h3> */}
         </div>
         <div className="flex justify-center items-center">
           {data?.imagen_desktop && (
