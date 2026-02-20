@@ -54,7 +54,7 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-3xl w-[95vw] max-h-[90vh] overflow-y-auto p-0 bg-[#0033A0] border-none rounded-2xl">
+      <DialogContent className="max-w-3xl w-[95vw] max-h-[90vh] overflow-y-auto p-0 bg-transparent border-none rounded-2xl">
         {/* Header */}
         <div className="sticky top-0 z-10 bg-[#0033A0] pt-6 pb-4 px-6 text-center">
           <button
