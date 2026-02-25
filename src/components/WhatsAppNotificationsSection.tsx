@@ -5,7 +5,7 @@ const WhatsAppNotificationsSection: React.FC = () => {
     <section className="w-full py-16 sm:pt-16 sm:pb-0 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-10">
           <h2 className="text-2xl font-poppins md:text-4xl font-bold text-gray-900">
             Siempre informado, sin tener que preguntar
           </h2>
