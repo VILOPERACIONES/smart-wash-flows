@@ -18,7 +18,7 @@ const WhatsAppNotificationsSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0 items-center">
           {/* Left: WhatsApp mock */}
           <div className="flex justify-center">
-            <div className="w-[260px] md:w-[300px] rounded-3xl shadow-xl  overflow-hidden">
+            <div className="w-[260px] md:w-[350px]  shadow-xl  overflow-hidden">
               <img
                 src="https://res.cloudinary.com/diefluaw7/image/upload/v1772048382/whatsapp-mockup_op8y9l.png"
                 alt="Notificaciones por WhatsApp"
