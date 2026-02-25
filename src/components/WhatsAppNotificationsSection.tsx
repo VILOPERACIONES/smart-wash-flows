@@ -1,7 +1,6 @@
 import { CircleCheck } from "lucide-react";
 
-
-const WhatsAppNotificationsSection : React.FC = () => {
+const WhatsAppNotificationsSection: React.FC = () => {
   return (
     <section className="w-full py-16 px-4">
       <div className="max-w-7xl mx-auto">
@@ -11,8 +10,7 @@ const WhatsAppNotificationsSection : React.FC = () => {
             Siempre informado, sin tener que preguntar
           </h2>
           <p className="mt-4 text-sm font-poppins md:text-base text-blue-600 max-w-2xl mx-auto">
-            Te notificamos automáticamente por WhatsApp en cada paso del
-            proceso
+            Te notificamos automáticamente por WhatsApp en cada paso del proceso
           </p>
         </div>
 
@@ -22,7 +20,7 @@ const WhatsAppNotificationsSection : React.FC = () => {
           <div className="flex justify-center">
             <div className="w-[260px] md:w-[300px] rounded-3xl shadow-xl border bg-white overflow-hidden">
               <img
-                src="https://res.cloudinary.com/diefluaw7/image/upload/v1767381625/WhatsApp_Mockup_-_English_tay7xk.png"
+                src="https://res.cloudinary.com/diefluaw7/image/upload/v1772048382/whatsapp-mockup_op8y9l.png"
                 alt="Notificaciones por WhatsApp"
                 className="w-full h-auto"
               />
@@ -41,9 +39,8 @@ const WhatsAppNotificationsSection : React.FC = () => {
             </h3>
 
             <p className="text-gray-600 font-poppins mb-6 leading-relaxed">
-              A diferencia de otras lavanderías, en A LAVAR no necesitas estar
-              preguntando por tu pedido. Nuestro sistema te notifica
-              automáticamente vía WhatsApp cuando:
+              A diferencia de otras lavanderías, en A LAVAR no necesitas estar preguntando por tu pedido. Nuestro
+              sistema te notifica automáticamente vía WhatsApp cuando:
             </p>
 
             {/* List */}
@@ -55,9 +52,7 @@ const WhatsAppNotificationsSection : React.FC = () => {
               ].map((item, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <CircleCheck className="h-6 w-6 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700 font-poppins text-sm md:text-base">
-                    {item}
-                  </span>
+                  <span className="text-gray-700 font-poppins text-sm md:text-base">{item}</span>
                 </li>
               ))}
             </ul>
@@ -70,5 +65,5 @@ const WhatsAppNotificationsSection : React.FC = () => {
       </div>
     </section>
   );
-}
+};
 export default WhatsAppNotificationsSection;
