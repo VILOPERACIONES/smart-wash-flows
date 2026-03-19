@@ -12,7 +12,7 @@ import Footer from "@/components/Footer";
 import TerminosCondiciones from "@/components/TerminosCondiciones";
 import WhatsAppNotificationsSection from "@/components/WhatsAppNotificationsSection";
 import WhatsAppCTA from "@/components/WhatsAppCTA";
-import gsap from "gsap";
+
 
 const Index: React.FC = () => {
   return (
