@@ -169,19 +169,19 @@ const Promotions: React.FC = () => {
           {/* Image container with navigation arrows */}
           <div className="relative">
             <div className="rounded-xl overflow-hidden">
-              <div className="w-full h-[586px] max-md:h-[400px] max-sm:h-[300px] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.10),0_4px_6px_-4px_rgba(0,0,0,0.10)] bg-gray-100 rounded-xl">
+              <div className="w-full md:h-[586px] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.10),0_4px_6px_-4px_rgba(0,0,0,0.10)] bg-gray-100 rounded-xl">
                 {/* Desktop image */}
                 <img
                   src={currentPromocion.imagen_desktop}
                   alt={currentPromocion.nombre || `Promoción ${currentSlide + 1}`}
-                  className="hidden md:block w-full h-full object-cover"
+                  className="hidden md:block w-full h-full object-cover rounded-xl"
                 />
 
-                {/* Mobile image */}
+                {/* Mobile image - natural aspect ratio */}
                 <img
                   src={currentPromocion.imagen_mobile}
                   alt={currentPromocion.nombre || `Promoción ${currentSlide + 1}`}
-                  className="block md:hidden w-full h-full object-cover"
+                  className="block md:hidden w-full h-auto rounded-xl"
                 />
 
                 {/* Overlay with title (if nombre exists) */}
