@@ -77,7 +77,7 @@ const PriceDetailModal: React.FC<PriceDetailModalProps> = ({ isOpen, onClose }) 
             <img
               src={data.imagen_mobile}
               alt="A Lavar precios mobile"
-              className="block sm:hidden w-[398px] h-auto p-6 mx-6 rounded-[2.75rem] z-[20] "
+              className="block sm:hidden w-full max-w-[398px] h-auto p-4 rounded-[2.75rem] z-[20]"
             />
           )}
         </div>
